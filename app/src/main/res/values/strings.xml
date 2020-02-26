@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">alpha</string>
+
+    <string name="bottom_nav_dashboard">Dashboard</string>
+    <string name="bottom_nav_explore">Explore</string>
+    <string name="bottom_nav_account">Account</string>
+
+
+
+</resources>

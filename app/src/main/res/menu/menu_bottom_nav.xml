@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+
+    <item
+        android:id="@+id/bottom_nav_dashboard"
+        android:title="@string/bottom_nav_dashboard"
+        android:enabled="true"
+        android:icon="@drawable/icon_dashboard"/>
+
+    <item
+        android:id="@+id/bottom_nav_explore"
+        android:title="@string/bottom_nav_explore"
+        android:enabled="true"
+        android:icon="@drawable/icon_explore" />
+
+    <item
+        android:id="@+id/bottom_nav_account"
+        android:title="@string/bottom_nav_account"
+        android:enabled="true"
+        android:icon="@drawable/icon_account"/>
+
+
+</menu>

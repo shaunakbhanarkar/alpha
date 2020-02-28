@@ -11,6 +11,7 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.Layout;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -37,39 +38,16 @@ public class MainActivity extends AppCompatActivity {
         final BottomNavigationView bottom_nav = findViewById(R.id.bottom_nav);
         FrameLayout frame_layout = findViewById(R.id.frame_layout);
 
-        //change font in action bar
+
+        //customise action bar
 
         final ActionBar action_bar = getSupportActionBar();
         action_bar.setDisplayShowTitleEnabled(false);
         action_bar.setDisplayShowCustomEnabled(true);
 
-//        LinearLayout action_bar_layout = new LinearLayout(this);
-//        action_bar_layout.setOrientation(LinearLayout.VERTICAL);
-//        action_bar_layout.setGravity(View.TEXT_ALIGNMENT_CENTER);
+        action_bar.setCustomView(R.layout.action_bar);
 
-        final TextView action_bar_title = new TextView(this);
-
-        if (bottom_nav.getSelectedItemId() == R.id.bottom_nav_dashboard)
-            action_bar_title.setText("Dashboard");
-        else if (bottom_nav.getSelectedItemId() == R.id.bottom_nav_explore)
-            action_bar_title.setText("Explore");
-        else if (bottom_nav.getSelectedItemId() == R.id.bottom_nav_account)
-            action_bar_title.setText("Account");
-
-        action_bar_title.setTextSize(20);
-        action_bar_title.setTextColor(getResources().getColor(R.color.colorPrimary));
-        action_bar_title.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-
-
-        Typeface typeface_medium = getResources().getFont(R.font.nexa_bold);
-        action_bar_title.setTypeface(typeface_medium);
-
-//        action_bar_layout.addView(action_bar_title);
-
-        action_bar_title.setLayoutParams(new ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-        action_bar_title.setPadding(0,50,0,0);
-
-        action_bar.setCustomView(action_bar_title);
+        final TextView action_bar_title = action_bar.getCustomView().findViewById(R.id.action_bar_title);
 
 
         Window window = this.getWindow();

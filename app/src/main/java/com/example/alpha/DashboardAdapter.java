@@ -15,6 +15,9 @@ public class DashboardAdapter extends ArrayAdapter<DashboardItem> {
     private ArrayList<DashboardItem> data;
     Context mContext;
 
+
+
+
     private static class ViewHolder {
         TextView name;
         TextView step;

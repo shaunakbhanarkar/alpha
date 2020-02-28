@@ -1,5 +1,6 @@
 package com.example.alpha;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -78,6 +80,23 @@ public class DashboardFragment extends Fragment {
 
         DashboardAdapter dashboardAdapter = new DashboardAdapter(dashboardItemArrayList, getContext());
         listView.setAdapter(dashboardAdapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                if (position == 0)
+                {
+                    Intent intent = new Intent(getContext(),Step1Activity.class);
+                    startActivity(intent);
+                }
+                else if (position == 1)
+                {
+                    Intent intent = new Intent(getContext(),Step2Activity.class);
+                    startActivity(intent);
+                }
+            }
+        });
 
         return v;
     }

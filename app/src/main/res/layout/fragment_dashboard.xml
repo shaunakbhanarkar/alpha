@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/background_layout"
+    android:orientation="vertical"
     tools:context=".DashboardFragment">
 
+
     <LinearLayout
-        android:id="@+id/linear_layout_main"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="vertical"
+        android:background="@drawable/rounded_corners">
 
         <TextView
             android:id="@+id/text_view_progress_bar"
@@ -20,8 +23,7 @@
             android:textSize="20sp"
             android:textColor="@color/colorPrimary"
             android:fontFamily="@font/nexa_bold"
-            android:padding="10dp"
-            android:layout_margin="10dp" />
+            android:padding="10dp" />
 
         <ProgressBar
             android:id="@+id/progress_bar"
@@ -30,68 +32,18 @@
             android:layout_height="wrap_content"
             android:progress="25"
             android:padding="10dp"
-            android:layout_margin="10dp"
             android:progressTint="@color/colorPrimary" />
-
-        <!--        item 1-->
-
-
-        <LinearLayout
-            android:id="@+id/linear_layout_step1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:orientation="horizontal"
-            android:background="@drawable/rounded_corners">
-
-            <LinearLayout
-                android:layout_weight="1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" >
-
-                <TextView
-                    android:id="@+id/text_view_step1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="STEP 1"
-                    android:textColor="@color/white"
-                    android:textSize="12sp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginHorizontal="10dp"
-                    android:layout_marginBottom="5dp"
-                    android:fontFamily="@font/nexa_bold"/>
-
-                <TextView
-                    android:id="@+id/text_view_heading1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="What you want to do?"
-                    android:textColor="@color/white"
-                    android:textSize="25sp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginHorizontal="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:fontFamily="@font/nexa_bold"/>
-
-            </LinearLayout>
-
-
-            <ImageButton
-                android:layout_weight="8"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/icon_checked"
-                android:tint="@color/white"
-                android:background="@drawable/rounded_corners_right"
-                />
-
-
-        </LinearLayout>
-
-
-
 
     </LinearLayout>
 
-</ScrollView>
+       <ListView
+           android:id="@+id/list_view_dashboard"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:padding="10dp"
+           android:divider="@null"
+           android:scrollbars="none"/>
+
+
+
+</LinearLayout>

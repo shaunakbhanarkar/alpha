@@ -7,6 +7,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 
 /**
@@ -59,6 +62,23 @@ public class DashboardFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_dashboard, container, false);
+        View v = inflater.inflate(R.layout.fragment_dashboard, container, false);
+
+        ListView listView = v.findViewById(R.id.list_view_dashboard);
+
+        ArrayList<DashboardItem> dashboardItemArrayList = new ArrayList<>();
+
+        dashboardItemArrayList.add(new DashboardItem(1,"abc"));
+        dashboardItemArrayList.add(new DashboardItem(2,"loiabc"));
+        dashboardItemArrayList.add(new DashboardItem(3,"zasdabc"));
+        dashboardItemArrayList.add(new DashboardItem(4,"abnkjhjbc"));
+        dashboardItemArrayList.add(new DashboardItem(5,"abckh"));
+        dashboardItemArrayList.add(new DashboardItem(6,"abcasf"));
+        dashboardItemArrayList.add(new DashboardItem(7,"abcfd"));
+
+        DashboardAdapter dashboardAdapter = new DashboardAdapter(dashboardItemArrayList, getContext());
+        listView.setAdapter(dashboardAdapter);
+
+        return v;
     }
 }

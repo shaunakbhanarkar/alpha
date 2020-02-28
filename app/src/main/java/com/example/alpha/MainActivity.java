@@ -14,9 +14,11 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -30,18 +32,42 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Initialise elements
+
+        final BottomNavigationView bottom_nav = findViewById(R.id.bottom_nav);
+        FrameLayout frame_layout = findViewById(R.id.frame_layout);
+
         //change font in action bar
 
-        ActionBar action_bar = getSupportActionBar();
+        final ActionBar action_bar = getSupportActionBar();
         action_bar.setDisplayShowTitleEnabled(false);
         action_bar.setDisplayShowCustomEnabled(true);
 
-        TextView action_bar_title = new TextView(this);
-        action_bar_title.setText(getResources().getString(R.string.app_name));
+//        LinearLayout action_bar_layout = new LinearLayout(this);
+//        action_bar_layout.setOrientation(LinearLayout.VERTICAL);
+//        action_bar_layout.setGravity(View.TEXT_ALIGNMENT_CENTER);
+
+        final TextView action_bar_title = new TextView(this);
+
+        if (bottom_nav.getSelectedItemId() == R.id.bottom_nav_dashboard)
+            action_bar_title.setText("Dashboard");
+        else if (bottom_nav.getSelectedItemId() == R.id.bottom_nav_explore)
+            action_bar_title.setText("Explore");
+        else if (bottom_nav.getSelectedItemId() == R.id.bottom_nav_account)
+            action_bar_title.setText("Account");
+
         action_bar_title.setTextSize(20);
+        action_bar_title.setTextColor(getResources().getColor(R.color.colorPrimary));
+        action_bar_title.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+
 
         Typeface typeface_medium = getResources().getFont(R.font.nexa_bold);
         action_bar_title.setTypeface(typeface_medium);
+
+//        action_bar_layout.addView(action_bar_title);
+
+        action_bar_title.setLayoutParams(new ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        action_bar_title.setPadding(0,50,0,0);
 
         action_bar.setCustomView(action_bar_title);
 
@@ -62,10 +88,7 @@ public class MainActivity extends AppCompatActivity {
         decor.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
 
 
-        //Initialise elements
 
-        final BottomNavigationView bottom_nav = findViewById(R.id.bottom_nav);
-        FrameLayout frame_layout = findViewById(R.id.frame_layout);
 
         // set bottom navigation menu background colour
 
@@ -95,15 +118,18 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
 
                     case R.id.bottom_nav_explore:
-                    selected_fragment = new ExploreFragment();
+                        selected_fragment = new ExploreFragment();
+                        action_bar_title.setText("Explore");
                         break;
 
                     case R.id.bottom_nav_account:
                         selected_fragment = new AccountFragment();
+                        action_bar_title.setText("Account");
                         break;
 
                     default:
                         selected_fragment = new DashboardFragment();
+                        action_bar_title.setText("Dashboard");
                         break;
                 }
                 FragmentTransaction transaction = MainActivity.this.getSupportFragmentManager().beginTransaction();

@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:text="You're just 3 steps away!"
             android:textSize="20sp"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/white"
             android:fontFamily="@font/nexa_bold"
             android:padding="10dp" />
 
@@ -32,7 +32,8 @@
             android:layout_height="wrap_content"
             android:progress="25"
             android:padding="10dp"
-            android:progressTint="@color/colorPrimary" />
+            android:progressTint="@color/white"
+            android:progressBackgroundTint="@color/cardview_light_background"/>
 
     </LinearLayout>
 

@@ -68,6 +68,7 @@ public class AccountFragment extends Fragment {
 
         ArrayList<AccountItem> accountItemArrayList = new ArrayList<>();
 
+        accountItemArrayList.add(new AccountItem("PROFILE"));
         accountItemArrayList.add(new AccountItem("Basic Info"));
         accountItemArrayList.add(new AccountItem("Aspirations"));
         accountItemArrayList.add(new AccountItem("Educational Details"));
@@ -75,6 +76,11 @@ public class AccountFragment extends Fragment {
         accountItemArrayList.add(new AccountItem("Work Experience"));
         accountItemArrayList.add(new AccountItem("Publications"));
         accountItemArrayList.add(new AccountItem("Extra Curriculars"));
+        accountItemArrayList.add(new AccountItem("SETTINGS"));
+        accountItemArrayList.add(new AccountItem("Theme"));
+        accountItemArrayList.add(new AccountItem("About"));
+        accountItemArrayList.add(new AccountItem("Log Out"));
+
 
 
         AccountAdapter accountAdapter = new AccountAdapter(accountItemArrayList, getContext());

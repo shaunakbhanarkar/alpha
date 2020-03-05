@@ -1,12 +1,15 @@
 package com.example.alpha;
 
+import android.animation.TypeEvaluator;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 public class AccountAdapter extends ArrayAdapter<AccountItem> {
@@ -47,6 +50,7 @@ public class AccountAdapter extends ArrayAdapter<AccountItem> {
             convertView = inflater.inflate(R.layout.account_item, parent, false);
             viewHolder.name = (TextView) convertView.findViewById(R.id.text_view_name);
 
+
             result = convertView;
 
             convertView.setTag(viewHolder);
@@ -58,8 +62,26 @@ public class AccountAdapter extends ArrayAdapter<AccountItem> {
 
         viewHolder.name.setText(accountItem.getName());
 
-
+        if (position == 0 || position == 8){
+            Typeface nexa_bold = getContext().getResources().getFont(R.font.nexa_bold);
+            viewHolder.name.setTypeface(nexa_bold);
+            viewHolder.name.setTextSize(15);
+            viewHolder.name.setTextColor(getContext().getResources().getColor(R.color.colorPrimary));
+            viewHolder.name.setPadding(50,30,10,30);
+        }
+        else {
+            Typeface nexa_light = getContext().getResources().getFont(R.font.nexa_light);
+            viewHolder.name.setTypeface(nexa_light);
+            viewHolder.name.setPadding(100,30,10,30);
+        }
         return convertView;
 
+    }
+
+    @Override
+    public boolean isEnabled(int position){
+        if (position == 0 || position == 8)
+            return false;
+        return true;
     }
 }

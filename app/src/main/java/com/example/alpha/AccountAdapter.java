@@ -67,12 +67,13 @@ public class AccountAdapter extends ArrayAdapter<AccountItem> {
             viewHolder.name.setTypeface(nexa_bold);
             viewHolder.name.setTextSize(15);
             viewHolder.name.setTextColor(getContext().getResources().getColor(R.color.colorPrimary));
-            viewHolder.name.setPadding(50,30,10,30);
+            viewHolder.name.setPadding(50,50,50,30);
+            viewHolder.name.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
         }
         else {
             Typeface nexa_light = getContext().getResources().getFont(R.font.nexa_light);
             viewHolder.name.setTypeface(nexa_light);
-            viewHolder.name.setPadding(100,30,10,30);
+            viewHolder.name.setPadding(50,30,20,30);
         }
         return convertView;
 

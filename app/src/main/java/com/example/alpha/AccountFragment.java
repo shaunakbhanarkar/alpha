@@ -7,6 +7,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 
 /**
@@ -59,6 +62,26 @@ public class AccountFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_account, container, false);
+        View v = inflater.inflate(R.layout.fragment_account, container, false);
+
+        ListView listView = v.findViewById(R.id.list_view_account);
+
+        ArrayList<AccountItem> accountItemArrayList = new ArrayList<>();
+
+        accountItemArrayList.add(new AccountItem("Basic Info"));
+        accountItemArrayList.add(new AccountItem("Aspirations"));
+        accountItemArrayList.add(new AccountItem("Educational Details"));
+        accountItemArrayList.add(new AccountItem("Letters of Recommendation"));
+        accountItemArrayList.add(new AccountItem("Work Experience"));
+        accountItemArrayList.add(new AccountItem("Publications"));
+        accountItemArrayList.add(new AccountItem("Extra Curriculars"));
+
+
+        AccountAdapter accountAdapter = new AccountAdapter(accountItemArrayList, getContext());
+        listView.setAdapter(accountAdapter);
+
+
+
+        return v;
     }
 }

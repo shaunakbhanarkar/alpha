@@ -255,5 +255,9 @@ public class MainActivity extends AppCompatActivity {
         else if (fragment == 2) bottom_nav.setSelectedItemId(R.id.bottom_nav_account);
         else    bottom_nav.setSelectedItemId(R.id.bottom_nav_dashboard);
 
+        SharedPreferences.Editor sharedPrefEditor = sharedPref.edit();
+        sharedPrefEditor.putInt("Fragment" , 0);
+        sharedPrefEditor.apply();
+
     }
 }

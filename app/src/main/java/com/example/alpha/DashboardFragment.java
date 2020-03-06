@@ -77,6 +77,11 @@ public class DashboardFragment extends Fragment {
         SharedPreferences sharedPref = Objects.requireNonNull(getActivity().getSharedPreferences("Shared Preferences", MODE_PRIVATE));
         int theme = sharedPref.getInt("Theme", AppCompatDelegate.MODE_NIGHT_NO);
 
+
+        SharedPreferences.Editor sharedPrefEditor = sharedPref.edit();
+        sharedPrefEditor.putInt("Fragment", 0);
+        sharedPrefEditor.apply();
+
         LinearLayout progress_box = v.findViewById(R.id.progress_box);
 
         if (theme == AppCompatDelegate.MODE_NIGHT_NO)   progress_box.setBackground(getResources().getDrawable(R.drawable.rounded_corners_light));

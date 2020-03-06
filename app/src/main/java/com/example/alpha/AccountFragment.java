@@ -185,7 +185,7 @@ public class AccountFragment extends Fragment {
                             new int[]{-android.R.attr.state_checked}  // unchecked
                     };
 
-                    int[] colors= new int[]{
+                    int[] colors = new int[]{
 
                             getResources().getColor(R.color.checkedRadioButtonLight),
                             getResources().getColor(R.color.uncheckedRadioButton)
@@ -239,17 +239,29 @@ public class AccountFragment extends Fragment {
                     if (theme == AppCompatDelegate.MODE_NIGHT_NO) {
                         alert_dialog_layout.setBackgroundColor(getResources().getColor(R.color.white));
                         alert_dialog_title.setTextColor(getResources().getColor(R.color.colorPrimary));
+                        radio_button_light.setTextColor(getResources().getColor(R.color.black));
+                        radio_button_dark.setTextColor(getResources().getColor(R.color.black));
+                        radio_button_set_by_battery_saver.setTextColor(getResources().getColor(R.color.black));
                     } else if (theme == AppCompatDelegate.MODE_NIGHT_YES) {
                         alert_dialog_layout.setBackgroundColor(getResources().getColor(R.color.darkBackground));
                         alert_dialog_title.setTextColor(getResources().getColor(R.color.darkHighlight));
+                        radio_button_light.setTextColor(getResources().getColor(R.color.white));
+                        radio_button_dark.setTextColor(getResources().getColor(R.color.white));
+                        radio_button_set_by_battery_saver.setTextColor(getResources().getColor(R.color.white));
                     } else {
                         PowerManager powerManager = (PowerManager) getActivity().getSystemService(Context.POWER_SERVICE);
                         if (powerManager.isPowerSaveMode()) {
                             alert_dialog_layout.setBackgroundColor(getResources().getColor(R.color.darkBackground));
                             alert_dialog_title.setTextColor(getResources().getColor(R.color.darkHighlight));
+                            radio_button_light.setTextColor(getResources().getColor(R.color.white));
+                            radio_button_dark.setTextColor(getResources().getColor(R.color.white));
+                            radio_button_set_by_battery_saver.setTextColor(getResources().getColor(R.color.white));
                         } else {
                             alert_dialog_layout.setBackgroundColor(getResources().getColor(R.color.white));
                             alert_dialog_title.setTextColor(getResources().getColor(R.color.colorPrimary));
+                            radio_button_light.setTextColor(getResources().getColor(R.color.black));
+                            radio_button_dark.setTextColor(getResources().getColor(R.color.black));
+                            radio_button_set_by_battery_saver.setTextColor(getResources().getColor(R.color.black));
                         }
                     }
 

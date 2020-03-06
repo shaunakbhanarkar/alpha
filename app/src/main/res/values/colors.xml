@@ -6,4 +6,16 @@
 
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
+
+    <color name="darkBackground">#102027</color>
+    <color name="darkHighlight">#aab6fe</color>
+
+    <color name="checkedBottomNavItemLight">#1a237e</color>
+    <color name="checkedBottomNavItemDark">#aab6fe</color>
+    <color name="uncheckedBottomNavItem">#546e7a</color>
+
+    <color name="checkedRadioButtonLight">#1a237e</color>
+    <color name="checkedRadioButtonDark">#aab6fe</color>
+    <color name="uncheckedRadioButton">#546e7a</color>
+
 </resources>

@@ -3,14 +3,18 @@ package com.example.alpha;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.PowerManager;
 import android.text.Layout;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -23,6 +27,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -38,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
         final BottomNavigationView bottom_nav = findViewById(R.id.bottom_nav);
         FrameLayout frame_layout = findViewById(R.id.frame_layout);
 
+        SharedPreferences sharedPref = Objects.requireNonNull(getSharedPreferences("Shared Preferences", MODE_PRIVATE));
+        int theme = sharedPref.getInt("Theme", AppCompatDelegate.MODE_NIGHT_NO);
 
         //customise action bar
 
@@ -49,6 +57,22 @@ public class MainActivity extends AppCompatActivity {
 
         final TextView action_bar_title = action_bar.getCustomView().findViewById(R.id.action_bar_title);
 
+        if (theme == AppCompatDelegate.MODE_NIGHT_NO)   action_bar_title.setTextColor(getResources().getColor(R.color.colorPrimary));
+        else if (theme == AppCompatDelegate.MODE_NIGHT_YES) action_bar_title.setTextColor(getResources().getColor(R.color.darkHighlight));
+        else {
+
+            PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
+            if (powerManager.isPowerSaveMode()) {
+
+                action_bar_title.setTextColor(getResources().getColor(R.color.darkHighlight));
+
+            } else {
+
+                action_bar_title.setTextColor(getResources().getColor(R.color.colorPrimary));
+
+            }
+
+        }
 
         Window window = this.getWindow();
         // clear FLAG_TRANSLUCENT_STATUS flag:
@@ -57,15 +81,62 @@ public class MainActivity extends AppCompatActivity {
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
 
 
-        //change status bar colour
-        window.setStatusBarColor(getResources().getColor(R.color.white));
-        //change action bar colour
-        action_bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.white)));
-        // set status bar contrast
-        View decor = window.getDecorView();
-        decor.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+
+        if (theme == AppCompatDelegate.MODE_NIGHT_NO) {
+            //change status bar colour
+            window.setStatusBarColor(getResources().getColor(R.color.white));
+            //change action bar colour
+            action_bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.white)));
+            // set status bar contrast
+            View decor = window.getDecorView();
+            decor.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+            //set bottom navigation view background colour
+            bottom_nav.setBackgroundColor(getResources().getColor(R.color.white));
+        }
+        else if (theme == AppCompatDelegate.MODE_NIGHT_YES) {
+            //change status bar colour
+            window.setStatusBarColor(getResources().getColor(R.color.darkBackground));
+            //change action bar colour
+            action_bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.darkBackground)));
+            // set status bar contrast
+            View decor = window.getDecorView();
+            LinearLayout background_layout = decor.findViewById(R.id.background_layout);
+            background_layout.setBackgroundColor(getResources().getColor(R.color.darkBackground));
+            //set bottom navigation view background colour
+            bottom_nav.setBackgroundColor(getResources().getColor(R.color.darkBackground));
+        }
+        else {
+
+            PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
+            if (powerManager.isPowerSaveMode()) {
+
+                //change status bar colour
+                window.setStatusBarColor(getResources().getColor(R.color.darkBackground));
+                //change action bar colour
+                action_bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.darkBackground)));
+                // set status bar contrast
+                View decor = window.getDecorView();
+                LinearLayout background_layout = decor.findViewById(R.id.background_layout);
+                background_layout.setBackgroundColor(getResources().getColor(R.color.darkBackground));
+                //set bottom navigation view background colour
+                bottom_nav.setBackgroundColor(getResources().getColor(R.color.darkBackground));
 
 
+            } else {
+
+                //change status bar colour
+                window.setStatusBarColor(getResources().getColor(R.color.white));
+                //change action bar colour
+                action_bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.white)));
+                // set status bar contrast
+                View decor = window.getDecorView();
+                decor.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+                //set bottom navigation view background colour
+                bottom_nav.setBackgroundColor(getResources().getColor(R.color.white));
+
+            }
+
+        }
 
 
         // set bottom navigation menu background colour
@@ -77,12 +148,53 @@ public class MainActivity extends AppCompatActivity {
                 new int[]{-android.R.attr.state_checked}  // unchecked
         };
 
-        int[] colors = new int[]{
+        int[] colors= new int[]{
 
-                getResources().getColor(R.color.colorPrimary),
-                Color.parseColor("#546e7a")
-        };
+                    getResources().getColor(R.color.checkedBottomNavItemLight),
+                    getResources().getColor(R.color.uncheckedBottomNavItem)
+            };
 
+        if (theme == AppCompatDelegate.MODE_NIGHT_NO){
+
+            colors= new int[]{
+
+                    getResources().getColor(R.color.checkedBottomNavItemLight),
+                    getResources().getColor(R.color.uncheckedBottomNavItem)
+            };
+
+        }
+
+        else if (theme == AppCompatDelegate.MODE_NIGHT_YES){
+            colors = new int[]{
+
+                    getResources().getColor(R.color.checkedBottomNavItemDark),
+                    getResources().getColor(R.color.uncheckedBottomNavItem)
+            };
+        }
+
+        else {
+
+            PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
+            if (powerManager.isPowerSaveMode()) {
+
+                colors = new int[]{
+
+                        getResources().getColor(R.color.checkedBottomNavItemDark),
+                        getResources().getColor(R.color.uncheckedBottomNavItem)
+                };
+
+            }
+            else {
+
+                colors= new int[]{
+
+                        getResources().getColor(R.color.checkedBottomNavItemLight),
+                        getResources().getColor(R.color.uncheckedBottomNavItem)
+                };
+
+            }
+
+        }
 
         ColorStateList colorStateList = new ColorStateList(states, colors);
 
@@ -116,7 +228,6 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
-
 
 
 

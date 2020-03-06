@@ -1,6 +1,8 @@
 package com.example.alpha;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.os.PowerManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,7 +10,14 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatDelegate;
+
 import java.util.ArrayList;
+import java.util.Objects;
+
+import javax.xml.namespace.QName;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class DashboardAdapter extends ArrayAdapter<DashboardItem> {
 
@@ -67,6 +76,30 @@ public class DashboardAdapter extends ArrayAdapter<DashboardItem> {
         viewHolder.name.setText(dashboardItem.getName());
         viewHolder.step.setText("STEP " + dashboardItem.getStep());
         viewHolder.image.setImageDrawable(mContext.getDrawable(R.drawable.icon_checked));
+
+        SharedPreferences sharedPref = Objects.requireNonNull(getContext().getSharedPreferences("Shared Preferences", MODE_PRIVATE));
+        int theme = sharedPref.getInt("Theme", AppCompatDelegate.MODE_NIGHT_NO);
+
+        if (theme == AppCompatDelegate.MODE_NIGHT_NO){
+            viewHolder.name.setTextColor(getContext().getResources().getColor(R.color.colorPrimary));
+            viewHolder.step.setTextColor(getContext().getResources().getColor(R.color.black));
+        }
+        else if (theme == AppCompatDelegate.MODE_NIGHT_YES){
+            viewHolder.name.setTextColor(getContext().getResources().getColor(R.color.darkHighlight));
+            viewHolder.step.setTextColor(getContext().getResources().getColor(R.color.white));
+        }
+        else {
+            PowerManager powerManager = (PowerManager) getContext().getSystemService(Context.POWER_SERVICE);
+            if (powerManager.isPowerSaveMode()){
+                viewHolder.name.setTextColor(getContext().getResources().getColor(R.color.darkHighlight));
+                viewHolder.step.setTextColor(getContext().getResources().getColor(R.color.white));
+            }
+            else
+            {
+                viewHolder.name.setTextColor(getContext().getResources().getColor(R.color.colorPrimary));
+                viewHolder.step.setTextColor(getContext().getResources().getColor(R.color.black));
+            }
+        }
 
         return convertView;
 

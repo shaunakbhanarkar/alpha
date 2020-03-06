@@ -1,15 +1,32 @@
 package com.example.alpha;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
+import android.graphics.Typeface;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 
+import android.os.PowerManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.TextView;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
+import java.util.Objects;
+
+import static android.content.Context.MODE_PRIVATE;
 
 
 /**
@@ -26,6 +43,11 @@ public class AccountFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    //shared preferences
+    private SharedPreferences sharedPref;
+    private SharedPreferences.Editor sharedPrefEditor;
+
 
     public AccountFragment() {
         // Required empty public constructor
@@ -64,7 +86,17 @@ public class AccountFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_account, container, false);
 
-        ListView listView = v.findViewById(R.id.list_view_account);
+        //shared preferences
+        sharedPref = Objects.requireNonNull(getActivity()).getSharedPreferences("Shared Preferences", MODE_PRIVATE);
+        sharedPrefEditor = sharedPref.edit();
+
+        CharSequence[] app_themes = {"Light", "Dark", "Set by Batter Saver"};
+
+        final int theme = sharedPref.getInt("Theme", AppCompatDelegate.MODE_NIGHT_NO);
+
+
+
+        final ListView listView = v.findViewById(R.id.list_view_account);
 
         ArrayList<AccountItem> accountItemArrayList = new ArrayList<>();
 
@@ -86,6 +118,210 @@ public class AccountFragment extends Fragment {
         AccountAdapter accountAdapter = new AccountAdapter(accountItemArrayList, getContext());
         listView.setAdapter(accountAdapter);
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                if (position == 9) //theme
+                {
+                    int checked_item = 0;
+
+                    if (sharedPref.getInt("Theme", AppCompatDelegate.MODE_NIGHT_NO) - 1 >= 0)
+                        checked_item = sharedPref.getInt("Theme", AppCompatDelegate.MODE_NIGHT_NO) - 1;
+
+                    AlertDialog alertDialog = null;
+
+                    LinearLayout alert_dialog_layout = new LinearLayout(getContext());
+                    alert_dialog_layout.setOrientation(LinearLayout.VERTICAL);
+                    alert_dialog_layout.setPadding(20, 20, 20, 20);
+
+                    TextView alert_dialog_title = new TextView(alert_dialog_layout.getContext());
+                    alert_dialog_title.setText("Choose App Theme");
+                    alert_dialog_title.setTextSize(25);
+                    alert_dialog_title.setPadding(40, 20, 20, 20);
+                    alert_dialog_title.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+                    alert_dialog_title.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+
+                    Typeface nexa_bold = getResources().getFont(R.font.nexa_bold);
+
+                    alert_dialog_title.setTypeface(nexa_bold);
+
+                    RadioGroup radioGroup = new RadioGroup(alert_dialog_layout.getContext());
+                    radioGroup.setOrientation(RadioGroup.VERTICAL);
+                    radioGroup.setPadding(20, 20, 20, 40);
+
+                    RadioButton radio_button_light = new RadioButton(alert_dialog_layout.getContext());
+                    RadioButton radio_button_dark = new RadioButton(alert_dialog_layout.getContext());
+                    RadioButton radio_button_set_by_battery_saver = new RadioButton(alert_dialog_layout.getContext());
+
+                    radio_button_light.setText("Light");
+                    radio_button_dark.setText("Dark");
+                    radio_button_set_by_battery_saver.setText("Set by Battery Saver");
+
+                    radio_button_light.setTextSize(17);
+                    radio_button_dark.setTextSize(17);
+                    radio_button_set_by_battery_saver.setTextSize(17);
+
+                    Typeface nexa_light = getResources().getFont(R.font.nexa_light);
+
+                    radio_button_light.setTypeface(nexa_light);
+                    radio_button_dark.setTypeface(nexa_light);
+                    radio_button_set_by_battery_saver.setTypeface(nexa_light);
+
+                    radio_button_light.setPadding(20, 20, 20, 20);
+                    radio_button_dark.setPadding(20, 20, 20, 20);
+                    radio_button_set_by_battery_saver.setPadding(20, 20, 20, 20);
+
+                    radioGroup.addView(radio_button_light);
+                    radioGroup.addView(radio_button_dark);
+                    radioGroup.addView(radio_button_set_by_battery_saver);
+
+
+                    int[][] states = new int[][]{
+
+
+                            new int[]{android.R.attr.state_checked}, // checked
+                            new int[]{-android.R.attr.state_checked}  // unchecked
+                    };
+
+                    int[] colors= new int[]{
+
+                            getResources().getColor(R.color.checkedRadioButtonLight),
+                            getResources().getColor(R.color.uncheckedRadioButton)
+                    };
+
+                    if (theme == AppCompatDelegate.MODE_NIGHT_NO) {
+
+                        colors= new int[]{
+
+                                getResources().getColor(R.color.checkedRadioButtonLight),
+                                getResources().getColor(R.color.uncheckedRadioButton)
+                        };
+
+                    }
+                    else if (theme == AppCompatDelegate.MODE_NIGHT_YES){
+                        colors = new int[]{
+
+                                getResources().getColor(R.color.checkedRadioButtonDark),
+                                getResources().getColor(R.color.uncheckedRadioButton)
+                        };
+                    }
+                    else {
+
+                        PowerManager powerManager = (PowerManager) getActivity().getSystemService(Context.POWER_SERVICE);
+                        if (powerManager.isPowerSaveMode()) {
+
+                            colors = new int[]{
+
+                                    getResources().getColor(R.color.checkedRadioButtonDark),
+                                    getResources().getColor(R.color.uncheckedRadioButton)
+                            };
+
+
+                        } else {
+
+                            colors= new int[]{
+
+                                    getResources().getColor(R.color.checkedRadioButtonLight),
+                                    getResources().getColor(R.color.uncheckedRadioButton)
+                            };
+
+                        }
+                    }
+
+                    ColorStateList colorStateList = new ColorStateList(states, colors);
+
+                    radio_button_light.setButtonTintList(colorStateList);
+                    radio_button_dark.setButtonTintList(colorStateList);
+                    radio_button_set_by_battery_saver.setButtonTintList(colorStateList);
+
+                    if (theme == AppCompatDelegate.MODE_NIGHT_NO) {
+                        alert_dialog_layout.setBackgroundColor(getResources().getColor(R.color.white));
+                        alert_dialog_title.setTextColor(getResources().getColor(R.color.colorPrimary));
+                    } else if (theme == AppCompatDelegate.MODE_NIGHT_YES) {
+                        alert_dialog_layout.setBackgroundColor(getResources().getColor(R.color.darkBackground));
+                        alert_dialog_title.setTextColor(getResources().getColor(R.color.darkHighlight));
+                    } else {
+                        PowerManager powerManager = (PowerManager) getActivity().getSystemService(Context.POWER_SERVICE);
+                        if (powerManager.isPowerSaveMode()) {
+                            alert_dialog_layout.setBackgroundColor(getResources().getColor(R.color.darkBackground));
+                            alert_dialog_title.setTextColor(getResources().getColor(R.color.darkHighlight));
+                        } else {
+                            alert_dialog_layout.setBackgroundColor(getResources().getColor(R.color.white));
+                            alert_dialog_title.setTextColor(getResources().getColor(R.color.colorPrimary));
+                        }
+                    }
+
+                    if (checked_item == 0)
+                        radio_button_light.setChecked(true);
+                    else if (checked_item == 1)
+                        radio_button_dark.setChecked(true);
+                    else
+                        radio_button_set_by_battery_saver.setChecked(true);
+
+
+                    alert_dialog_layout.addView(alert_dialog_title);
+                    alert_dialog_layout.addView(radioGroup);
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                    builder.setView(alert_dialog_layout);
+                    alertDialog = builder.create();
+                    alertDialog.show();
+
+                    final AlertDialog finalAlertDialog = alertDialog;
+
+
+                    radio_button_light.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                            sharedPrefEditor.putInt("Theme", AppCompatDelegate.MODE_NIGHT_NO);
+//                            sharedPrefEditor.putInt("Fragment",2);
+                            sharedPrefEditor.apply();
+                            finalAlertDialog.dismiss();
+
+                        }
+                    });
+
+                    radio_button_dark.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                            sharedPrefEditor.putInt("Theme", AppCompatDelegate.MODE_NIGHT_YES);
+//                            sharedPrefEditor.putInt("Fragment",2);
+                            sharedPrefEditor.apply();
+                            finalAlertDialog.dismiss();
+
+                        }
+                    });
+
+                    radio_button_set_by_battery_saver.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY);
+                            sharedPrefEditor.putInt("Theme", AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY);
+//                            sharedPrefEditor.putInt("Fragment",2);
+                            sharedPrefEditor.apply();
+                            finalAlertDialog.dismiss();
+
+
+                        }
+                    });
+
+
+                }
+
+
+
+            }
+
+
+
+
+        });
 
 
         return v;

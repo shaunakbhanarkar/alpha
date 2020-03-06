@@ -1,17 +1,25 @@
 package com.example.alpha;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 
+import android.os.PowerManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.Objects;
+
+import static android.content.Context.MODE_PRIVATE;
 
 
 /**
@@ -66,8 +74,25 @@ public class DashboardFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_dashboard, container, false);
 
-        ListView listView = v.findViewById(R.id.list_view_dashboard);
+        SharedPreferences sharedPref = Objects.requireNonNull(getActivity().getSharedPreferences("Shared Preferences", MODE_PRIVATE));
+        int theme = sharedPref.getInt("Theme", AppCompatDelegate.MODE_NIGHT_NO);
 
+        LinearLayout progress_box = v.findViewById(R.id.progress_box);
+
+        if (theme == AppCompatDelegate.MODE_NIGHT_NO)   progress_box.setBackground(getResources().getDrawable(R.drawable.rounded_corners_light));
+        else if (theme == AppCompatDelegate.MODE_NIGHT_YES) progress_box.setBackground(getResources().getDrawable(R.drawable.rounded_corners_dark));
+        else {
+            PowerManager powerManager = (PowerManager) getContext().getSystemService(Context.POWER_SERVICE);
+            if (powerManager.isPowerSaveMode()){
+                progress_box.setBackground(getResources().getDrawable(R.drawable.rounded_corners_dark));
+            }
+            else
+            {
+                progress_box.setBackground(getResources().getDrawable(R.drawable.rounded_corners_light));
+            }
+        }
+
+        ListView listView = v.findViewById(R.id.list_view_dashboard);
         ArrayList<DashboardItem> dashboardItemArrayList = new ArrayList<>();
 
         dashboardItemArrayList.add(new DashboardItem(1,"abc"));

@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 
 import android.os.PowerManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -277,8 +278,9 @@ public class AccountFragment extends Fragment {
 
                             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
                             sharedPrefEditor.putInt("Theme", AppCompatDelegate.MODE_NIGHT_NO);
-//                            sharedPrefEditor.putInt("Fragment",2);
+                            sharedPrefEditor.putInt("Fragment",2);
                             sharedPrefEditor.apply();
+                            Log.e("fragment",""+sharedPref.getInt("Fragment",-1));
                             finalAlertDialog.dismiss();
 
                         }
@@ -290,8 +292,9 @@ public class AccountFragment extends Fragment {
 
                             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
                             sharedPrefEditor.putInt("Theme", AppCompatDelegate.MODE_NIGHT_YES);
-//                            sharedPrefEditor.putInt("Fragment",2);
+                            sharedPrefEditor.putInt("Fragment",2);
                             sharedPrefEditor.apply();
+                            Log.e("fragment",""+sharedPref.getInt("Fragment",-1));
                             finalAlertDialog.dismiss();
 
                         }
@@ -303,8 +306,9 @@ public class AccountFragment extends Fragment {
 
                             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY);
                             sharedPrefEditor.putInt("Theme", AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY);
-//                            sharedPrefEditor.putInt("Fragment",2);
+                            sharedPrefEditor.putInt("Fragment",2);
                             sharedPrefEditor.apply();
+                            Log.e("fragment",""+sharedPref.getInt("Fragment",-1));
                             finalAlertDialog.dismiss();
 
 

@@ -47,6 +47,11 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sharedPref = Objects.requireNonNull(getSharedPreferences("Shared Preferences", MODE_PRIVATE));
         int theme = sharedPref.getInt("Theme", AppCompatDelegate.MODE_NIGHT_NO);
 
+        int fragment = sharedPref.getInt("Fragment",0);
+        if (fragment == 1)  bottom_nav.setSelectedItemId(R.id.bottom_nav_explore);
+        else if (fragment == 2) bottom_nav.setSelectedItemId(R.id.bottom_nav_account);
+        else    bottom_nav.setSelectedItemId(R.id.bottom_nav_dashboard);
+
         //customise action bar
 
         final ActionBar action_bar = getSupportActionBar();
@@ -231,6 +236,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
     }
 
 
@@ -241,7 +247,13 @@ public class MainActivity extends AppCompatActivity {
 
         BottomNavigationView bottom_nav = findViewById(R.id.bottom_nav);
 
-        bottom_nav.setSelectedItemId(R.id.bottom_nav_dashboard);
+//        bottom_nav.setSelectedItemId(R.id.bottom_nav_dashboard);
+
+        SharedPreferences sharedPref = Objects.requireNonNull(getSharedPreferences("Shared Preferences", MODE_PRIVATE));
+        int fragment = sharedPref.getInt("Fragment",0);
+        if (fragment == 1)  bottom_nav.setSelectedItemId(R.id.bottom_nav_explore);
+        else if (fragment == 2) bottom_nav.setSelectedItemId(R.id.bottom_nav_account);
+        else    bottom_nav.setSelectedItemId(R.id.bottom_nav_dashboard);
 
     }
 }

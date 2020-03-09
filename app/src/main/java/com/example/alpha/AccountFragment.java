@@ -1,6 +1,7 @@
 package com.example.alpha;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Typeface;
@@ -22,6 +23,10 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
@@ -333,6 +338,23 @@ public class AccountFragment extends Fragment {
 
                 }
 
+
+                if (position == 11) //logout
+                {
+                    GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getContext());
+                    if (account != null)
+                        Log.e("username",account.getDisplayName());
+
+                    GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                            .requestEmail()
+                            .build();
+                    GoogleSignInClient mGoogleSignInClient = GoogleSignIn.getClient(getContext(), gso);
+                    mGoogleSignInClient.signOut();
+
+                    getActivity().finishAffinity();
+                    Intent intent = new Intent(getActivity(), LoginActivity.class);
+                    startActivity(intent);
+                }
 
 
             }

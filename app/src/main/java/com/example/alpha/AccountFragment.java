@@ -131,6 +131,12 @@ public class AccountFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+                if (position == 2) //aspirations
+                {
+                    Intent intent = new Intent(getContext(),AspirationsActivity.class);
+                    startActivity(intent);
+                }
+
                 if (position == 9) //theme
                 {
                     int checked_item = 0;

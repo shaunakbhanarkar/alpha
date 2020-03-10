@@ -3,6 +3,7 @@ package com.example.alpha;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatDelegate;
@@ -15,6 +16,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -83,19 +86,72 @@ public class DashboardFragment extends Fragment {
         sharedPrefEditor.apply();
 
         LinearLayout progress_box = v.findViewById(R.id.progress_box);
+        TextView text_view_progress_bar = v.findViewById(R.id.text_view_progress_bar);
+        ProgressBar progress_bar = v.findViewById(R.id.progress_bar);
 
-        if (theme == AppCompatDelegate.MODE_NIGHT_NO)   progress_box.setBackground(getResources().getDrawable(R.drawable.rounded_corners_light));
-        else if (theme == AppCompatDelegate.MODE_NIGHT_YES) progress_box.setBackground(getResources().getDrawable(R.drawable.rounded_corners_dark));
+        int[][] states = new int[][]{
+
+
+                new int[]{android.R.attr.state_enabled} // enabled
+        };
+
+        int[] colors= new int[]{
+
+                getResources().getColor(R.color.white)
+
+        };
+
+        if (theme == AppCompatDelegate.MODE_NIGHT_NO){
+            progress_box.setBackground(getResources().getDrawable(R.drawable.rounded_corners_light));
+            text_view_progress_bar.setTextColor(getResources().getColor(R.color.white));
+
+
+            colors= new int[]{
+
+                    getResources().getColor(R.color.white)
+
+            };
+        }
+        else if (theme == AppCompatDelegate.MODE_NIGHT_YES){
+            progress_box.setBackground(getResources().getDrawable(R.drawable.rounded_corners_dark));
+            text_view_progress_bar.setTextColor(getResources().getColor(R.color.darkBackground));
+
+
+            colors= new int[]{
+
+                    getResources().getColor(R.color.darkBackground)
+
+            };
+        }
         else {
             PowerManager powerManager = (PowerManager) getContext().getSystemService(Context.POWER_SERVICE);
             if (powerManager.isPowerSaveMode()){
                 progress_box.setBackground(getResources().getDrawable(R.drawable.rounded_corners_dark));
+                text_view_progress_bar.setTextColor(getResources().getColor(R.color.darkBackground));
+
+
+                colors= new int[]{
+
+                        getResources().getColor(R.color.darkBackground)
+
+                };
             }
             else
             {
                 progress_box.setBackground(getResources().getDrawable(R.drawable.rounded_corners_light));
+                text_view_progress_bar.setTextColor(getResources().getColor(R.color.white));
+
+                colors= new int[]{
+
+                        getResources().getColor(R.color.white)
+
+                };
             }
         }
+
+        ColorStateList colorStateList = new ColorStateList(states, colors);
+        progress_bar.setProgressTintList(colorStateList);
+        progress_bar.setProgressBackgroundTintList(colorStateList);
 
         ListView listView = v.findViewById(R.id.list_view_dashboard);
         ArrayList<DashboardItem> dashboardItemArrayList = new ArrayList<>();

@@ -133,7 +133,7 @@ public class AspirationsActivity extends AppCompatActivity {
 
 
             button_save.setBackgroundResource(R.drawable.rounded_corners_dark);
-            button_save.setTextColor(getResources().getColor(R.color.white));
+            button_save.setTextColor(getResources().getColor(R.color.darkBackground));
 
         }
         else {
@@ -166,7 +166,7 @@ public class AspirationsActivity extends AppCompatActivity {
 
 
                 button_save.setBackgroundResource(R.drawable.rounded_corners_dark);
-                button_save.setTextColor(getResources().getColor(R.color.white));
+                button_save.setTextColor(getResources().getColor(R.color.darkBackground));
 
             } else {
 

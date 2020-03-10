@@ -30,7 +30,8 @@
         android:layout_height="wrap_content"
         android:background="@drawable/common_google_signin_btn_text_light"
         android:text="Sign in with Google"
-        android:layout_margin="20dp"/>
+        android:layout_margin="20dp"
+        android:padding="20dp"/>
 
 
 

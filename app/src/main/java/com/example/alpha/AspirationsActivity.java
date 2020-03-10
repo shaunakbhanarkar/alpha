@@ -10,6 +10,7 @@ import android.content.res.ColorStateList;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.PowerManager;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -32,6 +33,8 @@ public class AspirationsActivity extends AppCompatActivity {
 
         SharedPreferences sharedPref = Objects.requireNonNull(getSharedPreferences("Shared Preferences", MODE_PRIVATE));
         int theme = sharedPref.getInt("Theme", AppCompatDelegate.MODE_NIGHT_NO);
+
+        Log.e("theme",""+theme);
 
         Button button_save = findViewById(R.id.button_save);
 
@@ -78,6 +81,8 @@ public class AspirationsActivity extends AppCompatActivity {
 
         if (theme == AppCompatDelegate.MODE_NIGHT_NO){
 
+            Log.e("entered","light theme");
+
             action_bar_title.setTextColor(getResources().getColor(R.color.colorPrimary));
             colors= new int[]{
 
@@ -104,6 +109,9 @@ public class AspirationsActivity extends AppCompatActivity {
         }
         else if (theme == AppCompatDelegate.MODE_NIGHT_YES){
 
+            Log.e("entered","dark theme");
+
+
             action_bar_title.setTextColor(getResources().getColor(R.color.darkHighlight));
             colors= new int[]{
 
@@ -129,6 +137,9 @@ public class AspirationsActivity extends AppCompatActivity {
 
         }
         else {
+
+            Log.e("entered","battery saver theme");
+
 
             PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
             if (powerManager.isPowerSaveMode()) {

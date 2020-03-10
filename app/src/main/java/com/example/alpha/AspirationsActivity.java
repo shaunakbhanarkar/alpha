@@ -273,6 +273,19 @@ public class AspirationsActivity extends AppCompatActivity {
                     Log.e("Dream University", value);
 
 
+                    String temp_program = aspirationsItemArrayList.get(1).value;
+                    String temp_semester = aspirationsItemArrayList.get(2).value;
+
+                    aspirationsItemArrayList.clear();
+
+                    aspirationsItemArrayList.add(new AspirationsItem("DREAM UNIVERSITY",sharedPref.getString("Dream University","-")));
+                    aspirationsItemArrayList.add(new AspirationsItem("DREAM PROGRAM",temp_program));
+                    aspirationsItemArrayList.add(new AspirationsItem("DREAM SEMESTER",temp_semester));
+
+
+                    AspirationsAdapter temp_adapter = new AspirationsAdapter(aspirationsItemArrayList, getBaseContext());
+                    list_view_aspirations.setAdapter(temp_adapter);
+
 
                 }
 
@@ -306,6 +319,21 @@ public class AspirationsActivity extends AppCompatActivity {
                     editor.apply();
 
                     Log.e("Dream Program", value);
+
+
+                    String temp_university = aspirationsItemArrayList.get(0).value;
+                    String temp_semester = aspirationsItemArrayList.get(2).value;
+
+                    aspirationsItemArrayList.clear();
+
+                    aspirationsItemArrayList.add(new AspirationsItem("DREAM UNIVERSITY",temp_university));
+                    aspirationsItemArrayList.add(new AspirationsItem("DREAM PROGRAM",sharedPref.getString("Dream Program","-")));
+                    aspirationsItemArrayList.add(new AspirationsItem("DREAM SEMESTER",temp_semester));
+
+
+                    AspirationsAdapter temp_adapter = new AspirationsAdapter(aspirationsItemArrayList, getBaseContext());
+                    list_view_aspirations.setAdapter(temp_adapter);
+
                 }
 
             }
@@ -336,6 +364,20 @@ public class AspirationsActivity extends AppCompatActivity {
                     editor.apply();
 
                     Log.e("Dream Semester", value);
+
+
+                    String temp_university = aspirationsItemArrayList.get(0).value;
+                    String temp_program = aspirationsItemArrayList.get(1).value;
+
+                    aspirationsItemArrayList.clear();
+
+                    aspirationsItemArrayList.add(new AspirationsItem("DREAM UNIVERSITY",temp_university));
+                    aspirationsItemArrayList.add(new AspirationsItem("DREAM PROGRAM",temp_program));
+                    aspirationsItemArrayList.add(new AspirationsItem("DREAM SEMESTER",sharedPref.getString("Dream Semester","-")));
+
+
+                    AspirationsAdapter temp_adapter = new AspirationsAdapter(aspirationsItemArrayList, getBaseContext());
+                    list_view_aspirations.setAdapter(temp_adapter);
                 }
 
             }
@@ -529,8 +571,8 @@ public class AspirationsActivity extends AppCompatActivity {
 
 
                             finalAlertDialog.dismiss();
-                            finish();
-                            startActivity(getIntent());
+//                            finish();
+//                            startActivity(getIntent());
 
 
 
@@ -713,8 +755,8 @@ public class AspirationsActivity extends AppCompatActivity {
 
 
                             finalAlertDialog.dismiss();
-                            finish();
-                            startActivity(getIntent());
+//                            finish();
+//                            startActivity(getIntent());
 
 
 
@@ -910,8 +952,8 @@ public class AspirationsActivity extends AppCompatActivity {
 
 
                                 finalAlertDialog.dismiss();
-                                finish();
-                                startActivity(getIntent());
+//                                finish();
+//                                startActivity(getIntent());
 
 
 

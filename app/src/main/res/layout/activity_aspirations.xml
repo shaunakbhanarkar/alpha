@@ -15,16 +15,6 @@
         android:divider="@null"
         android:layout_weight="1"/>
 
-    <Button
-        android:id="@+id/button_save"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:padding="15dp"
-        android:text="SAVE"
-        android:fontFamily="@font/nexa_bold"
-        android:textSize="15sp"
-        />
 
 
 </LinearLayout>

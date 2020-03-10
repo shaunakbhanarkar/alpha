@@ -152,7 +152,7 @@ public class AccountFragment extends Fragment {
 
                     TextView alert_dialog_title = new TextView(alert_dialog_layout.getContext());
                     alert_dialog_title.setText("Choose App Theme");
-                    alert_dialog_title.setTextSize(25);
+                    alert_dialog_title.setTextSize(22);
                     alert_dialog_title.setPadding(40, 20, 20, 20);
                     alert_dialog_title.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
                     alert_dialog_title.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
@@ -173,9 +173,9 @@ public class AccountFragment extends Fragment {
                     radio_button_dark.setText("Dark");
                     radio_button_set_by_battery_saver.setText("Set by Battery Saver");
 
-                    radio_button_light.setTextSize(17);
-                    radio_button_dark.setTextSize(17);
-                    radio_button_set_by_battery_saver.setTextSize(17);
+                    radio_button_light.setTextSize(20);
+                    radio_button_dark.setTextSize(20);
+                    radio_button_set_by_battery_saver.setTextSize(20);
 
                     Typeface nexa_light = getResources().getFont(R.font.nexa_light);
 
@@ -356,6 +356,11 @@ public class AccountFragment extends Fragment {
                             .build();
                     GoogleSignInClient mGoogleSignInClient = GoogleSignIn.getClient(getContext(), gso);
                     mGoogleSignInClient.signOut();
+
+                    sharedPrefEditor.clear();
+                    sharedPrefEditor.apply();
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
 
                     getActivity().finishAffinity();
                     Intent intent = new Intent(getActivity(), LoginActivity.class);

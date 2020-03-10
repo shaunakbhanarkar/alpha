@@ -37,6 +37,8 @@ public class LoginActivity extends AppCompatActivity {
         Button sign_in_button = findViewById(R.id.sign_in_button);
 
 
+        sign_in_button.setTextColor(getResources().getColor(R.color.black));
+
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build();

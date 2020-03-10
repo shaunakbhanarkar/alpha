@@ -131,6 +131,12 @@ public class AccountFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+                if (position == 1)  //basic info
+                {
+                    Intent intent = new Intent(getContext(),BasicInfoActivity.class);
+                    startActivity(intent);
+                }
+
                 if (position == 2) //aspirations
                 {
                     Intent intent = new Intent(getContext(),AspirationsActivity.class);

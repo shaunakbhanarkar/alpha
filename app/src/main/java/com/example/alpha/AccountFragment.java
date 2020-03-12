@@ -143,6 +143,12 @@ public class AccountFragment extends Fragment {
                     startActivity(intent);
                 }
 
+                if (position == 3) //educational details
+                {
+                    Intent intent = new Intent(getContext(),EducationalDetailsActivity.class);
+                    startActivity(intent);
+                }
+
                 if (position == 9) //theme
                 {
                     int checked_item = 0;

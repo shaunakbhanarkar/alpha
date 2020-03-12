@@ -1,21 +1,26 @@
 package com.example.alpha;
 
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
+import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.PowerManager;
 import android.provider.ContactsContract;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -24,6 +29,7 @@ import android.widget.TextView;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 
+import java.lang.reflect.Field;
 import java.util.Objects;
 
 public class BasicInfoActivity extends AppCompatActivity {
@@ -243,6 +249,123 @@ public class BasicInfoActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 onBackPressed();
+            }
+        });
+
+        help_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                AlertDialog alertDialog = null;
+
+                LinearLayout alert_dialog_layout = new LinearLayout(v.getContext());
+                alert_dialog_layout.setOrientation(LinearLayout.VERTICAL);
+                alert_dialog_layout.setPadding(20, 20, 20, 20);
+                alert_dialog_layout.setGravity(Gravity.CENTER);
+
+                TextView alert_dialog_title = new TextView(alert_dialog_layout.getContext());
+                alert_dialog_title.setText("Basic Info - Help");
+                alert_dialog_title.setTextSize(22);
+                alert_dialog_title.setPadding(40, 20, 20, 20);
+                alert_dialog_title.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+                alert_dialog_title.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+
+                Typeface nexa_bold = getResources().getFont(R.font.nexa_bold);
+                Typeface nexa_light = getResources().getFont(R.font.nexa_light);
+
+                alert_dialog_title.setTypeface(nexa_bold);
+
+
+                TextView textView = new TextView(alert_dialog_layout.getContext());
+
+                textView.setTypeface(nexa_light);
+                textView.setTextSize(17);
+                textView.setText("This page shows you the basic information from your account i.e. the name and the email address registered with us, as a part of the sign-in process.");
+                textView.setPadding(30,30,30,30);
+                textView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+
+
+                TextView button = new TextView(alert_dialog_layout.getContext());
+                button.setPadding(20,20,20,20);
+                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                layoutParams.setMargins(10,10,10,10);
+                button.setLayoutParams(layoutParams);
+                button.setTextSize(15);
+                button.setTypeface(nexa_bold);
+                button.setText("OKAY");
+
+
+
+                if (theme == AppCompatDelegate.MODE_NIGHT_NO) {
+                    alert_dialog_layout.setBackgroundColor(getResources().getColor(R.color.white));
+                    alert_dialog_title.setTextColor(getResources().getColor(R.color.colorPrimary));
+                    textView.setTextColor(getResources().getColor(R.color.black));
+                    button.setTextColor(getResources().getColor(R.color.colorPrimary));
+
+
+
+
+
+
+                } else if (theme == AppCompatDelegate.MODE_NIGHT_YES) {
+                    alert_dialog_layout.setBackgroundColor(getResources().getColor(R.color.darkBackground));
+                    alert_dialog_title.setTextColor(getResources().getColor(R.color.darkHighlight));
+                    textView.setTextColor(getResources().getColor(R.color.white));
+                    button.setTextColor(getResources().getColor(R.color.darkHighlight));
+
+
+
+
+
+                } else {
+                    PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
+                    if (powerManager.isPowerSaveMode()) {
+                        alert_dialog_layout.setBackgroundColor(getResources().getColor(R.color.darkBackground));
+                        alert_dialog_title.setTextColor(getResources().getColor(R.color.darkHighlight));
+                        textView.setTextColor(getResources().getColor(R.color.white));
+                        button.setTextColor(getResources().getColor(R.color.darkHighlight));
+
+
+
+
+
+                    } else {
+                        alert_dialog_layout.setBackgroundColor(getResources().getColor(R.color.white));
+                        alert_dialog_title.setTextColor(getResources().getColor(R.color.colorPrimary));
+                        textView.setTextColor(getResources().getColor(R.color.black));
+                        button.setTextColor(getResources().getColor(R.color.colorPrimary));
+
+
+
+
+
+                    }
+                }
+
+
+
+
+                alert_dialog_layout.addView(alert_dialog_title);
+                alert_dialog_layout.addView(textView);
+                alert_dialog_layout.addView(button);
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
+                builder.setView(alert_dialog_layout);
+                alertDialog = builder.create();
+                alertDialog.show();
+
+                final AlertDialog finalAlertDialog = alertDialog;
+
+                button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        finalAlertDialog.dismiss();
+
+                    }
+                });
+
+
             }
         });
 

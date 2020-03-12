@@ -356,6 +356,13 @@ public class AccountFragment extends Fragment {
 
                 }
 
+                if (position == 10) //about
+                {
+
+                    Intent intent = new Intent(getContext(),AboutActivity.class);
+                    startActivity(intent);
+                }
+
 
                 if (position == 11) //logout
                 {

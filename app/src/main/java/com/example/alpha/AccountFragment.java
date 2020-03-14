@@ -149,6 +149,12 @@ public class AccountFragment extends Fragment {
                     startActivity(intent);
                 }
 
+                if (position == 4)  //letters of recommendation
+                {
+                    Intent intent = new Intent(getContext(),LettersOfRecommendationActivity.class);
+                    startActivity(intent);
+                }
+
                 if (position == 9) //theme
                 {
                     int checked_item = 0;

@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LettersOfRecommendationActivity"></activity>
+        <activity android:name=".WorkExperienceActivity"></activity>
+        <activity android:name=".LettersOfRecommendationActivity" />
         <activity android:name=".AboutActivity" />
         <activity android:name=".EducationalDetailsActivity" />
         <activity android:name=".BasicInfoActivity" />

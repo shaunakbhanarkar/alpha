@@ -155,6 +155,12 @@ public class AccountFragment extends Fragment {
                     startActivity(intent);
                 }
 
+                if (position == 5)  //work experience
+                {
+                    Intent intent = new Intent(getContext(),WorkExperienceActivity.class);
+                    startActivity(intent);
+                }
+
                 if (position == 9) //theme
                 {
                     int checked_item = 0;

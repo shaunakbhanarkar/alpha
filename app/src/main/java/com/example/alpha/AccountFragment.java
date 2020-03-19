@@ -115,6 +115,7 @@ public class AccountFragment extends Fragment {
         accountItemArrayList.add(new AccountItem("Educational Details"));
         accountItemArrayList.add(new AccountItem("Letters of Recommendation"));
         accountItemArrayList.add(new AccountItem("Work Experience"));
+        accountItemArrayList.add(new AccountItem("Test Scores"));
         accountItemArrayList.add(new AccountItem("Publications"));
         accountItemArrayList.add(new AccountItem("Extra Curriculars"));
         accountItemArrayList.add(new AccountItem("SETTINGS"));
@@ -161,7 +162,13 @@ public class AccountFragment extends Fragment {
                     startActivity(intent);
                 }
 
-                if (position == 9) //theme
+                if (position == 6)  //test scores
+                {
+                    Intent intent = new Intent(getContext(),TestScoresActivity.class);
+                    startActivity(intent);
+                }
+
+                if (position == 10) //theme
                 {
                     int checked_item = 0;
 
@@ -368,7 +375,7 @@ public class AccountFragment extends Fragment {
 
                 }
 
-                if (position == 10) //about
+                if (position == 11) //about
                 {
 
                     Intent intent = new Intent(getContext(),AboutActivity.class);
@@ -376,7 +383,7 @@ public class AccountFragment extends Fragment {
                 }
 
 
-                if (position == 11) //logout
+                if (position == 12) //logout
                 {
                     GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getContext());
                     if (account != null)

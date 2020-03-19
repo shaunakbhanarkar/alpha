@@ -72,7 +72,7 @@ public class AccountAdapter extends ArrayAdapter<AccountItem> {
         SharedPreferences sharedPref = Objects.requireNonNull(getContext().getSharedPreferences("Shared Preferences", MODE_PRIVATE));
         int theme = sharedPref.getInt("Theme", AppCompatDelegate.MODE_NIGHT_NO);
 
-        if (position == 0 || position == 8){
+        if (position == 0 || position == 9){
             Typeface nexa_bold = getContext().getResources().getFont(R.font.nexa_bold);
             viewHolder.name.setTypeface(nexa_bold);
             viewHolder.name.setTextSize(15);
@@ -121,7 +121,7 @@ public class AccountAdapter extends ArrayAdapter<AccountItem> {
 
     @Override
     public boolean isEnabled(int position){
-        if (position == 0 || position == 8)
+        if (position == 0 || position == 9)
             return false;
         return true;
     }

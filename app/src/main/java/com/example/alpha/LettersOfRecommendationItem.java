@@ -2,16 +2,13 @@ package com.example.alpha;
 
 public class LettersOfRecommendationItem {
 
-    String name, recommender, designation;
+    String recommender, designation;
 
-    public LettersOfRecommendationItem(String name, String recommender, String designation){
-        this.name = name;
+    public LettersOfRecommendationItem(){}
+
+    public LettersOfRecommendationItem(String recommender, String designation){
         this.recommender = recommender;
         this.designation = designation;
-    }
-
-    public String getName(){
-        return this.name;
     }
 
     public String getRecommender(){

@@ -1,6 +1,7 @@
 package com.example.alpha;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +21,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -28,6 +30,7 @@ import android.widget.TextView;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -50,6 +53,10 @@ public class LettersOfRecommendationActivity extends AppCompatActivity {
 
         final SharedPreferences sharedPref = Objects.requireNonNull(getSharedPreferences("Shared Preferences", MODE_PRIVATE));
         final int theme = sharedPref.getInt("Theme", AppCompatDelegate.MODE_NIGHT_NO);
+
+        //initialise add button
+
+        Button button_add_lor = findViewById(R.id.button_add_lor);
 
         //customise action bar
 
@@ -101,6 +108,8 @@ public class LettersOfRecommendationActivity extends AppCompatActivity {
             back_button.setBackgroundColor(getResources().getColor(R.color.white));
             help_button.setBackgroundColor(getResources().getColor(R.color.white));
 
+            button_add_lor.setTextColor(getResources().getColor(R.color.white));
+
 
             //change status bar colour
             window.setStatusBarColor(getResources().getColor(R.color.white));
@@ -128,6 +137,10 @@ public class LettersOfRecommendationActivity extends AppCompatActivity {
 
             back_button.setBackgroundColor(getResources().getColor(R.color.darkBackground));
             help_button.setBackgroundColor(getResources().getColor(R.color.darkBackground));
+
+
+            button_add_lor.setTextColor(getResources().getColor(R.color.darkBackground));
+
 
             //change status bar colour
             window.setStatusBarColor(getResources().getColor(R.color.darkBackground));
@@ -160,6 +173,9 @@ public class LettersOfRecommendationActivity extends AppCompatActivity {
                 back_button.setBackgroundColor(getResources().getColor(R.color.darkBackground));
                 help_button.setBackgroundColor(getResources().getColor(R.color.darkBackground));
 
+                button_add_lor.setTextColor(getResources().getColor(R.color.darkBackground));
+
+
 
                 //change status bar colour
                 window.setStatusBarColor(getResources().getColor(R.color.darkBackground));
@@ -185,6 +201,9 @@ public class LettersOfRecommendationActivity extends AppCompatActivity {
                 back_button.setBackgroundColor(getResources().getColor(R.color.white));
                 help_button.setBackgroundColor(getResources().getColor(R.color.white));
 
+                button_add_lor.setTextColor(getResources().getColor(R.color.white));
+
+
                 //change status bar colour
                 window.setStatusBarColor(getResources().getColor(R.color.white));
                 //change action bar colour
@@ -206,7 +225,7 @@ public class LettersOfRecommendationActivity extends AppCompatActivity {
         back_button.setImageTintList(colorStateList);
         help_button.setImageTintList(colorStateList);
 
-
+        button_add_lor.setBackgroundTintList(colorStateList);
 
 
         back_button.setOnClickListener(new View.OnClickListener() {
@@ -244,7 +263,7 @@ public class LettersOfRecommendationActivity extends AppCompatActivity {
 
                 textView.setTypeface(nexa_light);
                 textView.setTextSize(17);
-                textView.setText("This page lets you view and list your Letters of Recommendation for your application. You can list the name and designation of upto 5 recommenders, which is usually good to go. This gives you an idea about the recommendations you currently have, and what you need to do next.\n\nGood luck!");
+                textView.setText("This page lets you view and list your Letters of Recommendation for your application. You can add an LOR by mentioning name and designation of the recommender.\n\nFor example, LOR might look like:\n\nRecommender: Prof. Bell\nDesignation: Senior Professor, GT University\n\nYour Letters of Recommendation are one of the many factors that contribute towards strengthening your application.\n\nGood luck!");
                 textView.setPadding(30,30,30,30);
                 textView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
 
@@ -334,607 +353,46 @@ public class LettersOfRecommendationActivity extends AppCompatActivity {
         });
 
 
-
-
-        //initialise elements
-
-        final ListView list_view_lor = findViewById(R.id.list_view_lor);
-
-        final ArrayList<LettersOfRecommendationItem> lettersOfRecommendationItemArrayList = new ArrayList<>();
-
-        //set the items of list view
-
-        lettersOfRecommendationItemArrayList.add(new LettersOfRecommendationItem("1",sharedPref.getString("LOR 1 Recommender","-"), sharedPref.getString("LOR 1 Designation","-")));
-        lettersOfRecommendationItemArrayList.add(new LettersOfRecommendationItem("2",sharedPref.getString("LOR 2 Recommender","-"), sharedPref.getString("LOR 2 Designation","-")));
-        lettersOfRecommendationItemArrayList.add(new LettersOfRecommendationItem("3",sharedPref.getString("LOR 3 Recommender","-"), sharedPref.getString("LOR 3 Designation","-")));
-        lettersOfRecommendationItemArrayList.add(new LettersOfRecommendationItem("4",sharedPref.getString("LOR 4 Recommender","-"), sharedPref.getString("LOR 4 Designation","-")));
-        lettersOfRecommendationItemArrayList.add(new LettersOfRecommendationItem("5",sharedPref.getString("LOR 5 Recommender","-"), sharedPref.getString("LOR 5 Designation","-")));
-
-
-        LettersOfRecommendationAdapter lettersOfRecommendationAdapter = new LettersOfRecommendationAdapter(lettersOfRecommendationItemArrayList, getBaseContext());
-        list_view_lor.setAdapter(lettersOfRecommendationAdapter);
-
-
         //Google sign in and firebase database
 
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
 
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
 
-        final DatabaseReference lor1_reference = databaseReference.child("Data").child(account.getId()).child("Letters of Recommendation").child("LOR 1");
-        final DatabaseReference lor2_reference = databaseReference.child("Data").child(account.getId()).child("Letters of Recommendation").child("LOR 2");
-        final DatabaseReference lor3_reference = databaseReference.child("Data").child(account.getId()).child("Letters of Recommendation").child("LOR 3");
-        final DatabaseReference lor4_reference = databaseReference.child("Data").child(account.getId()).child("Letters of Recommendation").child("LOR 4");
-        final DatabaseReference lor5_reference = databaseReference.child("Data").child(account.getId()).child("Letters of Recommendation").child("LOR 5");
-
-        final DatabaseReference lor1_recommender = lor1_reference.child("Recommender");
-        final DatabaseReference lor2_recommender = lor2_reference.child("Recommender");
-        final DatabaseReference lor3_recommender = lor3_reference.child("Recommender");
-        final DatabaseReference lor4_recommender = lor4_reference.child("Recommender");
-        final DatabaseReference lor5_recommender = lor5_reference.child("Recommender");
-
-        final DatabaseReference lor1_designation = lor1_reference.child("Designation");
-        final DatabaseReference lor2_designation = lor2_reference.child("Designation");
-        final DatabaseReference lor3_designation = lor3_reference.child("Designation");
-        final DatabaseReference lor4_designation = lor4_reference.child("Designation");
-        final DatabaseReference lor5_designation = lor5_reference.child("Designation");
+        final DatabaseReference lor_reference = databaseReference.child("Data").child(account.getId()).child("LOR");
 
 
 
-        lor1_recommender.addValueEventListener(new ValueEventListener() {
+
+        //initialise elements
+
+        final ListView list_view_lor = findViewById(R.id.list_view_lor);
+
+        final ArrayList<LettersOfRecommendationItem> lettersOfRecommendationItemArrayList = new ArrayList<>();  //store items of listview
+
+        final ArrayList<String> keys = new ArrayList<>();   //store keys
+
+
+        final LettersOfRecommendationAdapter lettersOfRecommendationAdapter = new LettersOfRecommendationAdapter(lettersOfRecommendationItemArrayList, getBaseContext());
+        list_view_lor.setAdapter(lettersOfRecommendationAdapter);
+
+
+
+
+        button_add_lor.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            public void onClick(View v) {
 
-                String value = dataSnapshot.getValue(String.class);
-
-                if (value == null){
-                    Log.e("LOR 1 Recommender", "null");
-                }
-
-                else {
-
-                    SharedPreferences.Editor editor = sharedPref.edit();
-                    editor.putString("LOR 1 Recommender", value);
-                    editor.apply();
-
-                    Log.e("LOR 1 Recommender", value);
-
-
-                    LettersOfRecommendationItem lor2 = lettersOfRecommendationItemArrayList.get(1);
-                    LettersOfRecommendationItem lor3 = lettersOfRecommendationItemArrayList.get(2);
-                    LettersOfRecommendationItem lor4 = lettersOfRecommendationItemArrayList.get(3);
-                    LettersOfRecommendationItem lor5 = lettersOfRecommendationItemArrayList.get(4);
-
-
-                    lettersOfRecommendationItemArrayList.clear();
-
-                    lettersOfRecommendationItemArrayList.add(new LettersOfRecommendationItem("1",sharedPref.getString("LOR 1 Recommender","-"),sharedPref.getString("LOR 1 Designation","-")));
-                    lettersOfRecommendationItemArrayList.add(lor2);
-                    lettersOfRecommendationItemArrayList.add(lor3);
-                    lettersOfRecommendationItemArrayList.add(lor4);
-                    lettersOfRecommendationItemArrayList.add(lor5);
-
-
-                    LettersOfRecommendationAdapter temp_adapter = new LettersOfRecommendationAdapter(lettersOfRecommendationItemArrayList, getBaseContext());
-                    list_view_lor.setAdapter(temp_adapter);
-
-
-                }
-
-
-
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                Log.e("error","database error");
-
-            }
-        });
-
-
-        lor1_designation.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                String value = dataSnapshot.getValue(String.class);
-
-                if (value == null){
-                    Log.e("LOR 1 Designation", "null");
-                }
-
-                else {
-
-                    SharedPreferences.Editor editor = sharedPref.edit();
-                    editor.putString("LOR 1 Designation", value);
-                    editor.apply();
-
-                    Log.e("LOR 1 Designation", value);
-
-
-                    LettersOfRecommendationItem lor2 = lettersOfRecommendationItemArrayList.get(1);
-                    LettersOfRecommendationItem lor3 = lettersOfRecommendationItemArrayList.get(2);
-                    LettersOfRecommendationItem lor4 = lettersOfRecommendationItemArrayList.get(3);
-                    LettersOfRecommendationItem lor5 = lettersOfRecommendationItemArrayList.get(4);
-
-
-                    lettersOfRecommendationItemArrayList.clear();
-
-                    lettersOfRecommendationItemArrayList.add(new LettersOfRecommendationItem("1",sharedPref.getString("LOR 1 Recommender","-"),sharedPref.getString("LOR 1 Designation","-")));
-                    lettersOfRecommendationItemArrayList.add(lor2);
-                    lettersOfRecommendationItemArrayList.add(lor3);
-                    lettersOfRecommendationItemArrayList.add(lor4);
-                    lettersOfRecommendationItemArrayList.add(lor5);
-
-
-                    LettersOfRecommendationAdapter temp_adapter = new LettersOfRecommendationAdapter(lettersOfRecommendationItemArrayList, getBaseContext());
-                    list_view_lor.setAdapter(temp_adapter);
-
-
-                }
-
-
-
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                Log.e("error","database error");
-
-            }
-        });
-
-
-
-        lor2_recommender.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                String value = dataSnapshot.getValue(String.class);
-
-                if (value == null){
-                    Log.e("LOR 2 Recommender", "null");
-                }
-
-                else {
-
-                    SharedPreferences.Editor editor = sharedPref.edit();
-                    editor.putString("LOR 2 Recommender", value);
-                    editor.apply();
-
-                    Log.e("LOR 2 Recommender", value);
-
-
-                    LettersOfRecommendationItem lor1 = lettersOfRecommendationItemArrayList.get(0);
-                    LettersOfRecommendationItem lor3 = lettersOfRecommendationItemArrayList.get(2);
-                    LettersOfRecommendationItem lor4 = lettersOfRecommendationItemArrayList.get(3);
-                    LettersOfRecommendationItem lor5 = lettersOfRecommendationItemArrayList.get(4);
-
-
-                    lettersOfRecommendationItemArrayList.clear();
-
-                    lettersOfRecommendationItemArrayList.add(lor1);
-                    lettersOfRecommendationItemArrayList.add(new LettersOfRecommendationItem("2",sharedPref.getString("LOR 2 Recommender","-"),sharedPref.getString("LOR 2 Designation","-")));
-                    lettersOfRecommendationItemArrayList.add(lor3);
-                    lettersOfRecommendationItemArrayList.add(lor4);
-                    lettersOfRecommendationItemArrayList.add(lor5);
-
-
-                    LettersOfRecommendationAdapter temp_adapter = new LettersOfRecommendationAdapter(lettersOfRecommendationItemArrayList, getBaseContext());
-                    list_view_lor.setAdapter(temp_adapter);
-
-
-                }
-
-
-
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                Log.e("error","database error");
-
-            }
-        });
-
-
-        lor2_designation.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                String value = dataSnapshot.getValue(String.class);
-
-                if (value == null){
-                    Log.e("LOR 2 Designation", "null");
-                }
-
-                else {
-
-                    SharedPreferences.Editor editor = sharedPref.edit();
-                    editor.putString("LOR 2 Designation", value);
-                    editor.apply();
-
-                    Log.e("LOR 2 Designation", value);
-
-
-                    LettersOfRecommendationItem lor1 = lettersOfRecommendationItemArrayList.get(0);
-                    LettersOfRecommendationItem lor3 = lettersOfRecommendationItemArrayList.get(2);
-                    LettersOfRecommendationItem lor4 = lettersOfRecommendationItemArrayList.get(3);
-                    LettersOfRecommendationItem lor5 = lettersOfRecommendationItemArrayList.get(4);
-
-
-                    lettersOfRecommendationItemArrayList.clear();
-
-                    lettersOfRecommendationItemArrayList.add(lor1);
-                    lettersOfRecommendationItemArrayList.add(new LettersOfRecommendationItem("2",sharedPref.getString("LOR 2 Recommender","-"),sharedPref.getString("LOR 2 Designation","-")));
-                    lettersOfRecommendationItemArrayList.add(lor3);
-                    lettersOfRecommendationItemArrayList.add(lor4);
-                    lettersOfRecommendationItemArrayList.add(lor5);
-
-
-                    LettersOfRecommendationAdapter temp_adapter = new LettersOfRecommendationAdapter(lettersOfRecommendationItemArrayList, getBaseContext());
-                    list_view_lor.setAdapter(temp_adapter);
-
-
-                }
-
-
-
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                Log.e("error","database error");
-
-            }
-        });
-
-
-
-        lor3_recommender.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                String value = dataSnapshot.getValue(String.class);
-
-                if (value == null){
-                    Log.e("LOR 3 Recommender", "null");
-                }
-
-                else {
-
-                    SharedPreferences.Editor editor = sharedPref.edit();
-                    editor.putString("LOR 3 Recommender", value);
-                    editor.apply();
-
-                    Log.e("LOR 3 Recommender", value);
-
-
-                    LettersOfRecommendationItem lor1 = lettersOfRecommendationItemArrayList.get(0);
-                    LettersOfRecommendationItem lor2 = lettersOfRecommendationItemArrayList.get(1);
-                    LettersOfRecommendationItem lor4 = lettersOfRecommendationItemArrayList.get(3);
-                    LettersOfRecommendationItem lor5 = lettersOfRecommendationItemArrayList.get(4);
-
-
-                    lettersOfRecommendationItemArrayList.clear();
-
-                    lettersOfRecommendationItemArrayList.add(lor1);
-                    lettersOfRecommendationItemArrayList.add(lor2);
-                    lettersOfRecommendationItemArrayList.add(new LettersOfRecommendationItem("3",sharedPref.getString("LOR 3 Recommender","-"),sharedPref.getString("LOR 3 Designation","-")));
-                    lettersOfRecommendationItemArrayList.add(lor4);
-                    lettersOfRecommendationItemArrayList.add(lor5);
-
-
-                    LettersOfRecommendationAdapter temp_adapter = new LettersOfRecommendationAdapter(lettersOfRecommendationItemArrayList, getBaseContext());
-                    list_view_lor.setAdapter(temp_adapter);
-
-
-                }
-
-
-
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                Log.e("error","database error");
-
-            }
-        });
-
-
-        lor3_designation.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                String value = dataSnapshot.getValue(String.class);
-
-                if (value == null){
-                    Log.e("LOR 3 Designation", "null");
-                }
-
-                else {
-
-                    SharedPreferences.Editor editor = sharedPref.edit();
-                    editor.putString("LOR 3 Designation", value);
-                    editor.apply();
-
-                    Log.e("LOR 3 Designation", value);
-
-
-                    LettersOfRecommendationItem lor1 = lettersOfRecommendationItemArrayList.get(0);
-                    LettersOfRecommendationItem lor2 = lettersOfRecommendationItemArrayList.get(1);
-                    LettersOfRecommendationItem lor4 = lettersOfRecommendationItemArrayList.get(3);
-                    LettersOfRecommendationItem lor5 = lettersOfRecommendationItemArrayList.get(4);
-
-
-                    lettersOfRecommendationItemArrayList.clear();
-
-                    lettersOfRecommendationItemArrayList.add(lor1);
-                    lettersOfRecommendationItemArrayList.add(lor2);
-                    lettersOfRecommendationItemArrayList.add(new LettersOfRecommendationItem("3",sharedPref.getString("LOR 3 Recommender","-"),sharedPref.getString("LOR 3 Designation","-")));
-                    lettersOfRecommendationItemArrayList.add(lor4);
-                    lettersOfRecommendationItemArrayList.add(lor5);
-
-
-                    LettersOfRecommendationAdapter temp_adapter = new LettersOfRecommendationAdapter(lettersOfRecommendationItemArrayList, getBaseContext());
-                    list_view_lor.setAdapter(temp_adapter);
-
-
-                }
-
-
-
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                Log.e("error","database error");
-
-            }
-        });
-
-
-        lor4_recommender.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                String value = dataSnapshot.getValue(String.class);
-
-                if (value == null){
-                    Log.e("LOR 4 Recommender", "null");
-                }
-
-                else {
-
-                    SharedPreferences.Editor editor = sharedPref.edit();
-                    editor.putString("LOR 4 Recommender", value);
-                    editor.apply();
-
-                    Log.e("LOR 4 Recommender", value);
-
-
-                    LettersOfRecommendationItem lor1 = lettersOfRecommendationItemArrayList.get(0);
-                    LettersOfRecommendationItem lor2 = lettersOfRecommendationItemArrayList.get(1);
-                    LettersOfRecommendationItem lor3 = lettersOfRecommendationItemArrayList.get(2);
-                    LettersOfRecommendationItem lor5 = lettersOfRecommendationItemArrayList.get(4);
-
-
-                    lettersOfRecommendationItemArrayList.clear();
-
-                    lettersOfRecommendationItemArrayList.add(lor1);
-                    lettersOfRecommendationItemArrayList.add(lor2);
-                    lettersOfRecommendationItemArrayList.add(lor3);
-                    lettersOfRecommendationItemArrayList.add(new LettersOfRecommendationItem("4",sharedPref.getString("LOR 4 Recommender","-"),sharedPref.getString("LOR 4 Designation","-")));
-                    lettersOfRecommendationItemArrayList.add(lor5);
-
-
-                    LettersOfRecommendationAdapter temp_adapter = new LettersOfRecommendationAdapter(lettersOfRecommendationItemArrayList, getBaseContext());
-                    list_view_lor.setAdapter(temp_adapter);
-
-
-                }
-
-
-
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                Log.e("error","database error");
-
-            }
-        });
-
-
-        lor4_designation.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                String value = dataSnapshot.getValue(String.class);
-
-                if (value == null){
-                    Log.e("LOR 4 Designation", "null");
-                }
-
-                else {
-
-                    SharedPreferences.Editor editor = sharedPref.edit();
-                    editor.putString("LOR 4 Designation", value);
-                    editor.apply();
-
-                    Log.e("LOR 4 Designation", value);
-
-
-                    LettersOfRecommendationItem lor1 = lettersOfRecommendationItemArrayList.get(0);
-                    LettersOfRecommendationItem lor2 = lettersOfRecommendationItemArrayList.get(1);
-                    LettersOfRecommendationItem lor3 = lettersOfRecommendationItemArrayList.get(2);
-                    LettersOfRecommendationItem lor5 = lettersOfRecommendationItemArrayList.get(4);
-
-
-                    lettersOfRecommendationItemArrayList.clear();
-
-                    lettersOfRecommendationItemArrayList.add(lor1);
-                    lettersOfRecommendationItemArrayList.add(lor2);
-                    lettersOfRecommendationItemArrayList.add(lor3);
-                    lettersOfRecommendationItemArrayList.add(new LettersOfRecommendationItem("4",sharedPref.getString("LOR 4 Recommender","-"),sharedPref.getString("LOR 4 Designation","-")));
-                    lettersOfRecommendationItemArrayList.add(lor5);
-
-
-                    LettersOfRecommendationAdapter temp_adapter = new LettersOfRecommendationAdapter(lettersOfRecommendationItemArrayList, getBaseContext());
-                    list_view_lor.setAdapter(temp_adapter);
-
-
-                }
-
-
-
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                Log.e("error","database error");
-
-            }
-        });
-
-
-        lor5_recommender.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                String value = dataSnapshot.getValue(String.class);
-
-                if (value == null){
-                    Log.e("LOR 5 Recommender", "null");
-                }
-
-                else {
-
-                    SharedPreferences.Editor editor = sharedPref.edit();
-                    editor.putString("LOR 5 Recommender", value);
-                    editor.apply();
-
-                    Log.e("LOR 5 Recommender", value);
-
-
-                    LettersOfRecommendationItem lor1 = lettersOfRecommendationItemArrayList.get(0);
-                    LettersOfRecommendationItem lor2 = lettersOfRecommendationItemArrayList.get(1);
-                    LettersOfRecommendationItem lor3 = lettersOfRecommendationItemArrayList.get(2);
-                    LettersOfRecommendationItem lor4 = lettersOfRecommendationItemArrayList.get(3);
-
-
-                    lettersOfRecommendationItemArrayList.clear();
-
-                    lettersOfRecommendationItemArrayList.add(lor1);
-                    lettersOfRecommendationItemArrayList.add(lor2);
-                    lettersOfRecommendationItemArrayList.add(lor3);
-                    lettersOfRecommendationItemArrayList.add(lor4);
-                    lettersOfRecommendationItemArrayList.add(new LettersOfRecommendationItem("5",sharedPref.getString("LOR 5 Recommender","-"),sharedPref.getString("LOR 5 Designation","-")));
-
-
-                    LettersOfRecommendationAdapter temp_adapter = new LettersOfRecommendationAdapter(lettersOfRecommendationItemArrayList, getBaseContext());
-                    list_view_lor.setAdapter(temp_adapter);
-
-
-                }
-
-
-
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                Log.e("error","database error");
-
-            }
-        });
-
-
-        lor5_designation.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                String value = dataSnapshot.getValue(String.class);
-
-                if (value == null){
-                    Log.e("LOR 5 Designation", "null");
-                }
-
-                else {
-
-                    SharedPreferences.Editor editor = sharedPref.edit();
-                    editor.putString("LOR 5 Designation", value);
-                    editor.apply();
-
-                    Log.e("LOR 5 Designation", value);
-
-
-                    LettersOfRecommendationItem lor1 = lettersOfRecommendationItemArrayList.get(0);
-                    LettersOfRecommendationItem lor2 = lettersOfRecommendationItemArrayList.get(1);
-                    LettersOfRecommendationItem lor3 = lettersOfRecommendationItemArrayList.get(2);
-                    LettersOfRecommendationItem lor4 = lettersOfRecommendationItemArrayList.get(3);
-
-
-                    lettersOfRecommendationItemArrayList.clear();
-
-                    lettersOfRecommendationItemArrayList.add(lor1);
-                    lettersOfRecommendationItemArrayList.add(lor2);
-                    lettersOfRecommendationItemArrayList.add(lor3);
-                    lettersOfRecommendationItemArrayList.add(lor4);
-                    lettersOfRecommendationItemArrayList.add(new LettersOfRecommendationItem("5",sharedPref.getString("LOR 5 Recommender","-"),sharedPref.getString("LOR 5 Designation","-")));
-
-
-                    LettersOfRecommendationAdapter temp_adapter = new LettersOfRecommendationAdapter(lettersOfRecommendationItemArrayList, getBaseContext());
-                    list_view_lor.setAdapter(temp_adapter);
-
-
-                }
-
-
-
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                Log.e("error","database error");
-
-            }
-        });
-
-        list_view_lor.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
 
                 AlertDialog alertDialog = null;
 
-                LinearLayout alert_dialog_layout = new LinearLayout(view.getContext());
+                LinearLayout alert_dialog_layout = new LinearLayout(v.getContext());
                 alert_dialog_layout.setOrientation(LinearLayout.VERTICAL);
                 alert_dialog_layout.setPadding(20, 20, 20, 20);
                 alert_dialog_layout.setGravity(Gravity.CENTER);
 
                 TextView alert_dialog_title = new TextView(alert_dialog_layout.getContext());
-                alert_dialog_title.setText("LOR "+(position+1));
+                alert_dialog_title.setText("Add LOR");
                 alert_dialog_title.setTextSize(22);
                 alert_dialog_title.setPadding(40, 20, 20, 20);
                 alert_dialog_title.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
@@ -959,7 +417,6 @@ public class LettersOfRecommendationActivity extends AppCompatActivity {
 
                 editText.setTypeface(nexa_light);
                 editText.setTextSize(20);
-                editText.setText(sharedPref.getString("LOR "+(position+1)+" Recommender",""));
                 editText.setPadding(20,20,20,20);
                 editText.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
                 editText.setSingleLine(true);
@@ -979,20 +436,32 @@ public class LettersOfRecommendationActivity extends AppCompatActivity {
 
                 editText2.setTypeface(nexa_light);
                 editText2.setTextSize(20);
-                editText2.setText(sharedPref.getString("LOR "+(position+1)+" Designation",""));
                 editText2.setPadding(20,20,20,20);
                 editText2.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
                 editText2.setSingleLine(true);
 
 
-                TextView button = new TextView(alert_dialog_layout.getContext());
+                Button button = new Button(alert_dialog_layout.getContext());
                 button.setPadding(20,20,20,20);
-                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                 layoutParams.setMargins(10,10,10,10);
                 button.setLayoutParams(layoutParams);
                 button.setTextSize(15);
                 button.setTypeface(nexa_bold);
                 button.setText("SAVE");
+                button.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+
+
+                TextView button2 = new TextView(alert_dialog_layout.getContext());
+                button2.setPadding(20,20,20,20);
+                LinearLayout.LayoutParams layoutParams2 = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                layoutParams2.setMargins(10,10,10,10);
+                button2.setLayoutParams(layoutParams);
+                button2.setTextSize(15);
+                button2.setTypeface(nexa_bold);
+                button2.setText("CANCEL");
+                button2.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+
 
                 int[][] states = new int[][]{
 
@@ -1012,7 +481,8 @@ public class LettersOfRecommendationActivity extends AppCompatActivity {
                     textView2.setTextColor(getResources().getColor(R.color.black));
                     editText.setTextColor(getResources().getColor(R.color.black));
                     editText2.setTextColor(getResources().getColor(R.color.black));
-                    button.setTextColor(getResources().getColor(R.color.colorPrimary));
+                    button.setTextColor(getResources().getColor(R.color.white));
+                    button2.setTextColor(getResources().getColor(R.color.colorPrimary));
 
                     colors = new int[]{
 
@@ -1039,7 +509,8 @@ public class LettersOfRecommendationActivity extends AppCompatActivity {
                     textView2.setTextColor(getResources().getColor(R.color.white));
                     editText.setTextColor(getResources().getColor(R.color.white));
                     editText2.setTextColor(getResources().getColor(R.color.white));
-                    button.setTextColor(getResources().getColor(R.color.darkHighlight));
+                    button.setTextColor(getResources().getColor(R.color.darkBackground));
+                    button2.setTextColor(getResources().getColor(R.color.darkHighlight));
 
                     colors = new int[]{
 
@@ -1052,6 +523,7 @@ public class LettersOfRecommendationActivity extends AppCompatActivity {
                         f.setAccessible(true);
                         f.set(editText, R.drawable.cursor_dark);
                         f.set(editText2, R.drawable.cursor_dark);
+
 
                     } catch (NoSuchFieldException | IllegalAccessException e) {
                         e.printStackTrace();
@@ -1066,7 +538,8 @@ public class LettersOfRecommendationActivity extends AppCompatActivity {
                         textView2.setTextColor(getResources().getColor(R.color.white));
                         editText.setTextColor(getResources().getColor(R.color.white));
                         editText2.setTextColor(getResources().getColor(R.color.white));
-                        button.setTextColor(getResources().getColor(R.color.darkHighlight));
+                        button.setTextColor(getResources().getColor(R.color.darkBackground));
+                        button2.setTextColor(getResources().getColor(R.color.darkHighlight));
 
                         colors = new int[]{
 
@@ -1082,6 +555,7 @@ public class LettersOfRecommendationActivity extends AppCompatActivity {
                             f.set(editText2, R.drawable.cursor_dark);
 
 
+
                         } catch (NoSuchFieldException | IllegalAccessException e) {
                             e.printStackTrace();
                         }
@@ -1093,7 +567,8 @@ public class LettersOfRecommendationActivity extends AppCompatActivity {
                         textView2.setTextColor(getResources().getColor(R.color.black));
                         editText.setTextColor(getResources().getColor(R.color.black));
                         editText2.setTextColor(getResources().getColor(R.color.black));
-                        button.setTextColor(getResources().getColor(R.color.colorPrimary));
+                        button.setTextColor(getResources().getColor(R.color.white));
+                        button2.setTextColor(getResources().getColor(R.color.colorPrimary));
 
                         colors = new int[]{
 
@@ -1107,6 +582,7 @@ public class LettersOfRecommendationActivity extends AppCompatActivity {
                             f.set(editText, R.drawable.cursor_light);
                             f.set(editText2, R.drawable.cursor_light);
 
+
                         } catch (NoSuchFieldException | IllegalAccessException e) {
                             e.printStackTrace();
                         }
@@ -1119,6 +595,8 @@ public class LettersOfRecommendationActivity extends AppCompatActivity {
                 editText2.setBackgroundTintList(colorStateList);
 
 
+                button.setBackgroundTintList(colorStateList);
+
 
                 alert_dialog_layout.addView(alert_dialog_title);
                 alert_dialog_layout.addView(textView);
@@ -1126,6 +604,332 @@ public class LettersOfRecommendationActivity extends AppCompatActivity {
                 alert_dialog_layout.addView(textView2);
                 alert_dialog_layout.addView(editText2);
                 alert_dialog_layout.addView(button);
+                alert_dialog_layout.addView(button2);
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
+                builder.setView(alert_dialog_layout);
+                alertDialog = builder.create();
+                alertDialog.show();
+
+                final AlertDialog finalAlertDialog = alertDialog;
+
+                button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        if(!editText.getText().toString().equals("") && !editText2.getText().toString().equals("") )
+                        {
+
+                            String recommender = editText.getText().toString();
+                            String designation = editText2.getText().toString();
+
+                            LettersOfRecommendationItem lettersOfRecommendationItem = new LettersOfRecommendationItem(recommender, designation);
+
+                            lor_reference.push().setValue(lettersOfRecommendationItem);
+
+
+
+                        }
+
+                        finalAlertDialog.dismiss();
+                    }
+                });
+
+                button2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        finalAlertDialog.dismiss();
+                    }
+                });
+
+
+
+
+            }
+        });
+
+
+
+
+        lor_reference.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                LettersOfRecommendationItem lettersOfRecommendationItem = dataSnapshot.getValue(LettersOfRecommendationItem.class);
+
+                lettersOfRecommendationItemArrayList.add(lettersOfRecommendationItem);
+                lettersOfRecommendationAdapter.notifyDataSetChanged();
+
+                keys.add(dataSnapshot.getKey());
+
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                int index = keys.indexOf(dataSnapshot.getKey());
+                lettersOfRecommendationItemArrayList.set(index,dataSnapshot.getValue(LettersOfRecommendationItem.class));
+
+                lettersOfRecommendationAdapter.notifyDataSetChanged();
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+                int index = keys.indexOf(dataSnapshot.getKey());
+                lettersOfRecommendationItemArrayList.remove(index);
+
+                keys.remove(index);
+                lettersOfRecommendationAdapter.notifyDataSetChanged();
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+
+        list_view_lor.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+
+
+
+                AlertDialog alertDialog = null;
+
+                LinearLayout alert_dialog_layout = new LinearLayout(view.getContext());
+                alert_dialog_layout.setOrientation(LinearLayout.VERTICAL);
+                alert_dialog_layout.setPadding(20, 20, 20, 20);
+                alert_dialog_layout.setGravity(Gravity.CENTER);
+
+                TextView alert_dialog_title = new TextView(alert_dialog_layout.getContext());
+                alert_dialog_title.setText("Edit LOR");
+                alert_dialog_title.setTextSize(22);
+                alert_dialog_title.setPadding(40, 20, 20, 20);
+                alert_dialog_title.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+                alert_dialog_title.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+
+                Typeface nexa_bold = getResources().getFont(R.font.nexa_bold);
+                Typeface nexa_light = getResources().getFont(R.font.nexa_light);
+
+                alert_dialog_title.setTypeface(nexa_bold);
+
+                final TextView textView = new TextView(alert_dialog_layout.getContext());
+
+                textView.setTypeface(nexa_bold);
+                textView.setTextSize(15);
+                textView.setText("Recommender:");
+                textView.setPadding(20,20,20,20);
+                textView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+
+
+                final EditText editText = new EditText(alert_dialog_layout.getContext());
+
+
+                editText.setTypeface(nexa_light);
+                editText.setTextSize(20);
+                editText.setPadding(20,20,20,20);
+                editText.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+                editText.setSingleLine(true);
+
+
+                final TextView textView2 = new TextView(alert_dialog_layout.getContext());
+
+                textView2.setTypeface(nexa_bold);
+                textView2.setTextSize(15);
+                textView2.setText("Designation:");
+                textView2.setPadding(20,20,20,20);
+                textView2.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+
+
+                final EditText editText2 = new EditText(alert_dialog_layout.getContext());
+
+
+                editText2.setTypeface(nexa_light);
+                editText2.setTextSize(20);
+                editText2.setPadding(20,20,20,20);
+                editText2.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+                editText2.setSingleLine(true);
+
+
+
+                Button button = new Button(alert_dialog_layout.getContext());
+                button.setPadding(20,20,20,20);
+                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                layoutParams.setMargins(10,10,10,10);
+                button.setLayoutParams(layoutParams);
+                button.setTextSize(15);
+                button.setTypeface(nexa_bold);
+                button.setText("SAVE");
+                button.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+
+
+                TextView button2 = new TextView(alert_dialog_layout.getContext());
+                button2.setPadding(20,20,20,20);
+                LinearLayout.LayoutParams layoutParams2 = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                layoutParams2.setMargins(10,10,10,10);
+                button2.setLayoutParams(layoutParams);
+                button2.setTextSize(15);
+                button2.setTypeface(nexa_bold);
+                button2.setText("DELETE");
+                button2.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+
+
+                int[][] states = new int[][]{
+
+
+                        new int[]{android.R.attr.state_enabled} // enabled
+                };
+
+                int[] colors = new int[]{
+
+                        getResources().getColor(R.color.colorPrimary)
+                };
+
+                if (theme == AppCompatDelegate.MODE_NIGHT_NO) {
+                    alert_dialog_layout.setBackgroundColor(getResources().getColor(R.color.white));
+                    alert_dialog_title.setTextColor(getResources().getColor(R.color.colorPrimary));
+                    textView.setTextColor(getResources().getColor(R.color.black));
+                    textView2.setTextColor(getResources().getColor(R.color.black));
+                    editText.setTextColor(getResources().getColor(R.color.black));
+                    editText2.setTextColor(getResources().getColor(R.color.black));
+                    button.setTextColor(getResources().getColor(R.color.white));
+                    button2.setTextColor(getResources().getColor(R.color.colorPrimary));
+
+                    colors = new int[]{
+
+                            getResources().getColor(R.color.colorPrimary)
+                    };
+
+                    Field f = null;
+                    try {
+                        f = TextView.class.getDeclaredField("mCursorDrawableRes");
+                        f.setAccessible(true);
+                        f.set(editText, R.drawable.cursor_light);
+                        f.set(editText2, R.drawable.cursor_light);
+
+                    } catch (NoSuchFieldException | IllegalAccessException e) {
+                        e.printStackTrace();
+                    }
+
+
+
+                } else if (theme == AppCompatDelegate.MODE_NIGHT_YES) {
+                    alert_dialog_layout.setBackgroundColor(getResources().getColor(R.color.darkBackground));
+                    alert_dialog_title.setTextColor(getResources().getColor(R.color.darkHighlight));
+                    textView.setTextColor(getResources().getColor(R.color.white));
+                    textView2.setTextColor(getResources().getColor(R.color.white));
+                    editText.setTextColor(getResources().getColor(R.color.white));
+                    editText2.setTextColor(getResources().getColor(R.color.white));
+                    button.setTextColor(getResources().getColor(R.color.darkBackground));
+                    button2.setTextColor(getResources().getColor(R.color.darkHighlight));
+
+                    colors = new int[]{
+
+                            getResources().getColor(R.color.darkHighlight)
+                    };
+
+                    Field f = null;
+                    try {
+                        f = TextView.class.getDeclaredField("mCursorDrawableRes");
+                        f.setAccessible(true);
+                        f.set(editText, R.drawable.cursor_dark);
+                        f.set(editText2, R.drawable.cursor_dark);
+
+
+                    } catch (NoSuchFieldException | IllegalAccessException e) {
+                        e.printStackTrace();
+                    }
+
+                } else {
+                    PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
+                    if (powerManager.isPowerSaveMode()) {
+                        alert_dialog_layout.setBackgroundColor(getResources().getColor(R.color.darkBackground));
+                        alert_dialog_title.setTextColor(getResources().getColor(R.color.darkHighlight));
+                        textView.setTextColor(getResources().getColor(R.color.white));
+                        textView2.setTextColor(getResources().getColor(R.color.white));
+                        editText.setTextColor(getResources().getColor(R.color.white));
+                        editText2.setTextColor(getResources().getColor(R.color.white));
+                        button.setTextColor(getResources().getColor(R.color.darkBackground));
+                        button2.setTextColor(getResources().getColor(R.color.darkHighlight));
+
+                        colors = new int[]{
+
+                                getResources().getColor(R.color.darkHighlight)
+                        };
+
+
+                        Field f = null;
+                        try {
+                            f = TextView.class.getDeclaredField("mCursorDrawableRes");
+                            f.setAccessible(true);
+                            f.set(editText, R.drawable.cursor_dark);
+                            f.set(editText2, R.drawable.cursor_dark);
+
+
+
+                        } catch (NoSuchFieldException | IllegalAccessException e) {
+                            e.printStackTrace();
+                        }
+
+                    } else {
+                        alert_dialog_layout.setBackgroundColor(getResources().getColor(R.color.white));
+                        alert_dialog_title.setTextColor(getResources().getColor(R.color.colorPrimary));
+                        textView.setTextColor(getResources().getColor(R.color.black));
+                        textView2.setTextColor(getResources().getColor(R.color.black));
+                        editText.setTextColor(getResources().getColor(R.color.black));
+                        editText2.setTextColor(getResources().getColor(R.color.black));
+                        button.setTextColor(getResources().getColor(R.color.white));
+                        button2.setTextColor(getResources().getColor(R.color.colorPrimary));
+
+                        colors = new int[]{
+
+                                getResources().getColor(R.color.colorPrimary)
+                        };
+
+                        Field f = null;
+                        try {
+                            f = TextView.class.getDeclaredField("mCursorDrawableRes");
+                            f.setAccessible(true);
+                            f.set(editText, R.drawable.cursor_light);
+                            f.set(editText2, R.drawable.cursor_light);
+
+
+                        } catch (NoSuchFieldException | IllegalAccessException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                }
+
+                ColorStateList colorStateList = new ColorStateList(states,colors);
+                editText.setBackgroundTintList(colorStateList);
+                editText2.setBackgroundTintList(colorStateList);
+
+
+                button.setBackgroundTintList(colorStateList);
+
+                editText.setText(lettersOfRecommendationItemArrayList.get(position).getRecommender());
+                editText2.setText(lettersOfRecommendationItemArrayList.get(position).getDesignation());
+
+
+                alert_dialog_layout.addView(alert_dialog_title);
+                alert_dialog_layout.addView(textView);
+                alert_dialog_layout.addView(editText);
+                alert_dialog_layout.addView(textView2);
+                alert_dialog_layout.addView(editText2);
+                alert_dialog_layout.addView(button);
+                alert_dialog_layout.addView(button2);
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
                 builder.setView(alert_dialog_layout);
@@ -1134,30 +938,38 @@ public class LettersOfRecommendationActivity extends AppCompatActivity {
 
                 final AlertDialog finalAlertDialog = alertDialog;
 
-
                 button.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
 
-                        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getBaseContext());
+                        if(!editText.getText().toString().equals("") && !editText2.getText().toString().equals("") )
+                        {
 
-                        if (editText.getText().toString().equals(""))
-                            FirebaseDatabase.getInstance().getReference().child("Data").child(account.getId()).child("Letters of Recommendation").child("LOR "+(position+1)).child("Recommender").setValue("-");
-                        else
-                            FirebaseDatabase.getInstance().getReference().child("Data").child(account.getId()).child("Letters of Recommendation").child("LOR "+(position+1)).child("Recommender").setValue(editText.getText().toString());
+                            String recommender = editText.getText().toString();
+                            String designation = editText2.getText().toString();
 
-                        if (editText2.getText().toString().equals(""))
-                            FirebaseDatabase.getInstance().getReference().child("Data").child(account.getId()).child("Letters of Recommendation").child("LOR "+(position+1)).child("Designation").setValue("-");
-                        else
-                            FirebaseDatabase.getInstance().getReference().child("Data").child(account.getId()).child("Letters of Recommendation").child("LOR "+(position+1)).child("Designation").setValue(editText2.getText().toString());
+                            LettersOfRecommendationItem lettersOfRecommendationItem = new LettersOfRecommendationItem(recommender, designation);
+
+                            String key = keys.get(position);
+                            lor_reference.child(key).setValue(lettersOfRecommendationItem);
+
+
+
+                        }
+
+                        finalAlertDialog.dismiss();
+                    }
+                });
+
+                button2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        String key = keys.get(position);
+                        lor_reference.child(key).removeValue();
 
 
                         finalAlertDialog.dismiss();
-//                            finish();
-//                            startActivity(getIntent());
-
-
-
                     }
                 });
 
@@ -1165,6 +977,9 @@ public class LettersOfRecommendationActivity extends AppCompatActivity {
 
             }
         });
+
+
+
 
     }
 }

@@ -23,14 +23,13 @@ public class LettersOfRecommendationAdapter extends ArrayAdapter<LettersOfRecomm
     Context mContext;
 
     private static class ViewHolder {
-        TextView name;
         TextView recommender;
-        TextView desgination;
+        TextView designation;
     }
 
 
     public LettersOfRecommendationAdapter(ArrayList<LettersOfRecommendationItem> data, Context context) {
-        super(context, R.layout.aspirations_item, data);
+        super(context, R.layout.letters_of_recommendation_item, data);
         this.data = data;
         this.mContext=context;
     }
@@ -54,9 +53,8 @@ public class LettersOfRecommendationAdapter extends ArrayAdapter<LettersOfRecomm
             viewHolder = new LettersOfRecommendationAdapter.ViewHolder();
             LayoutInflater inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(R.layout.letters_of_recommendation_item, parent, false);
-            viewHolder.name = (TextView) convertView.findViewById(R.id.text_view_name);
             viewHolder.recommender = (TextView) convertView.findViewById(R.id.text_view_recommender);
-            viewHolder.desgination = (TextView) convertView.findViewById(R.id.text_view_designation);
+            viewHolder.designation = (TextView) convertView.findViewById(R.id.text_view_designation);
 
             result = convertView;
 
@@ -67,47 +65,36 @@ public class LettersOfRecommendationAdapter extends ArrayAdapter<LettersOfRecomm
         }
 
 
-        viewHolder.name.setText(lettersOfRecommendationItem.getName());
         viewHolder.recommender.setText(lettersOfRecommendationItem.getRecommender());
-        viewHolder.desgination.setText(lettersOfRecommendationItem.getDesignation());
+        viewHolder.designation.setText(lettersOfRecommendationItem.getDesignation());
 
         SharedPreferences sharedPref = Objects.requireNonNull(getContext().getSharedPreferences("Shared Preferences", MODE_PRIVATE));
         int theme = sharedPref.getInt("Theme", AppCompatDelegate.MODE_NIGHT_NO);
 
 
-//        Typeface nexa_bold = getContext().getResources().getFont(R.font.nexa_bold);
-//        viewHolder.name.setTypeface(nexa_bold);
-//        viewHolder.name.setPadding(50,30,20,30);
-//
-//        Typeface nexa_light = getContext().getResources().getFont(R.font.nexa_light);
-//
-//        viewHolder.recommender.setTypeface(nexa_light);
-//        viewHolder.recommender.setPadding(50,30,20,30);
+        viewHolder.recommender.setPadding(50,10,20,10);
+        viewHolder.designation.setPadding(50,10,20,10);
 
         if (theme == AppCompatDelegate.MODE_NIGHT_NO) {
-            viewHolder.name.setTextColor(getContext().getResources().getColor(R.color.black));
             viewHolder.recommender.setTextColor(getContext().getResources().getColor(R.color.colorPrimary));
-            viewHolder.desgination.setTextColor(getContext().getResources().getColor(R.color.black));
+            viewHolder.designation.setTextColor(getContext().getResources().getColor(R.color.black));
         }
         else if (theme == AppCompatDelegate.MODE_NIGHT_YES){
-            viewHolder.name.setTextColor(getContext().getResources().getColor(R.color.white));
             viewHolder.recommender.setTextColor(getContext().getResources().getColor(R.color.darkHighlight));
-            viewHolder.desgination.setTextColor(getContext().getResources().getColor(R.color.white));
+            viewHolder.designation.setTextColor(getContext().getResources().getColor(R.color.white));
 
         }
         else{
             PowerManager powerManager = (PowerManager) getContext().getSystemService(Context.POWER_SERVICE);
             if (powerManager.isPowerSaveMode()){
-                viewHolder.name.setTextColor(getContext().getResources().getColor(R.color.white));
                 viewHolder.recommender.setTextColor(getContext().getResources().getColor(R.color.darkHighlight));
-                viewHolder.desgination.setTextColor(getContext().getResources().getColor(R.color.white));
+                viewHolder.designation.setTextColor(getContext().getResources().getColor(R.color.white));
 
             }
             else
             {
-                viewHolder.name.setTextColor(getContext().getResources().getColor(R.color.black));
                 viewHolder.recommender.setTextColor(getContext().getResources().getColor(R.color.colorPrimary));
-                viewHolder.desgination.setTextColor(getContext().getResources().getColor(R.color.black));
+                viewHolder.designation.setTextColor(getContext().getResources().getColor(R.color.black));
 
             }
         }

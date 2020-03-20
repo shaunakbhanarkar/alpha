@@ -5,8 +5,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
@@ -89,91 +91,173 @@ public class AccountFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        Log.i("Account Fragment","started");
+
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_account, container, false);
+        Log.d("Account Fragment","layout inflated");
 
         //shared preferences
         sharedPref = Objects.requireNonNull(getActivity()).getSharedPreferences("Shared Preferences", MODE_PRIVATE);
         sharedPrefEditor = sharedPref.edit();
+        Log.d("Account Fragment","shared preferences opened for editing");
 
         sharedPrefEditor.putInt("Fragment",2);
+        Log.d("Account Fragment","share preferences fragment value changed to 2");
+
         sharedPrefEditor.apply();
+        Log.d("Account Fragment","shared preferences changes applied");
+
 
         CharSequence[] app_themes = {"Light", "Dark", "Set by Batter Saver"};
 
         final int theme = sharedPref.getInt("Theme", AppCompatDelegate.MODE_NIGHT_NO);
-
-
+        Log.d("Account Fragment","current app theme is "+theme);
 
         final ListView listView = v.findViewById(R.id.list_view_account);
+        Log.d("Account Fragment","listView initialised");
 
         ArrayList<AccountItem> accountItemArrayList = new ArrayList<>();
+        Log.d("Account Fragment","accountItemArrayList created");
 
         accountItemArrayList.add(new AccountItem("PROFILE"));
+        Log.d("Account Fragment","item added to accountItemArrayList - PROFILE");
+
         accountItemArrayList.add(new AccountItem("Basic Info"));
+        Log.d("Account Fragment","item added to accountItemArrayList - Basic Info");
+
         accountItemArrayList.add(new AccountItem("Aspirations"));
+        Log.d("Account Fragment","item added to accountItemArrayList - Aspirations");
+
         accountItemArrayList.add(new AccountItem("Educational Details"));
+        Log.d("Account Fragment","item added to accountItemArrayList - Educational Details");
+
         accountItemArrayList.add(new AccountItem("Letters of Recommendation"));
+        Log.d("Account Fragment","item added to accountItemArrayList - Letters of Recommendation");
+
         accountItemArrayList.add(new AccountItem("Work Experience"));
+        Log.d("Account Fragment","item added to accountItemArrayList - Work Experience");
+
         accountItemArrayList.add(new AccountItem("Test Scores"));
+        Log.d("Account Fragment","item added to accountItemArrayList - Test Scores");
+
         accountItemArrayList.add(new AccountItem("Publications"));
-        accountItemArrayList.add(new AccountItem("Extra Curriculars"));
+        Log.d("Account Fragment","item added to accountItemArrayList - Publications");
+
+        accountItemArrayList.add(new AccountItem("Extra Curricular"));
+        Log.d("Account Fragment","item added to accountItemArrayList - Extra Curricular");
+
         accountItemArrayList.add(new AccountItem("SETTINGS"));
+        Log.d("Account Fragment","item added to accountItemArrayList - SETTINGS");
+
         accountItemArrayList.add(new AccountItem("Theme"));
+        Log.d("Account Fragment","item added to accountItemArrayList - Theme");
+
         accountItemArrayList.add(new AccountItem("About"));
+        Log.d("Account Fragment","item added to accountItemArrayList - About");
+
         accountItemArrayList.add(new AccountItem("Log Out"));
+        Log.d("Account Fragment","item added to accountItemArrayList - Log Out");
+
 
 
 
         AccountAdapter accountAdapter = new AccountAdapter(accountItemArrayList, getContext());
+        Log.d("Account Fragment","accountAdapter created");
+
         listView.setAdapter(accountAdapter);
+        Log.d("Account Fragment","accountAdapter set to listView");
+
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+                if (position == 0)  //profile
+                {
+                    Log.d("Account Fragment","(position = 0) non-clickable PROFILE heading clicked");
+
+                }
+
                 if (position == 1)  //basic info
                 {
+                    Log.d("Account Fragment","(position = 1) starting BasicInfoActivity...");
+
                     Intent intent = new Intent(getContext(),BasicInfoActivity.class);
                     startActivity(intent);
                 }
 
                 if (position == 2) //aspirations
                 {
+                    Log.d("Account Fragment","(position = 2) starting AspirationsActivity...");
+
                     Intent intent = new Intent(getContext(),AspirationsActivity.class);
                     startActivity(intent);
                 }
 
                 if (position == 3) //educational details
                 {
+                    Log.d("Account Fragment","(position = 3) starting EducationalDetailsActivity...");
+
                     Intent intent = new Intent(getContext(),EducationalDetailsActivity.class);
                     startActivity(intent);
                 }
 
                 if (position == 4)  //letters of recommendation
                 {
+                    Log.d("Account Fragment","(position = 4) starting LettersOfRecommendationActivity...");
+
                     Intent intent = new Intent(getContext(),LettersOfRecommendationActivity.class);
                     startActivity(intent);
                 }
 
                 if (position == 5)  //work experience
                 {
+                    Log.d("Account Fragment","(position = 5) starting WorkExperienceActivity...");
+
                     Intent intent = new Intent(getContext(),WorkExperienceActivity.class);
                     startActivity(intent);
                 }
 
                 if (position == 6)  //test scores
                 {
+                    Log.d("Account Fragment","(position = 6) starting TestScoresActivity...");
+
                     Intent intent = new Intent(getContext(),TestScoresActivity.class);
                     startActivity(intent);
                 }
 
+                if (position == 7)  //publications
+                {
+                    Log.d("Account Fragment","(position = 7) starting PublicationsActivity...");
+
+                }
+
+                if (position == 8)  //extra curricular
+                {
+                    Log.d("Account Fragment","(position = 8) starting ExtraCurricularActivity...");
+
+                }
+
+                if (position == 9)  //settings
+                {
+                    Log.d("Account Fragment","(position = 9) non-clickable SETTINGS heading clicked");
+
+                }
+
                 if (position == 10) //theme
                 {
+
+                    Log.d("Account Fragment","(position = 10) theme clicked");
+
                     int checked_item = 0;
 
                     if (sharedPref.getInt("Theme", AppCompatDelegate.MODE_NIGHT_NO) - 1 >= 0)
                         checked_item = sharedPref.getInt("Theme", AppCompatDelegate.MODE_NIGHT_NO) - 1;
+
+                    Log.d("Account Fragment","checked item for theme alert dialog set");
 
                     AlertDialog alertDialog = null;
 
@@ -188,6 +272,7 @@ public class AccountFragment extends Fragment {
                     alert_dialog_title.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
                     alert_dialog_title.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
 
+                    Log.w("Account Fragment","initialising nexa bold...(requires API level 26)");
                     Typeface nexa_bold = getResources().getFont(R.font.nexa_bold);
 
                     alert_dialog_title.setTypeface(nexa_bold);
@@ -208,6 +293,7 @@ public class AccountFragment extends Fragment {
                     radio_button_dark.setTextSize(20);
                     radio_button_set_by_battery_saver.setTextSize(20);
 
+                    Log.w("Account Fragment","initialising nexa light...(requires API level 26)");
                     Typeface nexa_light = getResources().getFont(R.font.nexa_light);
 
                     radio_button_light.setTypeface(nexa_light);
@@ -310,21 +396,39 @@ public class AccountFragment extends Fragment {
                         }
                     }
 
-                    if (checked_item == 0)
+                    Log.d("Account Fragment","setting the appropriate radio button for theme...");
+
+                    if (checked_item == 0) {
                         radio_button_light.setChecked(true);
-                    else if (checked_item == 1)
+                        Log.d("Account Fragment","radio_button_light checked");
+                    }
+                    else if (checked_item == 1) {
                         radio_button_dark.setChecked(true);
-                    else
+                        Log.d("Account Fragment", "radio_button_dark checked");
+                    }
+                    else {
                         radio_button_set_by_battery_saver.setChecked(true);
+                        Log.d("Account Fragment", "radio_button_set_by_battery_saver checked");
+                    }
+
+                    Log.d("Account Fragment", "adding views to alert dialog for theme...");
 
 
                     alert_dialog_layout.addView(alert_dialog_title);
+                    Log.d("Account Fragment", "alert_dialog_title added to alert_dialog_layout for theme");
+
                     alert_dialog_layout.addView(radioGroup);
+                    Log.d("Account Fragment", "radioGroup added to alert_dialog_layout for theme");
+
+                    Log.d("Account Fragment", "building alert dialog for theme...");
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                     builder.setView(alert_dialog_layout);
                     alertDialog = builder.create();
                     alertDialog.show();
+
+                    Log.d("Account Fragment", "alert dialog created and shown");
+
 
                     final AlertDialog finalAlertDialog = alertDialog;
 
@@ -333,12 +437,25 @@ public class AccountFragment extends Fragment {
                         @Override
                         public void onClick(View v) {
 
+                            Log.d("Account Fragment", "radio_button_light clicked");
+
+                            Log.d("Account Fragment", "changing theme to light...");
                             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
                             sharedPrefEditor.putInt("Theme", AppCompatDelegate.MODE_NIGHT_NO);
+                            Log.d("Account Fragment","share preferences theme value changed to AppCompatDelegate.MODE_NIGHT_NO");
+
 //                            sharedPrefEditor.putInt("Fragment",2);
+
                             sharedPrefEditor.apply();
-                            Log.e("fragment",""+sharedPref.getInt("Fragment",-1));
+                            Log.d("Account Fragment","shared preferences changes applied");
+
+                            Log.d("Account Fragment","fragment value is"+sharedPref.getInt("Fragment",-1));
+
                             finalAlertDialog.dismiss();
+                            Log.d("Account Fragment","alert dialog for theme dismissed");
+
+                            Log.i("Account Fragment","light theme selected");
 
                         }
                     });
@@ -347,12 +464,25 @@ public class AccountFragment extends Fragment {
                         @Override
                         public void onClick(View v) {
 
+                            Log.d("Account Fragment", "radio_button_dark clicked");
+
+                            Log.d("Account Fragment", "changing theme to dark...");
                             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+
                             sharedPrefEditor.putInt("Theme", AppCompatDelegate.MODE_NIGHT_YES);
+                            Log.d("Account Fragment","share preferences theme value changed to AppCompatDelegate.MODE_NIGHT_YES");
+
 //                            sharedPrefEditor.putInt("Fragment",2);
+
                             sharedPrefEditor.apply();
-                            Log.e("fragment",""+sharedPref.getInt("Fragment",-1));
+                            Log.d("Account Fragment","shared preferences changes applied");
+
+                            Log.d("Account Fragment","fragment value is"+sharedPref.getInt("Fragment",-1));
+
                             finalAlertDialog.dismiss();
+                            Log.d("Account Fragment","alert dialog for theme dismissed");
+
+                            Log.i("Account Fragment","dark theme selected");
 
                         }
                     });
@@ -361,13 +491,25 @@ public class AccountFragment extends Fragment {
                         @Override
                         public void onClick(View v) {
 
-                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY);
-                            sharedPrefEditor.putInt("Theme", AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY);
-//                            sharedPrefEditor.putInt("Fragment",2);
-                            sharedPrefEditor.apply();
-                            Log.e("fragment",""+sharedPref.getInt("Fragment",-1));
-                            finalAlertDialog.dismiss();
+                            Log.d("Account Fragment", "radio_button_set_by_battery_saver clicked");
 
+                            Log.d("Account Fragment", "changing theme to set by battery saver...");
+                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY);
+
+                            sharedPrefEditor.putInt("Theme", AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY);
+                            Log.d("Account Fragment","share preferences theme value changed to AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY");
+
+//                            sharedPrefEditor.putInt("Fragment",2);
+
+                            sharedPrefEditor.apply();
+                            Log.d("Account Fragment","shared preferences changes applied");
+
+                            Log.d("Account Fragment","fragment value is"+sharedPref.getInt("Fragment",-1));
+
+                            finalAlertDialog.dismiss();
+                            Log.d("Account Fragment","alert dialog for theme dismissed");
+
+                            Log.i("Account Fragment","set by battery saver theme selected");
 
                         }
                     });
@@ -377,6 +519,7 @@ public class AccountFragment extends Fragment {
 
                 if (position == 11) //about
                 {
+                    Log.d("Account Fragment","(position = 11) starting AboutActivity...");
 
                     Intent intent = new Intent(getContext(),AboutActivity.class);
                     startActivity(intent);
@@ -385,24 +528,48 @@ public class AccountFragment extends Fragment {
 
                 if (position == 12) //logout
                 {
-                    GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getContext());
-                    if (account != null)
-                        Log.e("username",account.getDisplayName());
+                    Log.d("Account Fragment","(position = 12) log out clicked, initiating log out...");
 
+                    Log.d("Account Fragment","getting last signed in account...");
+                    GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getContext());
+
+                    if (account != null) {
+                        Log.d("Account Fragment","account id is " + account.getId());
+                        Log.d("Account Fragment", "account display name is " + account.getDisplayName());
+                        Log.d("Account Fragment", "account email is " + account.getEmail());
+                    }
+                    else {
+                        Log.e("Account Fragment","account is null");
+                    }
+
+                    Log.d("Account Fragment","building google sign in options...");
                     GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                             .requestEmail()
                             .build();
+
+                    Log.d("Account Fragment","creating google sign in client...");
                     GoogleSignInClient mGoogleSignInClient = GoogleSignIn.getClient(getContext(), gso);
+
+                    Log.d("Account Fragment","proceeding with sign out...");
                     mGoogleSignInClient.signOut();
+
+                    Log.d("Account Fragment","successfully signed out");
 
                     sharedPrefEditor.clear();
                     sharedPrefEditor.apply();
+                    Log.d("Account Fragment","shared preferences cleared");
+
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                    Log.d("Account Fragment","theme set to light");
 
-
+                    Log.d("Account Fragment","finishing MainActivity...");
                     getActivity().finishAffinity();
+
+                    Log.d("Account Fragment","starting LoginActivity...");
                     Intent intent = new Intent(getActivity(), LoginActivity.class);
                     startActivity(intent);
+
+                    Log.i("Account Fragment","log out successful");
                 }
 
 

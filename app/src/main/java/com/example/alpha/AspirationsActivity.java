@@ -51,20 +51,26 @@ public class AspirationsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_aspirations);
 
+        Log.i("Aspirations Activity","started");
 
         //shared preferences
 
         final SharedPreferences sharedPref = Objects.requireNonNull(getSharedPreferences("Shared Preferences", MODE_PRIVATE));
         final int theme = sharedPref.getInt("Theme", AppCompatDelegate.MODE_NIGHT_NO);
+        Log.d("Aspirations Activity","current app theme is "+theme);
 
         //customise action bar
 
         ActionBar action_bar = getSupportActionBar();
 
         action_bar.setDisplayShowTitleEnabled(false);
+        Log.d("Aspirations Activity","action bar display show title disabled");
+
         action_bar.setDisplayShowCustomEnabled(true);
+        Log.d("Aspirations Activity","action bar custom display enabled");
 
         action_bar.setCustomView(R.layout.action_bar_with_buttons);
+        Log.d("Aspirations Activity","action bar custom view set");
 
         TextView action_bar_title = action_bar.getCustomView().findViewById(R.id.action_bar_title);
         ImageButton back_button = action_bar.getCustomView().findViewById(R.id.back_button);
@@ -73,11 +79,16 @@ public class AspirationsActivity extends AppCompatActivity {
         Window window = this.getWindow();
         // clear FLAG_TRANSLUCENT_STATUS flag:
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        Log.d("Aspirations Activity","window flags cleared");
+
         // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        Log.d("Aspirations Activity","window flags added");
+
 
 
         action_bar_title.setText("Aspirations");
+        Log.d("Aspirations Activity","action bar title set");
 
         int[][] states = new int[][]{
 

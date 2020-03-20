@@ -1,5 +1,6 @@
 package com.example.alpha;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +13,7 @@ import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.PowerManager;
 import android.util.Log;
@@ -33,14 +35,17 @@ public class AboutActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
 
+        Log.i("About Activity","started");
 
         //shared preferences
 
         final SharedPreferences sharedPref = Objects.requireNonNull(getSharedPreferences("Shared Preferences", MODE_PRIVATE));
         final int theme = sharedPref.getInt("Theme", AppCompatDelegate.MODE_NIGHT_NO);
+        Log.d("About Activity","current app theme is "+theme);
 
 
         //initialise elements
+        Log.d("About Activity","initialising elements...");
 
         TextView text_view_app_name = findViewById(R.id.text_view_app_name);
         TextView text_view_app_version = findViewById(R.id.text_view_app_version);
@@ -62,13 +67,19 @@ public class AboutActivity extends AppCompatActivity {
 
 
         //customise action bar
+        Log.d("About Activity","customising action bar...");
 
         ActionBar action_bar = getSupportActionBar();
 
         action_bar.setDisplayShowTitleEnabled(false);
+        Log.d("About Activity","action bar display show title disabled");
+
         action_bar.setDisplayShowCustomEnabled(true);
+        Log.d("About Activity","action bar custom display enabled");
+
 
         action_bar.setCustomView(R.layout.action_bar_with_buttons);
+        Log.d("About Activity","action bar custom view set");
 
         TextView action_bar_title = action_bar.getCustomView().findViewById(R.id.action_bar_title);
         ImageButton back_button = action_bar.getCustomView().findViewById(R.id.back_button);
@@ -77,11 +88,15 @@ public class AboutActivity extends AppCompatActivity {
         Window window = this.getWindow();
         // clear FLAG_TRANSLUCENT_STATUS flag:
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        Log.d("About Activity","window flags cleared");
+
         // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        Log.d("About Activity","window flags added");
 
 
         action_bar_title.setText("About");
+        Log.d("About Activity","action bar title set");
 
         int[][] states = new int[][]{
 
@@ -99,9 +114,10 @@ public class AboutActivity extends AppCompatActivity {
 
         if (theme == AppCompatDelegate.MODE_NIGHT_NO){
 
-            Log.e("entered","light theme");
 
             action_bar_title.setTextColor(getResources().getColor(R.color.colorPrimary));
+            Log.d("About Activity","action bar title text color set to color primary");
+
             colors= new int[]{
 
                     getResources().getColor(R.color.colorPrimary)
@@ -110,20 +126,35 @@ public class AboutActivity extends AppCompatActivity {
 
             back_button.setBackgroundColor(getResources().getColor(R.color.white));
             help_button.setBackgroundColor(getResources().getColor(R.color.white));
+            Log.d("About Activity","action bar icons background color set to white");
 
 
             //change status bar colour
             window.setStatusBarColor(getResources().getColor(R.color.white));
+            Log.d("About Activity","status bar color set to white");
+
             //change action bar colour
             action_bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.white)));
+            Log.d("About Activity","action bar color set to white");
+
             // set status bar contrast
             View decor = window.getDecorView();
             decor.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+            Log.d("About Activity","contrast set");
+
 
             text_view_app_name.setTextColor(getResources().getColor(R.color.colorPrimary));
+            Log.d("About Activity","text_view_app_name text color set to color primary");
+
             text_view_app_version.setTextColor(getResources().getColor(R.color.colorPrimary));
+            Log.d("About Activity","text_view_app_version text color set to color primary");
+
             text_view_app_details.setTextColor(getResources().getColor(R.color.black));
+            Log.d("About Activity","text_view_app_details text color set to black");
+
             text_view_copyright.setTextColor(getResources().getColor(R.color.black));
+            Log.d("About Activity","text_view_copyright text color set to black");
+
 
 
 
@@ -132,10 +163,11 @@ public class AboutActivity extends AppCompatActivity {
         }
         else if (theme == AppCompatDelegate.MODE_NIGHT_YES){
 
-            Log.e("entered","dark theme");
 
 
             action_bar_title.setTextColor(getResources().getColor(R.color.darkHighlight));
+            Log.d("About Activity","action bar title text color set to dark highlight");
+
             colors= new int[]{
 
                     getResources().getColor(R.color.darkHighlight)
@@ -144,34 +176,48 @@ public class AboutActivity extends AppCompatActivity {
 
             back_button.setBackgroundColor(getResources().getColor(R.color.darkBackground));
             help_button.setBackgroundColor(getResources().getColor(R.color.darkBackground));
+            Log.d("About Activity","action bar icons background color set to dark background");
 
             //change status bar colour
             window.setStatusBarColor(getResources().getColor(R.color.darkBackground));
+            Log.d("About Activity","status bar color set to dark background");
+
             //change action bar colour
             action_bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.darkBackground)));
+            Log.d("About Activity","action bar color set to dark background");
+
             // set status bar contrast
             View decor = window.getDecorView();
             LinearLayout background_layout = decor.findViewById(R.id.background_layout);
             background_layout.setBackgroundColor(getResources().getColor(R.color.darkBackground));
+            Log.d("About Activity","contrast set");
 
 
 
             text_view_app_name.setTextColor(getResources().getColor(R.color.darkHighlight));
+            Log.d("About Activity","text_view_app_name text color set to dark highlight");
+
             text_view_app_version.setTextColor(getResources().getColor(R.color.darkHighlight));
+            Log.d("About Activity","text_view_app_version text color set to dark highlight");
+
             text_view_app_details.setTextColor(getResources().getColor(R.color.white));
+            Log.d("About Activity","text_view_app_details text color set to white");
+
             text_view_copyright.setTextColor(getResources().getColor(R.color.white));
+            Log.d("About Activity","text_view_copyright text color set to white");
 
 
         }
         else {
 
-            Log.e("entered","battery saver theme");
 
 
             PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
             if (powerManager.isPowerSaveMode()) {
 
                 action_bar_title.setTextColor(getResources().getColor(R.color.darkHighlight));
+                Log.d("About Activity","action bar title text color set to dark highlight");
+
                 colors= new int[]{
 
                         getResources().getColor(R.color.darkHighlight)
@@ -180,28 +226,43 @@ public class AboutActivity extends AppCompatActivity {
 
                 back_button.setBackgroundColor(getResources().getColor(R.color.darkBackground));
                 help_button.setBackgroundColor(getResources().getColor(R.color.darkBackground));
+                Log.d("About Activity","action bar icons background color set to dark background");
 
 
                 //change status bar colour
                 window.setStatusBarColor(getResources().getColor(R.color.darkBackground));
+                Log.d("About Activity","status bar color set to dark background");
+
                 //change action bar colour
                 action_bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.darkBackground)));
+                Log.d("About Activity","action bar color set to dark background");
+
                 // set status bar contrast
                 View decor = window.getDecorView();
                 LinearLayout background_layout = decor.findViewById(R.id.background_layout);
                 background_layout.setBackgroundColor(getResources().getColor(R.color.darkBackground));
+                Log.d("About Activity","contrast set");
 
 
 
                 text_view_app_name.setTextColor(getResources().getColor(R.color.darkHighlight));
+                Log.d("About Activity","text_view_app_name text color set to dark highlight");
+
                 text_view_app_version.setTextColor(getResources().getColor(R.color.darkHighlight));
+                Log.d("About Activity","text_view_app_version text color set to dark highlight");
+
                 text_view_app_details.setTextColor(getResources().getColor(R.color.white));
+                Log.d("About Activity","text_view_app_details text color set to white");
+
                 text_view_copyright.setTextColor(getResources().getColor(R.color.white));
+                Log.d("About Activity","text_view_copyright text color set to white");
 
 
             } else {
 
                 action_bar_title.setTextColor(getResources().getColor(R.color.colorPrimary));
+                Log.d("About Activity","action bar title text color set to color primary");
+
                 colors= new int[]{
 
                         getResources().getColor(R.color.colorPrimary)
@@ -210,22 +271,35 @@ public class AboutActivity extends AppCompatActivity {
 
                 back_button.setBackgroundColor(getResources().getColor(R.color.white));
                 help_button.setBackgroundColor(getResources().getColor(R.color.white));
+                Log.d("About Activity","action bar icons background color set to white");
 
                 //change status bar colour
                 window.setStatusBarColor(getResources().getColor(R.color.white));
+                Log.d("About Activity","status bar color set to white");
+
                 //change action bar colour
                 action_bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.white)));
+                Log.d("About Activity","action bar color set to white");
+
                 // set status bar contrast
                 View decor = window.getDecorView();
                 decor.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+                Log.d("About Activity","contrast set");
 
 
 
 
                 text_view_app_name.setTextColor(getResources().getColor(R.color.colorPrimary));
+                Log.d("About Activity","text_view_app_name text color set to color primary");
+
                 text_view_app_version.setTextColor(getResources().getColor(R.color.colorPrimary));
+                Log.d("About Activity","text_view_app_version text color set to color primary");
+
                 text_view_app_details.setTextColor(getResources().getColor(R.color.black));
+                Log.d("About Activity","text_view_app_details text color set to black");
+
                 text_view_copyright.setTextColor(getResources().getColor(R.color.black));
+                Log.d("About Activity","text_view_copyright text color set to black");
 
             }
 
@@ -237,19 +311,26 @@ public class AboutActivity extends AppCompatActivity {
         back_button.setImageTintList(colorStateList);
         help_button.setImageTintList(colorStateList);
 
+        Log.d("About Activity","action bar buttons image tint list set");
 
 
 
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Log.i("About Activity","back button pressed");
+
                 onBackPressed();
             }
         });
 
         help_button.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
+
+                Log.i("About Activity","help button pressed");
 
                 AlertDialog alertDialog = null;
 
@@ -265,7 +346,10 @@ public class AboutActivity extends AppCompatActivity {
                 alert_dialog_title.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
                 alert_dialog_title.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
 
+                Log.w("About Activity","initialising nexa bold...(requires API level 26)");
                 Typeface nexa_bold = getResources().getFont(R.font.nexa_bold);
+
+                Log.w("About Activity","initialising nexa light...(requires API level 26)");
                 Typeface nexa_light = getResources().getFont(R.font.nexa_light);
 
                 alert_dialog_title.setTypeface(nexa_bold);

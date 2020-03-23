@@ -51,26 +51,26 @@ public class AspirationsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_aspirations);
 
-        Log.i("Aspirations Activity","started");
+        Log.i(this.toString(),"started");
 
         //shared preferences
 
         final SharedPreferences sharedPref = Objects.requireNonNull(getSharedPreferences("Shared Preferences", MODE_PRIVATE));
         final int theme = sharedPref.getInt("Theme", AppCompatDelegate.MODE_NIGHT_NO);
-        Log.d("Aspirations Activity","current app theme is "+theme);
+        Log.d(this.toString(),"current app theme is "+theme);
 
         //customise action bar
 
         ActionBar action_bar = getSupportActionBar();
 
         action_bar.setDisplayShowTitleEnabled(false);
-        Log.d("Aspirations Activity","action bar display show title disabled");
+        Log.d(this.toString(),"action bar display show title disabled");
 
         action_bar.setDisplayShowCustomEnabled(true);
-        Log.d("Aspirations Activity","action bar custom display enabled");
+        Log.d(this.toString(),"action bar custom display enabled");
 
         action_bar.setCustomView(R.layout.action_bar_with_buttons);
-        Log.d("Aspirations Activity","action bar custom view set");
+        Log.d(this.toString(),"action bar custom view set");
 
         TextView action_bar_title = action_bar.getCustomView().findViewById(R.id.action_bar_title);
         ImageButton back_button = action_bar.getCustomView().findViewById(R.id.back_button);
@@ -79,16 +79,16 @@ public class AspirationsActivity extends AppCompatActivity {
         Window window = this.getWindow();
         // clear FLAG_TRANSLUCENT_STATUS flag:
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        Log.d("Aspirations Activity","window flags cleared");
+        Log.d(this.toString(),"window flags cleared");
 
         // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        Log.d("Aspirations Activity","window flags added");
+        Log.d(this.toString(),"window flags added");
 
 
 
         action_bar_title.setText("Aspirations");
-        Log.d("Aspirations Activity","action bar title set");
+        Log.d(this.toString(),"action bar title set");
 
         int[][] states = new int[][]{
 
@@ -106,9 +106,10 @@ public class AspirationsActivity extends AppCompatActivity {
 
         if (theme == AppCompatDelegate.MODE_NIGHT_NO){
 
-            Log.e("entered","light theme");
 
             action_bar_title.setTextColor(getResources().getColor(R.color.colorPrimary));
+            Log.d(this.toString(),"action bar title text color set to color primary");
+
             colors= new int[]{
 
                     getResources().getColor(R.color.colorPrimary)
@@ -117,15 +118,21 @@ public class AspirationsActivity extends AppCompatActivity {
 
             back_button.setBackgroundColor(getResources().getColor(R.color.white));
             help_button.setBackgroundColor(getResources().getColor(R.color.white));
+            Log.d(this.toString(),"action bar icons background color set to white");
 
 
             //change status bar colour
             window.setStatusBarColor(getResources().getColor(R.color.white));
+            Log.d(this.toString(),"status bar color set to white");
+
             //change action bar colour
             action_bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.white)));
+            Log.d(this.toString(),"action bar color set to white");
+
             // set status bar contrast
             View decor = window.getDecorView();
             decor.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+            Log.d(this.toString(),"contrast set");
 
 
 
@@ -133,10 +140,11 @@ public class AspirationsActivity extends AppCompatActivity {
         }
         else if (theme == AppCompatDelegate.MODE_NIGHT_YES){
 
-            Log.e("entered","dark theme");
 
 
             action_bar_title.setTextColor(getResources().getColor(R.color.darkHighlight));
+            Log.d(this.toString(),"action bar title text color set to dark highlight");
+
             colors= new int[]{
 
                     getResources().getColor(R.color.darkHighlight)
@@ -145,15 +153,22 @@ public class AspirationsActivity extends AppCompatActivity {
 
             back_button.setBackgroundColor(getResources().getColor(R.color.darkBackground));
             help_button.setBackgroundColor(getResources().getColor(R.color.darkBackground));
+            Log.d(this.toString(),"action bar icons background color set to dark background");
+
 
             //change status bar colour
             window.setStatusBarColor(getResources().getColor(R.color.darkBackground));
+            Log.d(this.toString(),"status bar color set to dark background");
+
             //change action bar colour
             action_bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.darkBackground)));
+            Log.d(this.toString(),"action bar color set to dark background");
+
             // set status bar contrast
             View decor = window.getDecorView();
             LinearLayout background_layout = decor.findViewById(R.id.background_layout);
             background_layout.setBackgroundColor(getResources().getColor(R.color.darkBackground));
+            Log.d(this.toString(),"contrast set");
 
 
 
@@ -161,13 +176,14 @@ public class AspirationsActivity extends AppCompatActivity {
         }
         else {
 
-            Log.e("entered","battery saver theme");
 
 
             PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
             if (powerManager.isPowerSaveMode()) {
 
                 action_bar_title.setTextColor(getResources().getColor(R.color.darkHighlight));
+                Log.d(this.toString(),"action bar title text color set to dark highlight");
+
                 colors= new int[]{
 
                         getResources().getColor(R.color.darkHighlight)
@@ -176,16 +192,22 @@ public class AspirationsActivity extends AppCompatActivity {
 
                 back_button.setBackgroundColor(getResources().getColor(R.color.darkBackground));
                 help_button.setBackgroundColor(getResources().getColor(R.color.darkBackground));
+                Log.d(this.toString(),"action bar icons background color set to dark background");
 
 
                 //change status bar colour
                 window.setStatusBarColor(getResources().getColor(R.color.darkBackground));
+                Log.d(this.toString(),"status bar color set to dark background");
+
                 //change action bar colour
                 action_bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.darkBackground)));
+                Log.d(this.toString(),"action bar color set to dark background");
+
                 // set status bar contrast
                 View decor = window.getDecorView();
                 LinearLayout background_layout = decor.findViewById(R.id.background_layout);
                 background_layout.setBackgroundColor(getResources().getColor(R.color.darkBackground));
+                Log.d(this.toString(),"contrast set");
 
 
 
@@ -193,6 +215,8 @@ public class AspirationsActivity extends AppCompatActivity {
             } else {
 
                 action_bar_title.setTextColor(getResources().getColor(R.color.colorPrimary));
+                Log.d(this.toString(),"action bar title text color set to color primary");
+
                 colors= new int[]{
 
                         getResources().getColor(R.color.colorPrimary)
@@ -201,14 +225,21 @@ public class AspirationsActivity extends AppCompatActivity {
 
                 back_button.setBackgroundColor(getResources().getColor(R.color.white));
                 help_button.setBackgroundColor(getResources().getColor(R.color.white));
+                Log.d(this.toString(),"action bar icons background color set to white");
+
 
                 //change status bar colour
                 window.setStatusBarColor(getResources().getColor(R.color.white));
+                Log.d(this.toString(),"status bar color set to white");
+
                 //change action bar colour
                 action_bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.white)));
+                Log.d(this.toString(),"action bar color set to white");
+
                 // set status bar contrast
                 View decor = window.getDecorView();
                 decor.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+                Log.d(this.toString(),"contrast set");
 
 
 
@@ -223,12 +254,15 @@ public class AspirationsActivity extends AppCompatActivity {
         back_button.setImageTintList(colorStateList);
         help_button.setImageTintList(colorStateList);
 
+        Log.d(this.toString(),"action bar buttons image tint list set");
 
 
 
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.i(this.toString(),"back button pressed");
+
                 onBackPressed();
             }
         });
@@ -236,6 +270,8 @@ public class AspirationsActivity extends AppCompatActivity {
         help_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Log.i(this.toString(),"help button pressed");
 
                 AlertDialog alertDialog = null;
 
@@ -251,7 +287,10 @@ public class AspirationsActivity extends AppCompatActivity {
                 alert_dialog_title.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
                 alert_dialog_title.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
 
+                Log.w(this.toString(),"initialising nexa bold...(requires API level 26)");
                 Typeface nexa_bold = getResources().getFont(R.font.nexa_bold);
+
+                Log.w(this.toString(),"initialising nexa light...(requires API level 26)");
                 Typeface nexa_light = getResources().getFont(R.font.nexa_light);
 
                 alert_dialog_title.setTypeface(nexa_bold);
@@ -355,29 +394,47 @@ public class AspirationsActivity extends AppCompatActivity {
         //initialise elements
 
         final ListView list_view_aspirations = findViewById(R.id.list_view_aspirations);
+        Log.d(this.toString(), "list_view_aspirations initialised");
 
         final ArrayList<AspirationsItem> aspirationsItemArrayList = new ArrayList<>();
+        Log.d(this.toString(), "aspirationsItemArrayList initialised");
 
         //set the items of list view
 
         aspirationsItemArrayList.add(new AspirationsItem("DREAM UNIVERSITY",sharedPref.getString("Dream University","-")));
+        Log.d(this.toString(),"item added to accountItemArrayList - dream university");
+
         aspirationsItemArrayList.add(new AspirationsItem("DREAM PROGRAM",sharedPref.getString("Dream Program","-")));
+        Log.d(this.toString(),"item added to accountItemArrayList - dream program");
+
         aspirationsItemArrayList.add(new AspirationsItem("DREAM SEMESTER",sharedPref.getString("Dream Semester","-")));
+        Log.d(this.toString(),"item added to accountItemArrayList - dream semester");
+
 
 
         AspirationsAdapter aspirationsAdapter = new AspirationsAdapter(aspirationsItemArrayList, getBaseContext());
+        Log.d(this.toString(),"aspirationsAdapter created");
+
         list_view_aspirations.setAdapter(aspirationsAdapter);
+        Log.d(this.toString(),"aspirationsAdapter set to list_view_aspirations");
 
 
 
         //Google sign in and firebase database
 
+        Log.d(this.toString(),"getting last signed in account...");
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
 
+        Log.d(this.toString(),"getting databaseReference...");
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
 
+        Log.d(this.toString(),"getting dream_university_reference...");
         final DatabaseReference dream_university_reference = databaseReference.child("Data").child(account.getId()).child("Aspirations").child("Dream University");
+
+        Log.d(this.toString(),"getting dream_program_reference...");
         final DatabaseReference dream_program_reference = databaseReference.child("Data").child(account.getId()).child("Aspirations").child("Dream Program");
+
+        Log.d(this.toString(),"getting dream_semester_reference...");
         final DatabaseReference dream_semester_reference = databaseReference.child("Data").child(account.getId()).child("Aspirations").child("Dream Semester");
 
 
@@ -386,10 +443,12 @@ public class AspirationsActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
+                Log.d(this.toString(),"data at dream_university_reference changed");
+
                 String value = dataSnapshot.getValue(String.class);
 
                 if (value == null){
-                    Log.e("Dream University", "null");
+                    Log.e(this.toString(), "data at dream_university_reference is null");
                 }
 
                 else {
@@ -398,21 +457,34 @@ public class AspirationsActivity extends AppCompatActivity {
                     editor.putString("Dream University", value);
                     editor.apply();
 
-                    Log.e("Dream University", value);
+                    Log.d(this.toString(), "data at dream_university_reference is " + value);
 
 
                     String temp_program = aspirationsItemArrayList.get(1).value;
+                    Log.d(this.toString(), "temp_program is " + temp_program);
+
                     String temp_semester = aspirationsItemArrayList.get(2).value;
+                    Log.d(this.toString(), "temp_semester is " + temp_semester);
 
                     aspirationsItemArrayList.clear();
+                    Log.d(this.toString(), "aspirationsItemArrayList cleared");
 
                     aspirationsItemArrayList.add(new AspirationsItem("DREAM UNIVERSITY",sharedPref.getString("Dream University","-")));
+                    Log.d(this.toString(),"item added to accountItemArrayList - dream university");
+
                     aspirationsItemArrayList.add(new AspirationsItem("DREAM PROGRAM",temp_program));
+                    Log.d(this.toString(),"item added to accountItemArrayList - dream program");
+
                     aspirationsItemArrayList.add(new AspirationsItem("DREAM SEMESTER",temp_semester));
+                    Log.d(this.toString(),"item added to accountItemArrayList - dream semester");
+
 
 
                     AspirationsAdapter temp_adapter = new AspirationsAdapter(aspirationsItemArrayList, getBaseContext());
+                    Log.d(this.toString(),"temp_adapter created");
+
                     list_view_aspirations.setAdapter(temp_adapter);
+                    Log.d(this.toString(),"temp_adapter set to list_view_aspirations");
 
 
                 }
@@ -425,7 +497,7 @@ public class AspirationsActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                Log.e("error","database error");
+                Log.e(this.toString(),databaseError.getMessage());
 
             }
         });
@@ -434,10 +506,13 @@ public class AspirationsActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
+                Log.d(this.toString(),"data at dream_program_reference changed");
+
                 String value = dataSnapshot.getValue(String.class);
 
                 if (value == null){
-                    Log.e("Dream Program", "null");
+                    Log.e(this.toString(), "data at dream_program_reference is null");
+
                 }
 
                 else {
@@ -446,21 +521,35 @@ public class AspirationsActivity extends AppCompatActivity {
                     editor.putString("Dream Program", value);
                     editor.apply();
 
-                    Log.e("Dream Program", value);
+                    Log.d(this.toString(), "data at dream_program_reference is " + value);
 
 
                     String temp_university = aspirationsItemArrayList.get(0).value;
+                    Log.d(this.toString(), "temp_university is " + temp_university);
+
                     String temp_semester = aspirationsItemArrayList.get(2).value;
+                    Log.d(this.toString(), "temp_semester is " + temp_semester);
 
                     aspirationsItemArrayList.clear();
+                    Log.d(this.toString(), "aspirationsItemArrayList cleared");
+
 
                     aspirationsItemArrayList.add(new AspirationsItem("DREAM UNIVERSITY",temp_university));
+                    Log.d(this.toString(),"item added to accountItemArrayList - dream university");
+
                     aspirationsItemArrayList.add(new AspirationsItem("DREAM PROGRAM",sharedPref.getString("Dream Program","-")));
+                    Log.d(this.toString(),"item added to accountItemArrayList - dream program");
+
                     aspirationsItemArrayList.add(new AspirationsItem("DREAM SEMESTER",temp_semester));
+                    Log.d(this.toString(),"item added to accountItemArrayList - dream semester");
 
 
                     AspirationsAdapter temp_adapter = new AspirationsAdapter(aspirationsItemArrayList, getBaseContext());
+                    Log.d(this.toString(),"temp_adapter created");
+
                     list_view_aspirations.setAdapter(temp_adapter);
+                    Log.d(this.toString(),"temp_adapter set to list_view_aspirations");
+
 
                 }
 
@@ -469,7 +558,7 @@ public class AspirationsActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                Log.e("error","database error");
+                Log.e(this.toString(),databaseError.getMessage());
 
             }
         });
@@ -479,10 +568,12 @@ public class AspirationsActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
+                Log.d(this.toString(),"data at dream_semester_reference changed");
+
                 String value = dataSnapshot.getValue(String.class);
 
                 if (value == null){
-                    Log.e("Dream Semester", "null");
+                    Log.e(this.toString(), "data at dream_semester_reference is null");
                 }
 
                 else {
@@ -491,21 +582,35 @@ public class AspirationsActivity extends AppCompatActivity {
                     editor.putString("Dream Semester", value);
                     editor.apply();
 
-                    Log.e("Dream Semester", value);
+                    Log.d(this.toString(), "data at dream_semester_reference is " + value);
 
 
                     String temp_university = aspirationsItemArrayList.get(0).value;
+                    Log.d(this.toString(), "temp_university is " + temp_university);
+
                     String temp_program = aspirationsItemArrayList.get(1).value;
+                    Log.d(this.toString(), "temp_program is " + temp_program);
 
                     aspirationsItemArrayList.clear();
+                    Log.d(this.toString(), "aspirationsItemArrayList cleared");
 
                     aspirationsItemArrayList.add(new AspirationsItem("DREAM UNIVERSITY",temp_university));
+                    Log.d(this.toString(),"item added to accountItemArrayList - dream university");
+
                     aspirationsItemArrayList.add(new AspirationsItem("DREAM PROGRAM",temp_program));
+                    Log.d(this.toString(),"item added to accountItemArrayList - dream program");
+
                     aspirationsItemArrayList.add(new AspirationsItem("DREAM SEMESTER",sharedPref.getString("Dream Semester","-")));
+                    Log.d(this.toString(),"item added to accountItemArrayList - dream semester");
+
 
 
                     AspirationsAdapter temp_adapter = new AspirationsAdapter(aspirationsItemArrayList, getBaseContext());
+                    Log.d(this.toString(),"temp_adapter created");
+
                     list_view_aspirations.setAdapter(temp_adapter);
+                    Log.d(this.toString(),"temp_adapter set to list_view_aspirations");
+
                 }
 
             }
@@ -513,7 +618,7 @@ public class AspirationsActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                Log.e("error","database error");
+                Log.e(this.toString(),databaseError.getMessage());
 
             }
         });
@@ -522,6 +627,7 @@ public class AspirationsActivity extends AppCompatActivity {
 
 
         list_view_aspirations.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
@@ -529,6 +635,7 @@ public class AspirationsActivity extends AppCompatActivity {
                 if (position == 0) //dream university
                 {
 
+                    Log.d(this.toString(),"dream university clicked");
 
                     AlertDialog alertDialog = null;
 
@@ -544,7 +651,10 @@ public class AspirationsActivity extends AppCompatActivity {
                     alert_dialog_title.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
                     alert_dialog_title.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
 
+                    Log.w(this.toString(),"initialising nexa bold...(requires API level 26)");
                     Typeface nexa_bold = getResources().getFont(R.font.nexa_bold);
+
+                    Log.w(this.toString(),"initialising nexa light...(requires API level 26)");
                     Typeface nexa_light = getResources().getFont(R.font.nexa_light);
 
                     alert_dialog_title.setTypeface(nexa_bold);
@@ -672,16 +782,28 @@ public class AspirationsActivity extends AppCompatActivity {
                     editText.setBackgroundTintList(colorStateList);
 
 
+                    Log.d(this.toString(), "adding views to alert dialog...");
 
 
                     alert_dialog_layout.addView(alert_dialog_title);
+                    Log.d(this.toString(), "alert_dialog_title added to alert dialog");
+
                     alert_dialog_layout.addView(editText);
+                    Log.d(this.toString(), "editText added to alert dialog");
+
                     alert_dialog_layout.addView(button);
+                    Log.d(this.toString(), "button added to alert dialog");
+
+                    Log.d(this.toString(), "building alert dialog...");
+
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
                     builder.setView(alert_dialog_layout);
                     alertDialog = builder.create();
                     alertDialog.show();
+
+                    Log.d(this.toString(), "alert dialog created and shown");
+
 
                     final AlertDialog finalAlertDialog = alertDialog;
 
@@ -702,6 +824,7 @@ public class AspirationsActivity extends AppCompatActivity {
 //                            finish();
 //                            startActivity(getIntent());
 
+                            Log.d(this.toString(), "alert dialog dismissed");
 
 
                         }
@@ -714,7 +837,9 @@ public class AspirationsActivity extends AppCompatActivity {
                     if (position == 1)  //dream program
                     {
 
-                    AlertDialog alertDialog = null;
+                        Log.d(this.toString(),"dream program clicked");
+
+                        AlertDialog alertDialog = null;
 
                     LinearLayout alert_dialog_layout = new LinearLayout(view.getContext());
                     alert_dialog_layout.setOrientation(LinearLayout.VERTICAL);
@@ -728,8 +853,11 @@ public class AspirationsActivity extends AppCompatActivity {
                     alert_dialog_title.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
                     alert_dialog_title.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
 
-                    Typeface nexa_bold = getResources().getFont(R.font.nexa_bold);
-                    Typeface nexa_light = getResources().getFont(R.font.nexa_light);
+                        Log.w(this.toString(),"initialising nexa bold...(requires API level 26)");
+                        Typeface nexa_bold = getResources().getFont(R.font.nexa_bold);
+
+                        Log.w(this.toString(),"initialising nexa light...(requires API level 26)");
+                        Typeface nexa_light = getResources().getFont(R.font.nexa_light);
 
                     alert_dialog_title.setTypeface(nexa_bold);
 
@@ -856,18 +984,29 @@ public class AspirationsActivity extends AppCompatActivity {
                     editText.setBackgroundTintList(colorStateList);
 
 
+                        Log.d(this.toString(), "adding views to alert dialog...");
 
 
                     alert_dialog_layout.addView(alert_dialog_title);
-                    alert_dialog_layout.addView(editText);
-                    alert_dialog_layout.addView(button);
+                        Log.d(this.toString(), "alert_dialog_title added to alert dialog");
 
-                    AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                        alert_dialog_layout.addView(editText);
+                        Log.d(this.toString(), "editText added to alert dialog");
+
+                        alert_dialog_layout.addView(button);
+                        Log.d(this.toString(), "button added to alert dialog");
+
+                        Log.d(this.toString(), "building alert dialog...");
+
+                        AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
                     builder.setView(alert_dialog_layout);
                     alertDialog = builder.create();
                     alertDialog.show();
 
-                    final AlertDialog finalAlertDialog = alertDialog;
+                        Log.d(this.toString(), "alert dialog created and shown");
+
+
+                        final AlertDialog finalAlertDialog = alertDialog;
 
 
                     button.setOnClickListener(new View.OnClickListener() {
@@ -886,6 +1025,7 @@ public class AspirationsActivity extends AppCompatActivity {
 //                            finish();
 //                            startActivity(getIntent());
 
+                            Log.d(this.toString(), "alert dialog dismissed");
 
 
                         }
@@ -899,6 +1039,7 @@ public class AspirationsActivity extends AppCompatActivity {
                     if (position == 2) //dream semester
                     {
 
+                        Log.d(this.toString(),"dream semester clicked");
 
                         AlertDialog alertDialog = null;
 
@@ -914,7 +1055,10 @@ public class AspirationsActivity extends AppCompatActivity {
                         alert_dialog_title.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
                         alert_dialog_title.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
 
+                        Log.w(this.toString(),"initialising nexa bold...(requires API level 26)");
                         Typeface nexa_bold = getResources().getFont(R.font.nexa_bold);
+
+                        Log.w(this.toString(),"initialising nexa light...(requires API level 26)");
                         Typeface nexa_light = getResources().getFont(R.font.nexa_light);
 
                         alert_dialog_title.setTypeface(nexa_bold);
@@ -1052,15 +1196,27 @@ public class AspirationsActivity extends AppCompatActivity {
                         if (dream_semester.equals("Spring"))    radio_button_spring.setChecked(true);
                         else if (dream_semester.equals("Fall")) radio_button_fall.setChecked(true);
 
+                        Log.d(this.toString(), "adding views to alert dialog...");
+
 
                         alert_dialog_layout.addView(alert_dialog_title);
+                        Log.d(this.toString(), "alert_dialog_title added to alert dialog");
+
                         alert_dialog_layout.addView(radioGroup);
+                        Log.d(this.toString(), "radioGroup added to alert dialog");
+
                         alert_dialog_layout.addView(button);
+                        Log.d(this.toString(), "button added to alert dialog");
+
+                        Log.d(this.toString(), "building alert dialog...");
+
 
                         AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
                         builder.setView(alert_dialog_layout);
                         alertDialog = builder.create();
                         alertDialog.show();
+
+                        Log.d(this.toString(), "alert dialog created and shown");
 
                         final AlertDialog finalAlertDialog = alertDialog;
 
@@ -1083,6 +1239,7 @@ public class AspirationsActivity extends AppCompatActivity {
 //                                finish();
 //                                startActivity(getIntent());
 
+                                Log.d(this.toString(), "alert dialog dismissed");
 
 
                             }

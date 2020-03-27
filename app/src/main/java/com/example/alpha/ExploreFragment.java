@@ -1,12 +1,23 @@
 package com.example.alpha;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.Objects;
+
+import static android.content.Context.MODE_PRIVATE;
 
 
 /**
@@ -19,6 +30,14 @@ public class ExploreFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+
+
+    //shared preferences
+    private SharedPreferences sharedPref;
+    private SharedPreferences.Editor sharedPrefEditor;
+
+
+
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -59,6 +78,53 @@ public class ExploreFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_explore, container, false);
+        Log.i(this.toString(),"started");
+
+        View v = inflater.inflate(R.layout.fragment_explore, container, false);
+        Log.d(this.toString(),"layout inflated");
+
+        //shared preferences
+        sharedPref = Objects.requireNonNull(getActivity()).getSharedPreferences("Shared Preferences", MODE_PRIVATE);
+        sharedPrefEditor = sharedPref.edit();
+        Log.d(this.toString(),"shared preferences opened for editing");
+
+        sharedPrefEditor.putInt("Fragment",1);
+        Log.d(this.toString(),"share preferences fragment value changed to 1");
+
+        sharedPrefEditor.apply();
+        Log.d(this.toString(),"shared preferences changes applied");
+
+
+        final int theme = sharedPref.getInt("Theme", AppCompatDelegate.MODE_NIGHT_NO);
+        Log.d(this.toString(),"current app theme is "+theme);
+
+
+
+        //initialise elements
+
+        ListView listView = v.findViewById(R.id.list_view_explore);
+        Log.d(this.toString(),"listView initialised");
+
+        ArrayList<ExploreItem> exploreItemArrayList = new ArrayList<>();
+        Log.d(this.toString(),"exploreItemArrayList created");
+
+        exploreItemArrayList.add(new ExploreItem("GRE","Graduate Record Examinations"));
+        Log.d(this.toString(),"item added to exploreItemArrayList - GRE");
+
+        exploreItemArrayList.add(new ExploreItem("TOEFL","Test of English as a Foreign Language"));
+        Log.d(this.toString(),"item added to exploreItemArrayList - TOEFL");
+
+        exploreItemArrayList.add(new ExploreItem("IELTS","International English Language Testing System"));
+        Log.d(this.toString(),"item added to exploreItemArrayList - IELTS");
+
+        ExploreAdapter exploreAdapter = new ExploreAdapter(exploreItemArrayList, getContext());
+        Log.d(this.toString(),"exploreAdapter created");
+
+        listView.setAdapter(exploreAdapter);
+        Log.d(this.toString(),"exploreAdapter set to listView");
+
+
+
+        return v;
     }
 }

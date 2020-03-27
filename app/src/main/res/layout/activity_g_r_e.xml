@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="15sp"
-        android:fontFamily="@font/nexa_bold"
+        android:fontFamily="@font/nexa_light"
         android:padding="10dp"
         android:layout_margin="10dp"
         android:text="@string/gre_overview"/>

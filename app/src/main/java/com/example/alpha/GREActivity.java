@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Typeface;
@@ -430,6 +431,17 @@ public class GREActivity extends AppCompatActivity {
                 Log.d(this.toString(),"text color of text_view_gre_subject set to colorPrimary");
             }
         }
+
+        text_view_gre_general.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Log.d(this.toString(),"starting GREGeneralActivity...");
+
+                Intent intent = new Intent(getBaseContext(),GREGeneralActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
 

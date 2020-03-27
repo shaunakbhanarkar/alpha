@@ -5,9 +5,32 @@
     <string name="bottom_nav_explore">Explore</string>
     <string name="bottom_nav_account">Account</string>
 
-<!--strings for GRE Activity-->
+    <!--strings for GRE Activity-->
     <string name="gre_overview">The Graduate Record Examinations, often known as GRE, are conducted by Educational Testing Services (ETS). Broadly categorised, there are two types of GRE - GRE General Test and GRE Subject Tests. The GRE tests are one of the most widely accepted tests across the world.</string>
     <string name="gre_general_learn_more"><u>Learn more about the GRE General Test</u></string>
     <string name="gre_subject_learn_more"><u>Learn more about the GRE Subject Tests</u></string>
+
+    <!--strings for GRE General Activity-->
+    <string name="gre_general_sections_overview">The GRE General Test is a widely accepted test for masters, doctorate and other specialised programs. The test consists of three types of sections.</string>
+
+    <string name="gre_general_awa_title">Analytical Writing Assessment (AWA)</string>
+    <string name="gre_general_awa_overview">This section type tests your thinking and analytical skills by requiring you write you an essay based on the instructions provided.</string>
+    <string name="gre_general_awa_learn_more"><u>Learn more about AWA-Measure</u></string>
+
+    <string name="gre_general_verbal_title">Verbal Reasoning (V)</string>
+    <string name="gre_general_verbal_overview">This section type tests your ability to understand the text, analyse and draw conclusions by requiring you to solve various types of Verbal Reasoning questions.</string>
+    <string name="gre_general_verbal_learn_more"><u>Learn more about V-Measure</u></string>
+
+    <string name="gre_general_quant_title">Quantitative Reasoning (Q)</string>
+    <string name="gre_general_quant_overview">This section type tests your ability to interpret and analyse quantitative information by requiring you to solve various types of Quantitative Reasoning questions.</string>
+    <string name="gre_general_quant_learn_more"><u>Learn more about Q-Measure</u></string>
+
+    <string name="gre_general_modes_overview">The GRE General Test is available in two modes - Computer-delivered and Paper-delivered.</string>
+
+    <string name="gre_general_computer_title">Computer-delivered Test</string>
+    <string name="gre_general_computer_overview"></string>
+
+    <string name="gre_general_paper_title">Paper-delivered Test</string>
+    <string name="gre_general_paper_overview"></string>
 
 </resources>

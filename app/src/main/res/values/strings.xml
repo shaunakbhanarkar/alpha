@@ -5,5 +5,9 @@
     <string name="bottom_nav_explore">Explore</string>
     <string name="bottom_nav_account">Account</string>
 
+<!--strings for GRE Activity-->
+    <string name="gre_overview">The Graduate Record Examinations, often known as GRE, are conducted by Educational Testing Services (ETS). Broadly categorised, there are two types of GRE - GRE General Test and GRE Subject Tests. The GRE tests are one of the most widely accepted tests across the world.</string>
+    <string name="gre_general_learn_more"><u>Learn more about the GRE General Test</u></string>
+    <string name="gre_subject_learn_more"><u>Learn more about the GRE Subject Tests</u></string>
 
 </resources>

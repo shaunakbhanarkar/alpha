@@ -1,5 +1,6 @@
 package com.example.alpha;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -10,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -124,6 +126,20 @@ public class ExploreFragment extends Fragment {
         Log.d(this.toString(),"exploreAdapter set to listView");
 
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                if (position == 0 ) //gre
+                {
+                    Log.d(this.toString(), "starting GREActivity...");
+
+                    Intent intent = new Intent(getContext(),GREActivity.class);
+                    startActivity(intent);
+                }
+
+            }
+        });
 
         return v;
     }

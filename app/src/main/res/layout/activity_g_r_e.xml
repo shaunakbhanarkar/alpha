@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/background_layout"
+    tools:context=".GREActivity">
+
+    <TextView
+        android:id="@+id/text_view_gre_overview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:fontFamily="@font/nexa_bold"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:text="@string/gre_overview"/>
+
+
+    <TextView
+        android:id="@+id/text_view_gre_general"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:fontFamily="@font/nexa_bold"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:text="@string/gre_general_learn_more"/>
+
+    <TextView
+        android:id="@+id/text_view_gre_subject"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:fontFamily="@font/nexa_bold"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:text="@string/gre_subject_learn_more"/>
+
+
+</LinearLayout>

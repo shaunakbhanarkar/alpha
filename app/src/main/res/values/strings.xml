@@ -56,6 +56,22 @@
     <string name="gre_general_computer_features_details">The computer-delivered test provides the following features:\n\n - You can skip a question within a section. However, you cannot skip a section. You have to submit and end a section to proceed with another section.\n\n - You can change or edit your answer for a question at any point of time within a section.\n\n - You can mark a question and review it later at any point of time within a section.\n\n - You can get overall preview of the section at any point of time within a section.\n\n - On-screen calculator is available for Q-Measure sections.</string>
 
     <!--strings for GRE General Paper Activity-->
-    <string name="gre_general_paper_details"></string>
+    <string name="gre_general_paper_sections_title">Sections</string>
+    <string name="gre_general_paper_sections_details">You are required to attempt a total of 5 sections:\n\n - 1 AWA-Measure section (1 hr)\n - 2 V-Measure sections (35 min each)\n - 2 Q-Measure sections (40 min each)</string>
+
+    <string name="gre_general_paper_order_title">Order</string>
+    <string name="gre_general_paper_order_details">The order of sections in the test is:\n\n1. AWA-Measure\n2. V-Measure 1 or Q-Measure 1\n --- 10 min break --- \n3. Q-Measure 1 or V-Measure 1\n4. V-Measure 2 or Q-Measure 2\n5. Q-Measure 2 or V-Measure 2</string>
+
+    <string name="gre_general_paper_unidentified_title">Experimental Section</string>
+    <string name="gre_general_paper_unidentified_details"> - The paper-delivered test does not come with an experimental section.\n\n - All the sections in the test contribute towards your ultimate score.</string>
+
+    <string name="gre_general_paper_break_title">Breaks</string>
+    <string name="gre_general_paper_break_details"> - You get a 1 min break after the end of each section. You are not allowed to leave your desk during this break.\n\n - After the end of the second section, you get a 10 min break. You are allowed to leave your desk during this break.\n\n - All the breaks are optional. One may chose to skip any of the breaks.</string>
+
+    <string name="gre_general_paper_time_title">Total Time</string>
+    <string name="gre_general_paper_time_details">The total duration of the paper-delivered test is around 3 hrs 30 min.</string>
+
+    <string name="gre_general_paper_features_title">Features</string>
+    <string name="gre_general_paper_features_details">The paper-delivered test provides the following features:\n\n - Answers are to be entered directly in the test book. You are not required to write answers on a separate answer sheet.\n\n - You will be provided with a calculator for Q-Measure sections. You are not allowed to use your own calculator.</string>
 
 </resources>

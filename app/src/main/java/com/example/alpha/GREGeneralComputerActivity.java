@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Typeface;
@@ -28,12 +27,13 @@ import android.widget.TextView;
 
 import java.util.Objects;
 
-public class GREGeneralModesActivity extends AppCompatActivity {
+public class GREGeneralComputerActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_g_r_e_general_modes);
+        setContentView(R.layout.activity_g_r_e_general_computer);
+
 
         Log.i(this.toString(),"started");
 
@@ -71,7 +71,7 @@ public class GREGeneralModesActivity extends AppCompatActivity {
 
 
 
-        action_bar_title.setText("Modes of Exam");
+        action_bar_title.setText("Computer-delivered Test");
         Log.d(this.toString(),"action bar title set");
 
         int[][] states = new int[][]{
@@ -375,128 +375,182 @@ public class GREGeneralModesActivity extends AppCompatActivity {
             }
         });
 
-
         //initialise elements
+        TextView gre_general_computer_sections_title = findViewById(R.id.gre_general_computer_sections_title);
+        TextView gre_general_computer_order_title = findViewById(R.id.gre_general_computer_order_title);
+        TextView gre_general_computer_unidentified_title = findViewById(R.id.gre_general_computer_unidentified_title);
+        TextView gre_general_computer_break_title = findViewById(R.id.gre_general_computer_break_title);
+        TextView gre_general_computer_time_title = findViewById(R.id.gre_general_computer_time_title);
+        TextView gre_general_computer_features_title = findViewById(R.id.gre_general_computer_features_title);
 
-        TextView gre_general_modes_overview = findViewById(R.id.gre_general_modes_overview);
-        TextView gre_general_computer_overview = findViewById(R.id.gre_general_computer_overview);
-        TextView gre_general_paper_overview = findViewById(R.id.gre_general_paper_overview);
+        TextView gre_general_computer_sections_details = findViewById(R.id.gre_general_computer_sections_details);
+        TextView gre_general_computer_order_details = findViewById(R.id.gre_general_computer_order_details);
+        TextView gre_general_computer_unidentified_details = findViewById(R.id.gre_general_computer_unidentified_details);
+        TextView gre_general_computer_break_details = findViewById(R.id.gre_general_computer_break_details);
+        TextView gre_general_computer_time_details = findViewById(R.id.gre_general_computer_time_details);
+        TextView gre_general_computer_features_details = findViewById(R.id.gre_general_computer_features_details);
 
-        TextView gre_general_computer_title = findViewById(R.id.gre_general_computer_title);
-        TextView gre_general_paper_title = findViewById(R.id.gre_general_paper_title);
-
-        TextView gre_general_computer_learn_more = findViewById(R.id.gre_general_computer_learn_more);
-        TextView gre_general_paper_learn_more = findViewById(R.id.gre_general_paper_learn_more);
 
 
         if (theme == AppCompatDelegate.MODE_NIGHT_NO)
         {
-            gre_general_modes_overview.setTextColor(getResources().getColor(R.color.black));
-            Log.d(this.toString(),"text color of gre_general_modes_overview set to black");
+            gre_general_computer_sections_title.setTextColor(getResources().getColor(R.color.colorPrimary));
+            Log.d(this.toString(),"text color of gre_general_computer_sections_title set to colorPrimary");
 
-            gre_general_computer_overview.setTextColor(getResources().getColor(R.color.black));
-            Log.d(this.toString(),"text color of gre_general_computer_overview set to black");
+            gre_general_computer_order_title.setTextColor(getResources().getColor(R.color.colorPrimary));
+            Log.d(this.toString(),"text color of gre_general_computer_order_title set to colorPrimary");
 
-            gre_general_paper_overview.setTextColor(getResources().getColor(R.color.black));
-            Log.d(this.toString(),"text color of gre_general_paper_overview set to black");
+            gre_general_computer_unidentified_title.setTextColor(getResources().getColor(R.color.colorPrimary));
+            Log.d(this.toString(),"text color of gre_general_computer_unidentified_title set to colorPrimary");
 
-            gre_general_computer_title.setTextColor(getResources().getColor(R.color.colorPrimary));
-            Log.d(this.toString(),"text color of gre_general_computer_title set to colorPrimary");
+            gre_general_computer_break_title.setTextColor(getResources().getColor(R.color.colorPrimary));
+            Log.d(this.toString(),"text color of gre_general_computer_break_title set to colorPrimary");
 
-            gre_general_paper_title.setTextColor(getResources().getColor(R.color.colorPrimary));
-            Log.d(this.toString(),"text color of gre_general_paper_title set to colorPrimary");
+            gre_general_computer_time_title.setTextColor(getResources().getColor(R.color.colorPrimary));
+            Log.d(this.toString(),"text color of gre_general_computer_time_title set to colorPrimary");
 
-            gre_general_computer_learn_more.setTextColor(getResources().getColor(R.color.colorPrimary));
-            Log.d(this.toString(),"text color of gre_general_computer_learn_more set to colorPrimary");
+            gre_general_computer_features_title.setTextColor(getResources().getColor(R.color.colorPrimary));
+            Log.d(this.toString(),"text color of gre_general_computer_features_title set to colorPrimary");
 
-            gre_general_paper_learn_more.setTextColor(getResources().getColor(R.color.colorPrimary));
-            Log.d(this.toString(),"text color of gre_general_paper_learn_more set to colorPrimary");
+            gre_general_computer_sections_details.setTextColor(getResources().getColor(R.color.black));
+            Log.d(this.toString(),"text color of gre_general_computer_sections_details set to black");
+
+            gre_general_computer_order_details.setTextColor(getResources().getColor(R.color.black));
+            Log.d(this.toString(),"text color of gre_general_computer_order_details set to black");
+
+            gre_general_computer_unidentified_details.setTextColor(getResources().getColor(R.color.black));
+            Log.d(this.toString(),"text color of gre_general_computer_unidentified_details set to black");
+
+            gre_general_computer_break_details.setTextColor(getResources().getColor(R.color.black));
+            Log.d(this.toString(),"text color of gre_general_computer_break_details set to black");
+
+            gre_general_computer_time_details.setTextColor(getResources().getColor(R.color.black));
+            Log.d(this.toString(),"text color of gre_general_computer_time_details set to black");
+
+            gre_general_computer_features_details.setTextColor(getResources().getColor(R.color.black));
+            Log.d(this.toString(),"text color of gre_general_computer_features_details set to black");
         }
         else if (theme == AppCompatDelegate.MODE_NIGHT_YES)
         {
-            gre_general_modes_overview.setTextColor(getResources().getColor(R.color.white));
-            Log.d(this.toString(),"text color of gre_general_modes_overview set to white");
+            gre_general_computer_sections_title.setTextColor(getResources().getColor(R.color.darkHighlight));
+            Log.d(this.toString(),"text color of gre_general_computer_sections_title set to darkHighlight");
 
-            gre_general_computer_overview.setTextColor(getResources().getColor(R.color.white));
-            Log.d(this.toString(),"text color of gre_general_computer_overview set to white");
+            gre_general_computer_order_title.setTextColor(getResources().getColor(R.color.darkHighlight));
+            Log.d(this.toString(),"text color of gre_general_computer_order_title set to darkHighlight");
 
-            gre_general_paper_overview.setTextColor(getResources().getColor(R.color.white));
-            Log.d(this.toString(),"text color of gre_general_paper_overview set to white");
+            gre_general_computer_unidentified_title.setTextColor(getResources().getColor(R.color.darkHighlight));
+            Log.d(this.toString(),"text color of gre_general_computer_unidentified_title set to darkHighlight");
 
-            gre_general_computer_title.setTextColor(getResources().getColor(R.color.darkHighlight));
-            Log.d(this.toString(),"text color of gre_general_computer_title set to darkHighlight");
+            gre_general_computer_break_title.setTextColor(getResources().getColor(R.color.darkHighlight));
+            Log.d(this.toString(),"text color of gre_general_computer_break_title set to darkHighlight");
 
-            gre_general_paper_title.setTextColor(getResources().getColor(R.color.darkHighlight));
-            Log.d(this.toString(),"text color of gre_general_paper_title set to darkHighlight");
+            gre_general_computer_time_title.setTextColor(getResources().getColor(R.color.darkHighlight));
+            Log.d(this.toString(),"text color of gre_general_computer_time_title set to darkHighlight");
 
-            gre_general_computer_learn_more.setTextColor(getResources().getColor(R.color.darkHighlight));
-            Log.d(this.toString(),"text color of gre_general_computer_learn_more set to darkHighlight");
+            gre_general_computer_features_title.setTextColor(getResources().getColor(R.color.darkHighlight));
+            Log.d(this.toString(),"text color of gre_general_computer_features_title set to darkHighlight");
 
-            gre_general_paper_learn_more.setTextColor(getResources().getColor(R.color.darkHighlight));
-            Log.d(this.toString(),"text color of gre_general_paper_learn_more set to darkHighlight");
+            gre_general_computer_sections_details.setTextColor(getResources().getColor(R.color.white));
+            Log.d(this.toString(),"text color of gre_general_computer_sections_details set to white");
+
+            gre_general_computer_order_details.setTextColor(getResources().getColor(R.color.white));
+            Log.d(this.toString(),"text color of gre_general_computer_order_details set to white");
+
+            gre_general_computer_unidentified_details.setTextColor(getResources().getColor(R.color.white));
+            Log.d(this.toString(),"text color of gre_general_computer_unidentified_details set to white");
+
+            gre_general_computer_break_details.setTextColor(getResources().getColor(R.color.white));
+            Log.d(this.toString(),"text color of gre_general_computer_break_details set to white");
+
+            gre_general_computer_time_details.setTextColor(getResources().getColor(R.color.white));
+            Log.d(this.toString(),"text color of gre_general_computer_time_details set to white");
+
+            gre_general_computer_features_details.setTextColor(getResources().getColor(R.color.white));
+            Log.d(this.toString(),"text color of gre_general_computer_features_details set to white");
         }
         else
         {
             PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
             if (powerManager.isPowerSaveMode())
             {
-                gre_general_modes_overview.setTextColor(getResources().getColor(R.color.white));
-                Log.d(this.toString(),"text color of gre_general_modes_overview set to white");
+                gre_general_computer_sections_title.setTextColor(getResources().getColor(R.color.darkHighlight));
+                Log.d(this.toString(),"text color of gre_general_computer_sections_title set to darkHighlight");
 
-                gre_general_computer_overview.setTextColor(getResources().getColor(R.color.white));
-                Log.d(this.toString(),"text color of gre_general_computer_overview set to white");
+                gre_general_computer_order_title.setTextColor(getResources().getColor(R.color.darkHighlight));
+                Log.d(this.toString(),"text color of gre_general_computer_order_title set to darkHighlight");
 
-                gre_general_paper_overview.setTextColor(getResources().getColor(R.color.white));
-                Log.d(this.toString(),"text color of gre_general_paper_overview set to white");
+                gre_general_computer_unidentified_title.setTextColor(getResources().getColor(R.color.darkHighlight));
+                Log.d(this.toString(),"text color of gre_general_computer_unidentified_title set to darkHighlight");
 
-                gre_general_computer_title.setTextColor(getResources().getColor(R.color.darkHighlight));
-                Log.d(this.toString(),"text color of gre_general_computer_title set to darkHighlight");
+                gre_general_computer_break_title.setTextColor(getResources().getColor(R.color.darkHighlight));
+                Log.d(this.toString(),"text color of gre_general_computer_break_title set to darkHighlight");
 
-                gre_general_paper_title.setTextColor(getResources().getColor(R.color.darkHighlight));
-                Log.d(this.toString(),"text color of gre_general_paper_title set to darkHighlight");
+                gre_general_computer_time_title.setTextColor(getResources().getColor(R.color.darkHighlight));
+                Log.d(this.toString(),"text color of gre_general_computer_time_title set to darkHighlight");
 
-                gre_general_computer_learn_more.setTextColor(getResources().getColor(R.color.darkHighlight));
-                Log.d(this.toString(),"text color of gre_general_computer_learn_more set to darkHighlight");
+                gre_general_computer_features_title.setTextColor(getResources().getColor(R.color.darkHighlight));
+                Log.d(this.toString(),"text color of gre_general_computer_features_title set to darkHighlight");
 
-                gre_general_paper_learn_more.setTextColor(getResources().getColor(R.color.darkHighlight));
-                Log.d(this.toString(),"text color of gre_general_paper_learn_more set to darkHighlight");
+                gre_general_computer_sections_details.setTextColor(getResources().getColor(R.color.white));
+                Log.d(this.toString(),"text color of gre_general_computer_sections_details set to white");
+
+                gre_general_computer_order_details.setTextColor(getResources().getColor(R.color.white));
+                Log.d(this.toString(),"text color of gre_general_computer_order_details set to white");
+
+                gre_general_computer_unidentified_details.setTextColor(getResources().getColor(R.color.white));
+                Log.d(this.toString(),"text color of gre_general_computer_unidentified_details set to white");
+
+                gre_general_computer_break_details.setTextColor(getResources().getColor(R.color.white));
+                Log.d(this.toString(),"text color of gre_general_computer_break_details set to white");
+
+                gre_general_computer_time_details.setTextColor(getResources().getColor(R.color.white));
+                Log.d(this.toString(),"text color of gre_general_computer_time_details set to white");
+
+                gre_general_computer_features_details.setTextColor(getResources().getColor(R.color.white));
+                Log.d(this.toString(),"text color of gre_general_computer_features_details set to white");
             }
             else
             {
-                gre_general_modes_overview.setTextColor(getResources().getColor(R.color.black));
-                Log.d(this.toString(),"text color of gre_general_modes_overview set to black");
+                gre_general_computer_sections_title.setTextColor(getResources().getColor(R.color.colorPrimary));
+                Log.d(this.toString(),"text color of gre_general_computer_sections_title set to colorPrimary");
 
-                gre_general_computer_overview.setTextColor(getResources().getColor(R.color.black));
-                Log.d(this.toString(),"text color of gre_general_computer_overview set to black");
+                gre_general_computer_order_title.setTextColor(getResources().getColor(R.color.colorPrimary));
+                Log.d(this.toString(),"text color of gre_general_computer_order_title set to colorPrimary");
 
-                gre_general_paper_overview.setTextColor(getResources().getColor(R.color.black));
-                Log.d(this.toString(),"text color of gre_general_paper_overview set to black");
+                gre_general_computer_unidentified_title.setTextColor(getResources().getColor(R.color.colorPrimary));
+                Log.d(this.toString(),"text color of gre_general_computer_unidentified_title set to colorPrimary");
 
-                gre_general_computer_title.setTextColor(getResources().getColor(R.color.colorPrimary));
-                Log.d(this.toString(),"text color of gre_general_computer_title set to colorPrimary");
+                gre_general_computer_break_title.setTextColor(getResources().getColor(R.color.colorPrimary));
+                Log.d(this.toString(),"text color of gre_general_computer_break_title set to colorPrimary");
 
-                gre_general_paper_title.setTextColor(getResources().getColor(R.color.colorPrimary));
-                Log.d(this.toString(),"text color of gre_general_paper_title set to colorPrimary");
+                gre_general_computer_time_title.setTextColor(getResources().getColor(R.color.colorPrimary));
+                Log.d(this.toString(),"text color of gre_general_computer_time_title set to colorPrimary");
 
-                gre_general_computer_learn_more.setTextColor(getResources().getColor(R.color.colorPrimary));
-                Log.d(this.toString(),"text color of gre_general_computer_learn_more set to colorPrimary");
+                gre_general_computer_features_title.setTextColor(getResources().getColor(R.color.colorPrimary));
+                Log.d(this.toString(),"text color of gre_general_computer_features_title set to colorPrimary");
 
-                gre_general_paper_learn_more.setTextColor(getResources().getColor(R.color.colorPrimary));
-                Log.d(this.toString(),"text color of gre_general_paper_learn_more set to colorPrimary");
+                gre_general_computer_sections_details.setTextColor(getResources().getColor(R.color.black));
+                Log.d(this.toString(),"text color of gre_general_computer_sections_details set to black");
+
+                gre_general_computer_order_details.setTextColor(getResources().getColor(R.color.black));
+                Log.d(this.toString(),"text color of gre_general_computer_order_details set to black");
+
+                gre_general_computer_unidentified_details.setTextColor(getResources().getColor(R.color.black));
+                Log.d(this.toString(),"text color of gre_general_computer_unidentified_details set to black");
+
+                gre_general_computer_break_details.setTextColor(getResources().getColor(R.color.black));
+                Log.d(this.toString(),"text color of gre_general_computer_break_details set to black");
+
+                gre_general_computer_time_details.setTextColor(getResources().getColor(R.color.black));
+                Log.d(this.toString(),"text color of gre_general_computer_time_details set to black");
+
+                gre_general_computer_features_details.setTextColor(getResources().getColor(R.color.black));
+                Log.d(this.toString(),"text color of gre_general_computer_features_details set to black");
             }
         }
 
 
-        gre_general_computer_learn_more.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                Log.d(this.toString(),"starting GREGeneralComputerActivity...");
-
-                Intent intent = new Intent(getBaseContext(),GREGeneralComputerActivity.class);
-                startActivity(intent);
-            }
-        });
 
 
     }

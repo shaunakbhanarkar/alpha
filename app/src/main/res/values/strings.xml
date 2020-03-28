@@ -36,8 +36,26 @@
     <string name="gre_general_paper_overview">The paper-delivered test does not require you to have any prerequisite knowledge, but has its own limitations compared to the computer-delivered test.</string>
     <string name="gre_general_paper_learn_more"><u>Learn more about paper-delivered test</u></string>
 
-    <string name="gre_general_computer_details">First, you get 2 AWA-Measure sections (30 min each). Next, you get a V-Measure section (30 min) or a Q-Measure section (35 min). This is followed by a 10 min break. Next, you get a V-Measure section and 2 Q-Measure sections, or a Q-Measure section and 2 V-Measure sections, depending upon which section you received before the break. In addition to this, an unscored or a research section may also be included after the break. An unscored section can be a V-Measure (30 min) or a Q-Measure (35 min) and is given randomly. This unscored section may not be explicitly specified, and hence there is no way to determine which one of the sections is an unscored section. In total, you are required to attempt 2 AWA-Measure sections, 2 V-Measure sections and 2 Q-Measure sections (which are all scored and count towards your final score) along with 1 unscored section. Thus, if you get 3 V-Measure sections and 2 Q-Measure sections, you can conclude that one of those V-Measure sections was unscored, but it is impossible to determine which one of those was unscored. Apart from the 10 min break after the third section, you get a 1 min break after each individual section. The total duration of the computer-delivered test is around 3 hours 45 minutes, depending on the combination of sections that you get.</string>
+    <!--strings for GRE General Computer Activity-->
+    <string name="gre_general_computer_sections_title">Sections</string>
+    <string name="gre_general_computer_sections_details">You are required to attempt a total of 6 sections:\n\n - 1 AWA-Measure section (1 hr)\n - 2 V-Measure sections (30 min each)\n - 2 Q-Measure sections (35 min each)\n - 1 Experimental section (30 min or 35 min)</string>
 
+    <string name="gre_general_computer_order_title">Order</string>
+    <string name="gre_general_computer_order_details">The order of sections in the test is:\n\n1. AWA-Measure\n2. V-Measure 1 or Q-Measure 1\n3. Q-Measure 1 or V-Measure 1\n --- 10 min break --- \n4. V-Measure 2 or Q-Measure 2\n5. Q-Measure 2 or V-Measure 2\n6. V-Measure 3 or Q-Measure 3</string>
+
+    <string name="gre_general_computer_unidentified_title">Experimental Section</string>
+    <string name="gre_general_computer_unidentified_details"> - The experimental section can be a V-Measure section or a Q-Measure section.\n\n - It can appear anywhere in the test after the AWA section.\n\n - There is no way to determine whether a section in the test is experimental. For example, if you get 3 V-Measure sections and 2 Q-Measure sections in the test, it can be inferred that one of those V-Measure sections was experimental. However, there is absolutely no way to determine which one of those sections was experimental.\n\n - The experimental section does not count towards your ultimate score.</string>
+
+    <string name="gre_general_computer_break_title">Breaks</string>
+    <string name="gre_general_computer_break_details"> - You get a 1 min break after the end of each section. You are not allowed to leave your desk during this break.\n\n - After the end of the third section, you get a 10 min break. You are allowed to leave your desk during this break.\n\n - All the breaks are optional. One may chose to skip any of the breaks.</string>
+
+    <string name="gre_general_computer_time_title">Total Time</string>
+    <string name="gre_general_computer_time_details">The total duration of the computer-delivered test is around 4 hours, depending upon the combination of sections that you get on the test.</string>
+
+    <string name="gre_general_computer_features_title">Features</string>
+    <string name="gre_general_computer_features_details">The computer-delivered test provides the following features:\n\n - You can skip a question within a section. However, you cannot skip a section. You have to submit and end a section to proceed with another section.\n\n - You can change or edit your answer for a question at any point of time within a section.\n\n - You can mark a question and review it later at any point of time within a section.\n\n - You can get overall preview of the section at any point of time within a section.\n\n - On-screen calculator is available for Q-Measure sections.</string>
+
+    <!--strings for GRE General Paper Activity-->
     <string name="gre_general_paper_details"></string>
 
 </resources>

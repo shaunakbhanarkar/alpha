@@ -10,7 +10,7 @@
     <string name="gre_general_learn_more"><u>Learn more about the GRE General Test</u></string>
     <string name="gre_subject_learn_more"><u>Learn more about the GRE Subject Tests</u></string>
 
-    <!--strings for GRE General Activity-->
+    <!--strings for GRE General Exam Pattern Activity-->
     <string name="gre_general_sections_overview">The GRE General Test is a widely accepted test for masters, doctorate and other specialised programs. The test consists of three types of sections.</string>
 
     <string name="gre_general_awa_title">Analytical Writing Assessment (AWA)</string>
@@ -25,12 +25,19 @@
     <string name="gre_general_quant_overview">This section type tests your ability to interpret and analyse quantitative information by requiring you to solve various types of Quantitative Reasoning questions.</string>
     <string name="gre_general_quant_learn_more"><u>Learn more about Q-Measure</u></string>
 
-    <string name="gre_general_modes_overview">The GRE General Test is available in two modes - Computer-delivered and Paper-delivered.</string>
+    <!--strings for GRE General Modes Activity-->
+    <string name="gre_general_modes_overview">The GRE General Test is available in two modes - computer-delivered and paper-delivered.</string>
 
     <string name="gre_general_computer_title">Computer-delivered Test</string>
-    <string name="gre_general_computer_overview"></string>
+    <string name="gre_general_computer_overview">The computer-delivered test requires you have prerequisite knowledge about operating a basic computer in the testing environment. It comes with additional features compared to the paper-delivered test.</string>
+    <string name="gre_general_computer_learn_more"><u>Learn more about computer-delivered test</u></string>
 
     <string name="gre_general_paper_title">Paper-delivered Test</string>
-    <string name="gre_general_paper_overview"></string>
+    <string name="gre_general_paper_overview">The paper-delivered test does not require you to have any prerequisite knowledge, but has its own limitations compared to the computer-delivered test.</string>
+    <string name="gre_general_paper_learn_more"><u>Learn more about paper-delivered test</u></string>
+
+    <string name="gre_general_computer_details">First, you get 2 AWA-Measure sections (30 min each). Next, you get a V-Measure section (30 min) or a Q-Measure section (35 min). This is followed by a 10 min break. Next, you get a V-Measure section and 2 Q-Measure sections, or a Q-Measure section and 2 V-Measure sections, depending upon which section you received before the break. In addition to this, an unscored or a research section may also be included after the break. An unscored section can be a V-Measure (30 min) or a Q-Measure (35 min) and is given randomly. This unscored section may not be explicitly specified, and hence there is no way to determine which one of the sections is an unscored section. In total, you are required to attempt 2 AWA-Measure sections, 2 V-Measure sections and 2 Q-Measure sections (which are all scored and count towards your final score) along with 1 unscored section. Thus, if you get 3 V-Measure sections and 2 Q-Measure sections, you can conclude that one of those V-Measure sections was unscored, but it is impossible to determine which one of those was unscored. Apart from the 10 min break after the third section, you get a 1 min break after each individual section. The total duration of the computer-delivered test is around 3 hours 45 minutes, depending on the combination of sections that you get.</string>
+
+    <string name="gre_general_paper_details"></string>
 
 </resources>

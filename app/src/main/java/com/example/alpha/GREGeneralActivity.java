@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Typeface;
@@ -20,11 +21,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
+import android.widget.ListView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class GREGeneralActivity extends AppCompatActivity {
@@ -149,7 +152,7 @@ public class GREGeneralActivity extends AppCompatActivity {
 
             // set status bar contrast
             View decor = window.getDecorView();
-            ScrollView background_layout = decor.findViewById(R.id.background_layout);
+            LinearLayout background_layout = decor.findViewById(R.id.background_layout);
             background_layout.setBackgroundColor(getResources().getColor(R.color.darkBackground));
             Log.d(this.toString(),"contrast set");
 
@@ -189,7 +192,7 @@ public class GREGeneralActivity extends AppCompatActivity {
 
                 // set status bar contrast
                 View decor = window.getDecorView();
-                ScrollView background_layout = decor.findViewById(R.id.background_layout);
+                LinearLayout background_layout = decor.findViewById(R.id.background_layout);
                 background_layout.setBackgroundColor(getResources().getColor(R.color.darkBackground));
                 Log.d(this.toString(),"contrast set");
 
@@ -374,155 +377,247 @@ public class GREGeneralActivity extends AppCompatActivity {
             }
         });
 
-
         //initialise elements
-        TextView gre_general_sections_overview = findViewById(R.id.gre_general_sections_overview);
-        TextView gre_general_awa_overview = findViewById(R.id.gre_general_awa_overview);
-        TextView gre_general_verbal_overview = findViewById(R.id.gre_general_verbal_overview);
-        TextView gre_general_quant_overview = findViewById(R.id.gre_general_quant_overview);
+        ListView listView = findViewById(R.id.list_view_gre_general);
+        Log.d(this.toString(),"listView initialised");
 
-        TextView gre_general_awa_title = findViewById(R.id.gre_general_awa_title);
-        TextView gre_general_awa_learn_more = findViewById(R.id.gre_general_awa_learn_more);
+        ArrayList<GREGeneralItem> greGeneralItemArrayList = new ArrayList<>();
+        Log.d(this.toString(),"greGeneralItemArrayList created");
 
-        TextView gre_general_verbal_title = findViewById(R.id.gre_general_verbal_title);
-        TextView gre_general_verbal_learn_more = findViewById(R.id.gre_general_verbal_learn_more);
+        greGeneralItemArrayList.add(new GREGeneralItem("Exam Pattern"));
+        Log.d(this.toString(),"item added to greGeneralItemArrayList - Exam Pattern");
 
-        TextView gre_general_quant_title = findViewById(R.id.gre_general_quant_title);
-        TextView gre_general_quant_learn_more = findViewById(R.id.gre_general_quant_learn_more);
+        greGeneralItemArrayList.add(new GREGeneralItem("Modes of Exam"));
+        Log.d(this.toString(),"item added to greGeneralItemArrayList - Modes of Exam");
 
+        greGeneralItemArrayList.add(new GREGeneralItem("Scoring"));
+        Log.d(this.toString(),"item added to greGeneralItemArrayList - Scoring");
 
-        if (theme == AppCompatDelegate.MODE_NIGHT_NO)
-        {
-            gre_general_sections_overview.setTextColor(getResources().getColor(R.color.black));
-            Log.d(this.toString(),"text color of gre_general_sections_overview set to black");
+        greGeneralItemArrayList.add(new GREGeneralItem("Score Reporting"));
+        Log.d(this.toString(),"item added to greGeneralItemArrayList - Score Reporting");
 
-            gre_general_awa_overview.setTextColor(getResources().getColor(R.color.black));
-            Log.d(this.toString(),"text color of gre_general_awa_overview set to black");
+        greGeneralItemArrayList.add(new GREGeneralItem("Section Adaptive Testing"));
+        Log.d(this.toString(),"item added to greGeneralItemArrayList - Section Adaptive Testing");
 
-            gre_general_verbal_overview.setTextColor(getResources().getColor(R.color.black));
-            Log.d(this.toString(),"text color of gre_general_verbal_overview set to black");
+        greGeneralItemArrayList.add(new GREGeneralItem("Other Info"));
+        Log.d(this.toString(),"item added to greGeneralItemArrayList - Other Info");
 
-            gre_general_quant_overview.setTextColor(getResources().getColor(R.color.black));
-            Log.d(this.toString(),"text color of gre_general_quant_overview set to black");
+        GREGeneralAdapter greGeneralAdapter = new GREGeneralAdapter(greGeneralItemArrayList,this);
+        Log.d(this.toString(),"greGeneralAdapter created");
 
-            gre_general_awa_title.setTextColor(getResources().getColor(R.color.colorPrimary));
-            Log.d(this.toString(),"text color of gre_general_awa_title set to colorPrimary");
+        listView.setAdapter(greGeneralAdapter);
+        Log.d(this.toString(),"greGeneralAdapter set to listView");
 
-            gre_general_awa_learn_more.setTextColor(getResources().getColor(R.color.colorPrimary));
-            Log.d(this.toString(),"text color of gre_general_awa_learn_more set to colorPrimary");
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-            gre_general_verbal_title.setTextColor(getResources().getColor(R.color.colorPrimary));
-            Log.d(this.toString(),"text color of gre_general_verbal_title set to colorPrimary");
+                if (position == 0)
+                {
+                    Log.d(this.toString(),"starting GREGeneralExamPatternActivity...");
 
-            gre_general_verbal_learn_more.setTextColor(getResources().getColor(R.color.colorPrimary));
-            Log.d(this.toString(),"text color of gre_general_verbal_learn_more set to colorPrimary");
+                    Intent intent = new Intent(getBaseContext(),GREGeneralExamPatternActivity.class);
+                    startActivity(intent);
+                }
 
-            gre_general_quant_title.setTextColor(getResources().getColor(R.color.colorPrimary));
-            Log.d(this.toString(),"text color of gre_general_quant_title set to colorPrimary");
+                else if (position == 1)
+                {
+                    Log.d(this.toString(),"starting GREGeneralModesActivity...");
 
-            gre_general_quant_learn_more.setTextColor(getResources().getColor(R.color.colorPrimary));
-            Log.d(this.toString(),"text color of gre_general_quant_learn_more set to colorPrimary");
-        }
-        else if (theme == AppCompatDelegate.MODE_NIGHT_YES)
-        {
-            gre_general_sections_overview.setTextColor(getResources().getColor(R.color.white));
-            Log.d(this.toString(),"text color of gre_general_sections_overview set to white");
-
-            gre_general_awa_overview.setTextColor(getResources().getColor(R.color.white));
-            Log.d(this.toString(),"text color of gre_general_awa_overview set to white");
-
-            gre_general_verbal_overview.setTextColor(getResources().getColor(R.color.white));
-            Log.d(this.toString(),"text color of gre_general_verbal_overview set to white");
-
-            gre_general_quant_overview.setTextColor(getResources().getColor(R.color.white));
-            Log.d(this.toString(),"text color of gre_general_quant_overview set to white");
-
-            gre_general_awa_title.setTextColor(getResources().getColor(R.color.darkHighlight));
-            Log.d(this.toString(),"text color of gre_general_awa_title set to darkHighlight");
-
-            gre_general_awa_learn_more.setTextColor(getResources().getColor(R.color.darkHighlight));
-            Log.d(this.toString(),"text color of gre_general_awa_learn_more set to darkHighlight");
-
-            gre_general_verbal_title.setTextColor(getResources().getColor(R.color.darkHighlight));
-            Log.d(this.toString(),"text color of gre_general_verbal_title set to darkHighlight");
-
-            gre_general_verbal_learn_more.setTextColor(getResources().getColor(R.color.darkHighlight));
-            Log.d(this.toString(),"text color of gre_general_verbal_learn_more set to darkHighlight");
-
-            gre_general_quant_title.setTextColor(getResources().getColor(R.color.darkHighlight));
-            Log.d(this.toString(),"text color of gre_general_quant_title set to darkHighlight");
-
-            gre_general_quant_learn_more.setTextColor(getResources().getColor(R.color.darkHighlight));
-            Log.d(this.toString(),"text color of gre_general_quant_learn_more set to darkHighlight");
-        }
-        else
-        {
-            PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
-            if (powerManager.isPowerSaveMode())
-            {
-                gre_general_sections_overview.setTextColor(getResources().getColor(R.color.white));
-                Log.d(this.toString(),"text color of gre_general_sections_overview set to white");
-
-                gre_general_awa_overview.setTextColor(getResources().getColor(R.color.white));
-                Log.d(this.toString(),"text color of gre_general_awa_overview set to white");
-
-                gre_general_verbal_overview.setTextColor(getResources().getColor(R.color.white));
-                Log.d(this.toString(),"text color of gre_general_verbal_overview set to white");
-
-                gre_general_quant_overview.setTextColor(getResources().getColor(R.color.white));
-                Log.d(this.toString(),"text color of gre_general_quant_overview set to white");
-
-                gre_general_awa_title.setTextColor(getResources().getColor(R.color.darkHighlight));
-                Log.d(this.toString(),"text color of gre_general_awa_title set to darkHighlight");
-
-                gre_general_awa_learn_more.setTextColor(getResources().getColor(R.color.darkHighlight));
-                Log.d(this.toString(),"text color of gre_general_awa_learn_more set to darkHighlight");
-
-                gre_general_verbal_title.setTextColor(getResources().getColor(R.color.darkHighlight));
-                Log.d(this.toString(),"text color of gre_general_verbal_title set to darkHighlight");
-
-                gre_general_verbal_learn_more.setTextColor(getResources().getColor(R.color.darkHighlight));
-                Log.d(this.toString(),"text color of gre_general_verbal_learn_more set to darkHighlight");
-
-                gre_general_quant_title.setTextColor(getResources().getColor(R.color.darkHighlight));
-                Log.d(this.toString(),"text color of gre_general_quant_title set to darkHighlight");
-
-                gre_general_quant_learn_more.setTextColor(getResources().getColor(R.color.darkHighlight));
-                Log.d(this.toString(),"text color of gre_general_quant_learn_more set to darkHighlight");
+                    Intent intent = new Intent(getBaseContext(),GREGeneralModesActivity.class);
+                    startActivity(intent);
+                }
             }
-            else
-            {
-                gre_general_sections_overview.setTextColor(getResources().getColor(R.color.black));
-                Log.d(this.toString(),"text color of gre_general_sections_overview set to black");
+        });
 
-                gre_general_awa_overview.setTextColor(getResources().getColor(R.color.black));
-                Log.d(this.toString(),"text color of gre_general_awa_overview set to black");
-
-                gre_general_verbal_overview.setTextColor(getResources().getColor(R.color.black));
-                Log.d(this.toString(),"text color of gre_general_verbal_overview set to black");
-
-                gre_general_quant_overview.setTextColor(getResources().getColor(R.color.black));
-                Log.d(this.toString(),"text color of gre_general_quant_overview set to black");
-
-                gre_general_awa_title.setTextColor(getResources().getColor(R.color.colorPrimary));
-                Log.d(this.toString(),"text color of gre_general_awa_title set to colorPrimary");
-
-                gre_general_awa_learn_more.setTextColor(getResources().getColor(R.color.colorPrimary));
-                Log.d(this.toString(),"text color of gre_general_awa_learn_more set to colorPrimary");
-
-                gre_general_verbal_title.setTextColor(getResources().getColor(R.color.colorPrimary));
-                Log.d(this.toString(),"text color of gre_general_verbal_title set to colorPrimary");
-
-                gre_general_verbal_learn_more.setTextColor(getResources().getColor(R.color.colorPrimary));
-                Log.d(this.toString(),"text color of gre_general_verbal_learn_more set to colorPrimary");
-
-                gre_general_quant_title.setTextColor(getResources().getColor(R.color.colorPrimary));
-                Log.d(this.toString(),"text color of gre_general_quant_title set to colorPrimary");
-
-                gre_general_quant_learn_more.setTextColor(getResources().getColor(R.color.colorPrimary));
-                Log.d(this.toString(),"text color of gre_general_quant_learn_more set to colorPrimary");
-            }
-        }
+//        //initialise elements
+//        TextView gre_general_sections_overview = findViewById(R.id.gre_general_sections_overview);
+//        TextView gre_general_awa_overview = findViewById(R.id.gre_general_awa_overview);
+//        TextView gre_general_verbal_overview = findViewById(R.id.gre_general_verbal_overview);
+//        TextView gre_general_quant_overview = findViewById(R.id.gre_general_quant_overview);
+//        TextView gre_general_modes_overview = findViewById(R.id.gre_general_modes_overview);
+//
+//        TextView gre_general_awa_title = findViewById(R.id.gre_general_awa_title);
+//        TextView gre_general_awa_learn_more = findViewById(R.id.gre_general_awa_learn_more);
+//
+//        TextView gre_general_verbal_title = findViewById(R.id.gre_general_verbal_title);
+//        TextView gre_general_verbal_learn_more = findViewById(R.id.gre_general_verbal_learn_more);
+//
+//        TextView gre_general_quant_title = findViewById(R.id.gre_general_quant_title);
+//        TextView gre_general_quant_learn_more = findViewById(R.id.gre_general_quant_learn_more);
+//
+//        TextView gre_computer_learn_more = findViewById(R.id.gre_computer_learn_more);
+//        TextView gre_paper_learn_more = findViewById(R.id.gre_paper_learn_more);
+//
+//
+//        if (theme == AppCompatDelegate.MODE_NIGHT_NO)
+//        {
+//            gre_general_sections_overview.setTextColor(getResources().getColor(R.color.black));
+//            Log.d(this.toString(),"text color of gre_general_sections_overview set to black");
+//
+//            gre_general_awa_overview.setTextColor(getResources().getColor(R.color.black));
+//            Log.d(this.toString(),"text color of gre_general_awa_overview set to black");
+//
+//            gre_general_verbal_overview.setTextColor(getResources().getColor(R.color.black));
+//            Log.d(this.toString(),"text color of gre_general_verbal_overview set to black");
+//
+//            gre_general_quant_overview.setTextColor(getResources().getColor(R.color.black));
+//            Log.d(this.toString(),"text color of gre_general_quant_overview set to black");
+//
+//            gre_general_modes_overview.setTextColor(getResources().getColor(R.color.black));
+//            Log.d(this.toString(),"text color of gre_general_modes_overview set to black");
+//
+//            gre_general_awa_title.setTextColor(getResources().getColor(R.color.colorPrimary));
+//            Log.d(this.toString(),"text color of gre_general_awa_title set to colorPrimary");
+//
+//            gre_general_awa_learn_more.setTextColor(getResources().getColor(R.color.colorPrimary));
+//            Log.d(this.toString(),"text color of gre_general_awa_learn_more set to colorPrimary");
+//
+//            gre_general_verbal_title.setTextColor(getResources().getColor(R.color.colorPrimary));
+//            Log.d(this.toString(),"text color of gre_general_verbal_title set to colorPrimary");
+//
+//            gre_general_verbal_learn_more.setTextColor(getResources().getColor(R.color.colorPrimary));
+//            Log.d(this.toString(),"text color of gre_general_verbal_learn_more set to colorPrimary");
+//
+//            gre_general_quant_title.setTextColor(getResources().getColor(R.color.colorPrimary));
+//            Log.d(this.toString(),"text color of gre_general_quant_title set to colorPrimary");
+//
+//            gre_general_quant_learn_more.setTextColor(getResources().getColor(R.color.colorPrimary));
+//            Log.d(this.toString(),"text color of gre_general_quant_learn_more set to colorPrimary");
+//
+//            gre_computer_learn_more.setTextColor(getResources().getColor(R.color.colorPrimary));
+//            Log.d(this.toString(),"text color of gre_computer_learn_more set to colorPrimary");
+//
+//            gre_paper_learn_more.setTextColor(getResources().getColor(R.color.colorPrimary));
+//            Log.d(this.toString(),"text color of gre_paper_learn_more set to colorPrimary");
+//        }
+//        else if (theme == AppCompatDelegate.MODE_NIGHT_YES)
+//        {
+//            gre_general_sections_overview.setTextColor(getResources().getColor(R.color.white));
+//            Log.d(this.toString(),"text color of gre_general_sections_overview set to white");
+//
+//            gre_general_awa_overview.setTextColor(getResources().getColor(R.color.white));
+//            Log.d(this.toString(),"text color of gre_general_awa_overview set to white");
+//
+//            gre_general_verbal_overview.setTextColor(getResources().getColor(R.color.white));
+//            Log.d(this.toString(),"text color of gre_general_verbal_overview set to white");
+//
+//            gre_general_quant_overview.setTextColor(getResources().getColor(R.color.white));
+//            Log.d(this.toString(),"text color of gre_general_quant_overview set to white");
+//
+//            gre_general_modes_overview.setTextColor(getResources().getColor(R.color.white));
+//            Log.d(this.toString(),"text color of gre_general_modes_overview set to white");
+//
+//            gre_general_awa_title.setTextColor(getResources().getColor(R.color.darkHighlight));
+//            Log.d(this.toString(),"text color of gre_general_awa_title set to darkHighlight");
+//
+//            gre_general_awa_learn_more.setTextColor(getResources().getColor(R.color.darkHighlight));
+//            Log.d(this.toString(),"text color of gre_general_awa_learn_more set to darkHighlight");
+//
+//            gre_general_verbal_title.setTextColor(getResources().getColor(R.color.darkHighlight));
+//            Log.d(this.toString(),"text color of gre_general_verbal_title set to darkHighlight");
+//
+//            gre_general_verbal_learn_more.setTextColor(getResources().getColor(R.color.darkHighlight));
+//            Log.d(this.toString(),"text color of gre_general_verbal_learn_more set to darkHighlight");
+//
+//            gre_general_quant_title.setTextColor(getResources().getColor(R.color.darkHighlight));
+//            Log.d(this.toString(),"text color of gre_general_quant_title set to darkHighlight");
+//
+//            gre_general_quant_learn_more.setTextColor(getResources().getColor(R.color.darkHighlight));
+//            Log.d(this.toString(),"text color of gre_general_quant_learn_more set to darkHighlight");
+//
+//            gre_computer_learn_more.setTextColor(getResources().getColor(R.color.darkHighlight));
+//            Log.d(this.toString(),"text color of gre_computer_learn_more set to darkHighlight");
+//
+//            gre_paper_learn_more.setTextColor(getResources().getColor(R.color.darkHighlight));
+//            Log.d(this.toString(),"text color of gre_paper_learn_more set to darkHighlight");
+//        }
+//        else
+//        {
+//            PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
+//            if (powerManager.isPowerSaveMode())
+//            {
+//                gre_general_sections_overview.setTextColor(getResources().getColor(R.color.white));
+//                Log.d(this.toString(),"text color of gre_general_sections_overview set to white");
+//
+//                gre_general_awa_overview.setTextColor(getResources().getColor(R.color.white));
+//                Log.d(this.toString(),"text color of gre_general_awa_overview set to white");
+//
+//                gre_general_verbal_overview.setTextColor(getResources().getColor(R.color.white));
+//                Log.d(this.toString(),"text color of gre_general_verbal_overview set to white");
+//
+//                gre_general_quant_overview.setTextColor(getResources().getColor(R.color.white));
+//                Log.d(this.toString(),"text color of gre_general_quant_overview set to white");
+//
+//                gre_general_modes_overview.setTextColor(getResources().getColor(R.color.white));
+//                Log.d(this.toString(),"text color of gre_general_modes_overview set to white");
+//
+//                gre_general_awa_title.setTextColor(getResources().getColor(R.color.darkHighlight));
+//                Log.d(this.toString(),"text color of gre_general_awa_title set to darkHighlight");
+//
+//                gre_general_awa_learn_more.setTextColor(getResources().getColor(R.color.darkHighlight));
+//                Log.d(this.toString(),"text color of gre_general_awa_learn_more set to darkHighlight");
+//
+//                gre_general_verbal_title.setTextColor(getResources().getColor(R.color.darkHighlight));
+//                Log.d(this.toString(),"text color of gre_general_verbal_title set to darkHighlight");
+//
+//                gre_general_verbal_learn_more.setTextColor(getResources().getColor(R.color.darkHighlight));
+//                Log.d(this.toString(),"text color of gre_general_verbal_learn_more set to darkHighlight");
+//
+//                gre_general_quant_title.setTextColor(getResources().getColor(R.color.darkHighlight));
+//                Log.d(this.toString(),"text color of gre_general_quant_title set to darkHighlight");
+//
+//                gre_general_quant_learn_more.setTextColor(getResources().getColor(R.color.darkHighlight));
+//                Log.d(this.toString(),"text color of gre_general_quant_learn_more set to darkHighlight");
+//
+//                gre_computer_learn_more.setTextColor(getResources().getColor(R.color.darkHighlight));
+//                Log.d(this.toString(),"text color of gre_computer_learn_more set to darkHighlight");
+//
+//                gre_paper_learn_more.setTextColor(getResources().getColor(R.color.darkHighlight));
+//                Log.d(this.toString(),"text color of gre_paper_learn_more set to darkHighlight");
+//            }
+//            else
+//            {
+//                gre_general_sections_overview.setTextColor(getResources().getColor(R.color.black));
+//                Log.d(this.toString(),"text color of gre_general_sections_overview set to black");
+//
+//                gre_general_awa_overview.setTextColor(getResources().getColor(R.color.black));
+//                Log.d(this.toString(),"text color of gre_general_awa_overview set to black");
+//
+//                gre_general_verbal_overview.setTextColor(getResources().getColor(R.color.black));
+//                Log.d(this.toString(),"text color of gre_general_verbal_overview set to black");
+//
+//                gre_general_quant_overview.setTextColor(getResources().getColor(R.color.black));
+//                Log.d(this.toString(),"text color of gre_general_quant_overview set to black");
+//
+//                gre_general_modes_overview.setTextColor(getResources().getColor(R.color.black));
+//                Log.d(this.toString(),"text color of gre_general_modes_overview set to black");
+//
+//                gre_general_awa_title.setTextColor(getResources().getColor(R.color.colorPrimary));
+//                Log.d(this.toString(),"text color of gre_general_awa_title set to colorPrimary");
+//
+//                gre_general_awa_learn_more.setTextColor(getResources().getColor(R.color.colorPrimary));
+//                Log.d(this.toString(),"text color of gre_general_awa_learn_more set to colorPrimary");
+//
+//                gre_general_verbal_title.setTextColor(getResources().getColor(R.color.colorPrimary));
+//                Log.d(this.toString(),"text color of gre_general_verbal_title set to colorPrimary");
+//
+//                gre_general_verbal_learn_more.setTextColor(getResources().getColor(R.color.colorPrimary));
+//                Log.d(this.toString(),"text color of gre_general_verbal_learn_more set to colorPrimary");
+//
+//                gre_general_quant_title.setTextColor(getResources().getColor(R.color.colorPrimary));
+//                Log.d(this.toString(),"text color of gre_general_quant_title set to colorPrimary");
+//
+//                gre_general_quant_learn_more.setTextColor(getResources().getColor(R.color.colorPrimary));
+//                Log.d(this.toString(),"text color of gre_general_quant_learn_more set to colorPrimary");
+//
+//                gre_computer_learn_more.setTextColor(getResources().getColor(R.color.colorPrimary));
+//                Log.d(this.toString(),"text color of gre_computer_learn_more set to colorPrimary");
+//
+//                gre_paper_learn_more.setTextColor(getResources().getColor(R.color.colorPrimary));
+//                Log.d(this.toString(),"text color of gre_paper_learn_more set to colorPrimary");
+//            }
+//        }
 
     }
 }

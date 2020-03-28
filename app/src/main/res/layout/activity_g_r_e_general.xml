@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,137 +8,179 @@
     android:id="@+id/background_layout"
     tools:context=".GREGeneralActivity">
 
-    <LinearLayout
+
+    <ListView
+        android:id="@+id/list_view_gre_general"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="0dp"
+        android:divider="@null"
+        android:layout_weight="1"
+        android:paddingTop="10dp"/>
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="vertical">-->
 
 
-        <TextView
-            android:id="@+id/gre_general_sections_overview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="15sp"
-            android:fontFamily="@font/nexa_light"
-            android:padding="10dp"
-            android:layout_margin="10dp"
-            android:text="@string/gre_general_sections_overview"/>
+<!--        <TextView-->
+<!--            android:id="@+id/gre_general_sections_overview"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:textSize="15sp"-->
+<!--            android:fontFamily="@font/nexa_light"-->
+<!--            android:padding="10dp"-->
+<!--            android:layout_margin="10dp"-->
+<!--            android:text="@string/gre_general_sections_overview"/>-->
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="10dp"
-            android:layout_margin="10dp">
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="vertical"-->
+<!--            android:padding="10dp"-->
+<!--            android:layout_margin="10dp">-->
 
-            <TextView
-                android:id="@+id/gre_general_awa_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:fontFamily="@font/nexa_light"
-                android:text="@string/gre_general_awa_title"
-                android:layout_marginBottom="10dp"
-                android:textAlignment="center"/>
+<!--            <TextView-->
+<!--                android:id="@+id/gre_general_awa_title"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:textSize="20sp"-->
+<!--                android:fontFamily="@font/nexa_light"-->
+<!--                android:text="@string/gre_general_awa_title"-->
+<!--                android:layout_marginBottom="10dp"-->
+<!--                android:textAlignment="center"/>-->
 
-            <TextView
-                android:id="@+id/gre_general_awa_overview"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="15sp"
-                android:fontFamily="@font/nexa_light"
-                android:text="@string/gre_general_awa_overview"/>
+<!--            <TextView-->
+<!--                android:id="@+id/gre_general_awa_overview"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:textSize="15sp"-->
+<!--                android:fontFamily="@font/nexa_light"-->
+<!--                android:text="@string/gre_general_awa_overview"/>-->
 
-            <TextView
-                android:id="@+id/gre_general_awa_learn_more"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="15sp"
-                android:fontFamily="@font/nexa_bold"
-                android:layout_marginTop="10dp"
-                android:text="@string/gre_general_awa_learn_more"/>
+<!--            <TextView-->
+<!--                android:id="@+id/gre_general_awa_learn_more"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:textSize="15sp"-->
+<!--                android:fontFamily="@font/nexa_bold"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:text="@string/gre_general_awa_learn_more"/>-->
 
-        </LinearLayout>
+<!--        </LinearLayout>-->
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="10dp"
-            android:layout_margin="10dp">
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="vertical"-->
+<!--            android:padding="10dp"-->
+<!--            android:layout_margin="10dp">-->
 
-        <TextView
-                android:id="@+id/gre_general_verbal_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:fontFamily="@font/nexa_light"
-            android:layout_marginBottom="10dp"
-                android:text="@string/gre_general_verbal_title"
-                android:textAlignment="center"/>
+<!--        <TextView-->
+<!--                android:id="@+id/gre_general_verbal_title"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:textSize="20sp"-->
+<!--                android:fontFamily="@font/nexa_light"-->
+<!--            android:layout_marginBottom="10dp"-->
+<!--                android:text="@string/gre_general_verbal_title"-->
+<!--                android:textAlignment="center"/>-->
 
-            <TextView
-                android:id="@+id/gre_general_verbal_overview"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="15sp"
-                android:fontFamily="@font/nexa_light"
-                android:text="@string/gre_general_verbal_overview"/>
+<!--            <TextView-->
+<!--                android:id="@+id/gre_general_verbal_overview"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:textSize="15sp"-->
+<!--                android:fontFamily="@font/nexa_light"-->
+<!--                android:text="@string/gre_general_verbal_overview"/>-->
 
-            <TextView
-                android:id="@+id/gre_general_verbal_learn_more"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="15sp"
-                android:fontFamily="@font/nexa_bold"
-                android:layout_marginTop="10dp"
-                android:text="@string/gre_general_verbal_learn_more"/>
+<!--            <TextView-->
+<!--                android:id="@+id/gre_general_verbal_learn_more"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:textSize="15sp"-->
+<!--                android:fontFamily="@font/nexa_bold"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:text="@string/gre_general_verbal_learn_more"/>-->
 
-        </LinearLayout>
-
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="10dp"
-            android:layout_margin="10dp">
-
-            <TextView
-                android:id="@+id/gre_general_quant_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:fontFamily="@font/nexa_light"
-                android:layout_marginBottom="10dp"
-                android:text="@string/gre_general_quant_title"
-                android:textAlignment="center"/>
-
-            <TextView
-                android:id="@+id/gre_general_quant_overview"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="15sp"
-                android:fontFamily="@font/nexa_light"
-                android:text="@string/gre_general_quant_overview"/>
-
-            <TextView
-                android:id="@+id/gre_general_quant_learn_more"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="15sp"
-                android:fontFamily="@font/nexa_bold"
-                android:layout_marginTop="10dp"
-                android:text="@string/gre_general_quant_learn_more"/>
-
-        </LinearLayout>
+<!--        </LinearLayout>-->
 
 
 
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="vertical"-->
+<!--            android:padding="10dp"-->
+<!--            android:layout_margin="10dp">-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/gre_general_quant_title"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:textSize="20sp"-->
+<!--                android:fontFamily="@font/nexa_light"-->
+<!--                android:layout_marginBottom="10dp"-->
+<!--                android:text="@string/gre_general_quant_title"-->
+<!--                android:textAlignment="center"/>-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/gre_general_quant_overview"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:textSize="15sp"-->
+<!--                android:fontFamily="@font/nexa_light"-->
+<!--                android:text="@string/gre_general_quant_overview"/>-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/gre_general_quant_learn_more"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:textSize="15sp"-->
+<!--                android:fontFamily="@font/nexa_bold"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:text="@string/gre_general_quant_learn_more"/>-->
+
+<!--        </LinearLayout>-->
 
 
-    </LinearLayout>
 
 
-</ScrollView>
+<!--        <TextView-->
+<!--            android:id="@+id/gre_general_modes_overview"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:textSize="15sp"-->
+<!--            android:fontFamily="@font/nexa_light"-->
+<!--            android:padding="10dp"-->
+<!--            android:layout_margin="10dp"-->
+<!--            android:text="@string/gre_general_modes_overview"/>-->
+
+
+
+<!--        <TextView-->
+<!--        android:id="@+id/gre_computer_learn_more"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:textSize="15sp"-->
+<!--        android:fontFamily="@font/nexa_bold"-->
+<!--        android:padding="10dp"-->
+<!--        android:layout_margin="10dp"-->
+<!--        android:text="@string/gre_computer_learn_more"/>-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/gre_paper_learn_more"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:textSize="15sp"-->
+<!--            android:fontFamily="@font/nexa_bold"-->
+<!--            android:padding="10dp"-->
+<!--            android:layout_margin="10dp"-->
+<!--            android:text="@string/gre_paper_learn_more"/>-->
+
+
+
+<!--    </LinearLayout>-->
+
+
+</LinearLayout>

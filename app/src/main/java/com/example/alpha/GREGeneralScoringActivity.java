@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Typeface;
@@ -21,21 +20,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.ListView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.Objects;
 
-public class GREGeneralActivity extends AppCompatActivity {
+public class GREGeneralScoringActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_g_r_e_general);
+        setContentView(R.layout.activity_g_r_e_general_scoring);
+
+
+
 
         Log.i(this.toString(),"started");
 
@@ -73,7 +73,7 @@ public class GREGeneralActivity extends AppCompatActivity {
 
 
 
-        action_bar_title.setText("GRE General Test");
+        action_bar_title.setText("Scoring");
         Log.d(this.toString(),"action bar title set");
 
         int[][] states = new int[][]{
@@ -152,7 +152,7 @@ public class GREGeneralActivity extends AppCompatActivity {
 
             // set status bar contrast
             View decor = window.getDecorView();
-            LinearLayout background_layout = decor.findViewById(R.id.background_layout);
+            ScrollView background_layout = decor.findViewById(R.id.background_layout);
             background_layout.setBackgroundColor(getResources().getColor(R.color.darkBackground));
             Log.d(this.toString(),"contrast set");
 
@@ -192,7 +192,7 @@ public class GREGeneralActivity extends AppCompatActivity {
 
                 // set status bar contrast
                 View decor = window.getDecorView();
-                LinearLayout background_layout = decor.findViewById(R.id.background_layout);
+                ScrollView background_layout = decor.findViewById(R.id.background_layout);
                 background_layout.setBackgroundColor(getResources().getColor(R.color.darkBackground));
                 Log.d(this.toString(),"contrast set");
 
@@ -377,66 +377,102 @@ public class GREGeneralActivity extends AppCompatActivity {
             }
         });
 
+
         //initialise elements
-        ListView listView = findViewById(R.id.list_view_gre_general);
-        Log.d(this.toString(),"listView initialised");
 
-        ArrayList<GREGeneralItem> greGeneralItemArrayList = new ArrayList<>();
-        Log.d(this.toString(),"greGeneralItemArrayList created");
+        TextView gre_general_score_scales_title = findViewById(R.id.gre_general_score_scales_title);
+        TextView gre_general_score_computer_title = findViewById(R.id.gre_general_score_computer_title);
+        TextView ger_general_score_paper_title = findViewById(R.id.ger_general_score_paper_title);
 
-        greGeneralItemArrayList.add(new GREGeneralItem("Exam Pattern"));
-        Log.d(this.toString(),"item added to greGeneralItemArrayList - Exam Pattern");
+        TextView gre_general_score_scales_details = findViewById(R.id.gre_general_score_scales_details);
+        TextView gre_general_score_computer_details = findViewById(R.id.gre_general_score_computer_details);
+        TextView gre_general_score_paper_details = findViewById(R.id.gre_general_score_paper_details);
 
-        greGeneralItemArrayList.add(new GREGeneralItem("Modes of Exam"));
-        Log.d(this.toString(),"item added to greGeneralItemArrayList - Modes of Exam");
 
-        greGeneralItemArrayList.add(new GREGeneralItem("Scoring"));
-        Log.d(this.toString(),"item added to greGeneralItemArrayList - Scoring");
+        if (theme == AppCompatDelegate.MODE_NIGHT_NO)
+        {
+            gre_general_score_scales_title.setTextColor(getResources().getColor(R.color.colorPrimary));
+            Log.d(this.toString(),"text color of gre_general_score_scales_title set to colorPrimary");
 
-        greGeneralItemArrayList.add(new GREGeneralItem("Score Reporting"));
-        Log.d(this.toString(),"item added to greGeneralItemArrayList - Score Reporting");
+            gre_general_score_computer_title.setTextColor(getResources().getColor(R.color.colorPrimary));
+            Log.d(this.toString(),"text color of gre_general_score_computer_title set to colorPrimary");
 
-        greGeneralItemArrayList.add(new GREGeneralItem("Section Adaptive Testing"));
-        Log.d(this.toString(),"item added to greGeneralItemArrayList - Section Adaptive Testing");
+            ger_general_score_paper_title.setTextColor(getResources().getColor(R.color.colorPrimary));
+            Log.d(this.toString(),"text color of ger_general_score_paper_title set to colorPrimary");
 
-        greGeneralItemArrayList.add(new GREGeneralItem("Other Info"));
-        Log.d(this.toString(),"item added to greGeneralItemArrayList - Other Info");
+            gre_general_score_scales_details.setTextColor(getResources().getColor(R.color.black));
+            Log.d(this.toString(),"text color of gre_general_score_scales_details set to black");
 
-        GREGeneralAdapter greGeneralAdapter = new GREGeneralAdapter(greGeneralItemArrayList,this);
-        Log.d(this.toString(),"greGeneralAdapter created");
+            gre_general_score_computer_details.setTextColor(getResources().getColor(R.color.black));
+            Log.d(this.toString(),"text color of gre_general_score_computer_details set to black");
 
-        listView.setAdapter(greGeneralAdapter);
-        Log.d(this.toString(),"greGeneralAdapter set to listView");
+            gre_general_score_paper_details.setTextColor(getResources().getColor(R.color.black));
+            Log.d(this.toString(),"text color of gre_general_score_paper_details set to black");
+        }
+        else if (theme == AppCompatDelegate.MODE_NIGHT_YES)
+        {
+            gre_general_score_scales_title.setTextColor(getResources().getColor(R.color.darkHighlight));
+            Log.d(this.toString(),"text color of gre_general_score_scales_title set to darkHighlight");
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            gre_general_score_computer_title.setTextColor(getResources().getColor(R.color.darkHighlight));
+            Log.d(this.toString(),"text color of gre_general_score_computer_title set to darkHighlight");
 
-                if (position == 0)
-                {
-                    Log.d(this.toString(),"starting GREGeneralExamPatternActivity...");
+            ger_general_score_paper_title.setTextColor(getResources().getColor(R.color.darkHighlight));
+            Log.d(this.toString(),"text color of ger_general_score_paper_title set to darkHighlight");
 
-                    Intent intent = new Intent(getBaseContext(),GREGeneralExamPatternActivity.class);
-                    startActivity(intent);
-                }
+            gre_general_score_scales_details.setTextColor(getResources().getColor(R.color.white));
+            Log.d(this.toString(),"text color of gre_general_score_scales_details set to white");
 
-                else if (position == 1)
-                {
-                    Log.d(this.toString(),"starting GREGeneralModesActivity...");
+            gre_general_score_computer_details.setTextColor(getResources().getColor(R.color.white));
+            Log.d(this.toString(),"text color of gre_general_score_computer_details set to white");
 
-                    Intent intent = new Intent(getBaseContext(),GREGeneralModesActivity.class);
-                    startActivity(intent);
-                }
+            gre_general_score_paper_details.setTextColor(getResources().getColor(R.color.white));
+            Log.d(this.toString(),"text color of gre_general_score_paper_details set to white");
+        }
+        else
+        {
+            PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
+            if (powerManager.isPowerSaveMode())
+            {
+                gre_general_score_scales_title.setTextColor(getResources().getColor(R.color.darkHighlight));
+                Log.d(this.toString(),"text color of gre_general_score_scales_title set to darkHighlight");
 
-                else if (position == 2)
-                {
-                    Log.d(this.toString(),"starting GREGeneralScoringActivity...");
+                gre_general_score_computer_title.setTextColor(getResources().getColor(R.color.darkHighlight));
+                Log.d(this.toString(),"text color of gre_general_score_computer_title set to darkHighlight");
 
-                    Intent intent = new Intent(getBaseContext(),GREGeneralScoringActivity.class);
-                    startActivity(intent);
-                }
+                ger_general_score_paper_title.setTextColor(getResources().getColor(R.color.darkHighlight));
+                Log.d(this.toString(),"text color of ger_general_score_paper_title set to darkHighlight");
+
+                gre_general_score_scales_details.setTextColor(getResources().getColor(R.color.white));
+                Log.d(this.toString(),"text color of gre_general_score_scales_details set to white");
+
+                gre_general_score_computer_details.setTextColor(getResources().getColor(R.color.white));
+                Log.d(this.toString(),"text color of gre_general_score_computer_details set to white");
+
+                gre_general_score_paper_details.setTextColor(getResources().getColor(R.color.white));
+                Log.d(this.toString(),"text color of gre_general_score_paper_details set to white");
             }
-        });
+            else
+            {
+                gre_general_score_scales_title.setTextColor(getResources().getColor(R.color.colorPrimary));
+                Log.d(this.toString(),"text color of gre_general_score_scales_title set to colorPrimary");
+
+                gre_general_score_computer_title.setTextColor(getResources().getColor(R.color.colorPrimary));
+                Log.d(this.toString(),"text color of gre_general_score_computer_title set to colorPrimary");
+
+                ger_general_score_paper_title.setTextColor(getResources().getColor(R.color.colorPrimary));
+                Log.d(this.toString(),"text color of ger_general_score_paper_title set to colorPrimary");
+
+                gre_general_score_scales_details.setTextColor(getResources().getColor(R.color.black));
+                Log.d(this.toString(),"text color of gre_general_score_scales_details set to black");
+
+                gre_general_score_computer_details.setTextColor(getResources().getColor(R.color.black));
+                Log.d(this.toString(),"text color of gre_general_score_computer_details set to black");
+
+                gre_general_score_paper_details.setTextColor(getResources().getColor(R.color.black));
+                Log.d(this.toString(),"text color of gre_general_score_paper_details set to black");
+            }
+        }
 
 
 

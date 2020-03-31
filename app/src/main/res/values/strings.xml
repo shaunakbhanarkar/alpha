@@ -34,6 +34,18 @@
     <string name="gre_general_awa_argument_title">Argument Task</string>
     <string name="gre_general_awa_argument_details"> - The Argument Task requires you to write an essay by analysing the given argument.\n\n - You are required to note the weakness of the argument, and base your essay on the underlying assumptions of the given argument.\n\n - The task assess your ability to understand, analyse and evaluate arguments in a coherent manner.</string>
 
+    <!--strings for GRE General Verbal Activity-->
+    <string name="gre_general_verbal_details"> - The computer-delivered test consists of 2 V-Measure sections (and 3 sections, if the experimental section is a V-Measure) of 30 min each, consisting of 20 questions.\n\n - The paper-delivered test consists of exactly 2 V-Measure sections of 35 min each, consisting of 25 questions.</string>
+
+    <string name="gre_general_verbal_text_completion_title">Text Completion</string>
+    <string name="gre_general_verbal_text_completion_details"> - This question type requires you to complete the blanks of a given sentence or paragraphs from the available answer choices.\n\n - There can be one blank, two blanks or even three blanks in the question.\n\n - There is no partial marking. Your answer for all of the blanks must be correct.\n\n - Each blank has exactly one correct answer among the given answer choices.</string>
+
+    <string name="gre_general_verbal_reading_comprehension_title">Reading Comprehension</string>
+    <string name="gre_general_verbal_reading_comprehension_details"> - This question type requires you to answer the question based on a comprehension passage.\n\n - The passage may be short, medium or long in terms of length.\n\n - The kind of questions based on the passage include drawing inference, analysing assumptions, identifying the meaning of words, identifying cause and result, etc.</string>
+
+    <string name="gre_general_verbal_sentence_equivalence_title">Sentence Equivalence</string>
+    <string name="gre_general_verbal_sentence_equivalence_details"> - This question type requires you to select exactly two answer choices that are similar in meaning and produce sentences with same overall meaning when filled in the blank.\n\n - There is exactly one blank and exactly two correct answer choices among the six given answer choices.\n\n - There is no partial marking. You must select both the correct answer choices.\n\n - In general, it is observed that out of the six answer choices, two of them are synonymous (and are correct), the other two of them are also synonymous (and are incorrect), and the remaining two are not synonymous.</string>
+
     <!--strings for GRE General Modes Activity-->
     <string name="gre_general_modes_overview">The GRE General Test is available in two modes - computer-delivered and paper-delivered.</string>
 

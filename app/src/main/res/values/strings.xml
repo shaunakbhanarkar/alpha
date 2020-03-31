@@ -25,6 +25,15 @@
     <string name="gre_general_quant_overview">This section type tests your ability to interpret and analyse quantitative information by requiring you to solve various types of Quantitative Reasoning questions.</string>
     <string name="gre_general_quant_learn_more"><u>Learn more about Q-Measure</u></string>
 
+    <!--strings for GRE General AWA Activity-->
+    <string name="gre_general_awa_details"> - The GRE General Test consists of exactly 1 AWA section.\n\n - The AWA section consists of two essay writing tasks, half an hour each.\n\n - The AWA section always appears at the beginning of the GRE General Test.</string>
+
+    <string name="gre_general_awa_issue_title">Issue Task</string>
+    <string name="gre_general_awa_issue_details"> - The Issue Task requires you to write an essay by analysing the given issue.\n\n - You are required to take up a side by agreeing, disagreeing or being neutral, and put forward your points in a logical fashion.\n\n - The task assess your ability to think critically around a given topic and express your thoughts clearly.</string>
+
+    <string name="gre_general_awa_argument_title">Argument Task</string>
+    <string name="gre_general_awa_argument_details"> - The Argument Task requires you to write an essay by analysing the given argument.\n\n - You are required to note the weakness of the argument, and base your essay on the underlying assumptions of the given argument.\n\n - The task assess your ability to understand, analyse and evaluate arguments in a coherent manner.</string>
+
     <!--strings for GRE General Modes Activity-->
     <string name="gre_general_modes_overview">The GRE General Test is available in two modes - computer-delivered and paper-delivered.</string>
 

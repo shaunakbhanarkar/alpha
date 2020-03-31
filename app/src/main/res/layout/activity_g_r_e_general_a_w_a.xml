@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/background_layout"
+    tools:context=".GREGeneralAWAActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/gre_general_awa_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:fontFamily="@font/nexa_light"
+            android:padding="10dp"
+            android:layout_margin="10dp"
+            android:text="@string/gre_general_awa_details"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:layout_margin="10dp">
+
+            <TextView
+                android:id="@+id/gre_general_awa_issue_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:fontFamily="@font/nexa_light"
+                android:text="@string/gre_general_awa_issue_title"
+                android:layout_marginBottom="10dp"
+                android:textAlignment="center"/>
+
+            <TextView
+                android:id="@+id/gre_general_awa_issue_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:fontFamily="@font/nexa_light"
+                android:text="@string/gre_general_awa_issue_details"/>
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:layout_margin="10dp">
+
+            <TextView
+                android:id="@+id/gre_general_awa_argument_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:fontFamily="@font/nexa_light"
+                android:text="@string/gre_general_awa_argument_title"
+                android:layout_marginBottom="10dp"
+                android:textAlignment="center"/>
+
+            <TextView
+                android:id="@+id/gre_general_awa_argument_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:fontFamily="@font/nexa_light"
+                android:text="@string/gre_general_awa_argument_details"/>
+
+
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+
+</ScrollView>

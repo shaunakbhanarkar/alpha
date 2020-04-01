@@ -46,6 +46,21 @@
     <string name="gre_general_verbal_sentence_equivalence_title">Sentence Equivalence</string>
     <string name="gre_general_verbal_sentence_equivalence_details"> - This question type requires you to select exactly two answer choices that are similar in meaning and produce sentences with same overall meaning when filled in the blank.\n\n - There is exactly one blank and exactly two correct answer choices among the six given answer choices.\n\n - There is no partial marking. You must select both the correct answer choices.\n\n - In general, it is observed that out of the six answer choices, two of them are synonymous (and are correct), the other two of them are also synonymous (and are incorrect), and the remaining two are not synonymous.</string>
 
+    <!--strings for GRE General Quant Activity-->
+    <string name="gre_general_quant_details"> - The computer-delivered test consists of 2 Q-Measure sections (and 3 sections, if the experimental section is a Q-Measure) of 35 min each, consisting of 20 questions.\n\n - The paper-delivered test consists of exactly 2 V-Measure sections of 40 min each, consisting of 25 questions.</string>
+
+    <string name="gre_general_quant_comparison_title">Quantitative Comparison</string>
+    <string name="gre_general_quant_comparison_details"> - This question type requires you to compare two mathematical quantities, A and B, and select the appropriate answer.\n\n - There are exactly four answer choices: first answer choice indicates that quantity A is greater than B, second indicates that quantity B is greater than A, third indicates that both the quantities are equal, and the fourth answer choice indicates that the relationship between them cannot be determined.\n\n - Exactly one of these answers choices is a correct answer.</string>
+
+    <string name="gre_general_quant_mcq_single_title">MCQ (Single Answer Correct)</string>
+    <string name="gre_general_quant_mcq_single_details"> - As the title suggests, this question type is a multiple choice question with exactly one correct answer among the 5 given answer choices.</string>
+
+    <string name="gre_general_quant_mcq_multiple_title">MCQ (Multiple Answers Correct)</string>
+    <string name="gre_general_quant_mcq_multiple_details"> - As the title suggests, this question type is a multiple choice question with multiple correct answer choices.\n\n - The number of given answer choices may vary from question to question.\n\n - The question may or may not specify the number of correct answer choices.\n\n - There is no partial marking. You must select the exact correct answer choices to get the credit.</string>
+
+    <string name="gre_general_quant_numeric_entry_title">Numeric Entry</string>
+    <string name="gre_general_quant_numeric_entry_details"> - This question type requires you to provide answer in the form of an integer or a decimal in a single answer box, or as a fraction in two answer boxes (one for numerator and the other for denominator).\n\n - The question always states the format in which the answer is expected, including the number of digits required after the decimal point.\n\n - In case of fractions, always reduce the fraction to its lowest terms.</string>
+
     <!--strings for GRE General Modes Activity-->
     <string name="gre_general_modes_overview">The GRE General Test is available in two modes - computer-delivered and paper-delivered.</string>
 

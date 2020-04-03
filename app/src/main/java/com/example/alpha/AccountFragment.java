@@ -233,6 +233,8 @@ public class AccountFragment extends Fragment {
                 {
                     Log.d("Account Fragment","(position = 7) starting PublicationsActivity...");
 
+                    Intent intent = new Intent(getContext(),PublicationsActivity.class);
+                    startActivity(intent);
                 }
 
                 if (position == 8)  //extra curricular

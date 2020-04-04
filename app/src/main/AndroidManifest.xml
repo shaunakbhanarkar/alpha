@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PublicationsActivity"></activity>
+        <activity android:name=".ExtraCurricularsActivity"></activity>
+        <activity android:name=".PublicationsActivity" />
         <activity android:name=".GREGeneralQuantActivity" />
         <activity android:name=".GREGeneralVerbalActivity" />
         <activity android:name=".GREGeneralAWAActivity" />

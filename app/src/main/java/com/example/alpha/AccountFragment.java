@@ -239,7 +239,10 @@ public class AccountFragment extends Fragment {
 
                 if (position == 8)  //extra curricular
                 {
-                    Log.d("Account Fragment","(position = 8) starting ExtraCurricularActivity...");
+                    Log.d("Account Fragment","(position = 8) starting ExtraCurricularsActivity...");
+
+                    Intent intent = new Intent(getContext(),ExtraCurricularsActivity.class);
+                    startActivity(intent);
 
                 }
 

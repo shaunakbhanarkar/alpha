@@ -139,4 +139,20 @@
     <!--strings for GRE General Adaptive Activity-->
     <string name="gre_general_adaptive"> - This is applicable only for the computer-delivered test.\n\n - The GRE General Test (computer-delivered) is section adaptive.\n\n - This means that the level of a V-Measure or Q-Measure section that you get is dependent upon how you solve the previous V-Measure or Q-Measure section.\n\n - However, it is important to not that how you solve the questions within a section does not impact the level of remaining questions that you receive in the same section.\n\n - Each V-Measure or Q-Measure section is considered easy, medium or hard based on the composition of the section. Each test-taker begins with a medium V-Measure or Q-Measure section. For instance, if the test-taker performs really well in this section, then the next V-Measure or Q-Measure section is expected to be hard.</string>
 
+    <!--strings for Step Buttons-->
+    <string name="button_done">MARK AS DONE</string>
+    <string name="button_pending">MARK AS PENDING</string>
+
+    <!--strings for Step1 Activity-->
+    <string name="step1_intro">To begin with, you must know what you want to do. You must have a clear idea about what you have done till now, in terms of your education, work experience, likes and dislikes. You cannot simply go ahead and pursue a random academic program by shelling out a sum of money.</string>
+
+    <string name="step1_heading1">Do what you love</string>
+    <string name="step1_body1">Well, this might be one of the most hackneyed thought that you have heard. As familiar as it gets, this little phrase speaks out the best advice. And this is probably the ideal time to decide what you love.\n\nYou cannot simply pursue further education in the area you have been working relentlessly just because you landed up there. If you pursue further education without careful deliberation over what you actually want to do, then you are very likely to end up into a trouble and eventually hating your life.\n\nIrrespective of whether you like your own area of study, it is essentially important to think about what you want to do. This might be in terms of what you love doing, or what you like studying about, or what kind of job you like - something on similar lines.</string>
+
+    <string name="step1_heading2">Decide what you want to do</string>
+    <string name="step1_body2">You might end up having multiple interests, or even mixed interests. That is absolutely okay. Channelise your thoughts deeply by looking at each of these interests to arrive at one. If not, try to end up with up to two interests, which are mostly similar. The crux here is that you need to know and be completely clear about what you want to do, before proceeding with anything else. A wrong decision at this stage can be extremely painful.</string>
+
+    <string name="step1_heading3">Do not fear</string>
+    <string name="step1_body3">You might feel that something you want to is very divergent from what you have doing till now. It might be a completely disparate domain of study. Do not get scared or even hesitate at this point. There is a lot more to do ahead. So, it is okay to want to do something that does not align with your current area of study or work.</string>
+
 </resources>

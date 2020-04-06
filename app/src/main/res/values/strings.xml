@@ -155,4 +155,25 @@
     <string name="step1_heading3">Do not fear</string>
     <string name="step1_body3">You might feel that something you want to is very divergent from what you have doing till now. It might be a completely disparate domain of study. Do not get scared or even hesitate at this point. There is a lot more to do ahead. So, it is okay to want to do something that does not align with your current area of study or work.</string>
 
+    <!--strings for Step2 Activity-->
+    <string name="step2_intro">Once you have decided what you want to do, it is a perfect time to research. This is the most crucial step in the entire process. A thorough research into the area in which you want to go ahead gives you the ultimate call for pursuing it, and in some cases, warns you to be cautious. Now, there are a lot of things that you need to research. Let us take them one by one.</string>
+
+    <string name="step2_heading1">Area of Study</string>
+    <string name="step2_body1">It may be the case that you have an overview of the area of study you want to get in. However, it is vital to know the depth of it. You must know what the area of study is all about and what all components does it cover. Any misunderstandings or even doubts that you might have about the area of study must be cleared at this point. You must know what you are going to be dealing with.</string>
+
+    <string name="step2_heading2">Relevant Programs</string>
+    <string name="step2_body2">Once you know what exactly you are going to study, it is time to research about the universities and their programs in the corresponding area of study. You have to know what these programs provide as a part of their curriculum, what kind of learning is expected from these programs. There may be several programs from the same university or even multiple universities and each of them might have something distinct.</string>
+
+    <string name="step2_heading3">Career Outcomes</string>
+    <string name="step2_body3">This part is very fragile. You must carefully consider and look at the career outcomes of each of the programs that you have researched. You need to know what kind of careers open up for students of the particular area of study. Additionally, it is better to have an idea about that kind of work and salary does each of these job roles associates with.</string>
+
+    <string name="step2_heading4">Future Prospects?</string>
+    <string name="step2_body4">It should be noted that this part is not the same as researching about career outcomes. Researching about future prospects involves learning about what the long term picture looks like. Where can you land up in the long term if you pick this up? Even for people who might not be into industry based programs, this is a good task to do.</string>
+
+    <string name="step2_heading5">Do not be afraid to go back</string>
+    <string name="step2_body5">By this time, you should have a good knowledge about what the area of study that you are looking for is about, what you are going to study, what kind of jobs will open up and what the related professional future might look like. If you are happily willing to pursue the area of study based on your thorough research, then you are all set. On the other side, if you have researched and got your questions answered, and still feel unsure, then do not be afraid to go back and introspect. Maybe, mixed interests brought you thinking you like this area of study. Pick the right area of study and repeat.</string>
+
+    <string name="step2_heading6">Research thoroughly</string>
+    <string name="step2_body6">A thorough research is going to help you decide properly. You need to be absolutely serious as well as curious. You have got the internet, search through it. Visit trusted websites. Look for deeper content. Connect with seniors and professionals who are familiar with the area of study to gather advice. Talk on phone, chat using messengers, get connected on platforms like LinkedIn. Do all of it, because this is what will give you the information you need.</string>
+
 </resources>

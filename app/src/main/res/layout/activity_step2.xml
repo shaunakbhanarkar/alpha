@@ -1,9 +1,218 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/background_layout"
     tools:context=".Step2Activity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+
+        <TextView
+            android:id="@+id/step2_intro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:fontFamily="@font/nexa_light"
+            android:padding="10dp"
+            android:layout_margin="10dp"
+            android:text="@string/step2_intro"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:layout_margin="10dp">
+
+            <TextView
+                android:id="@+id/step2_heading1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:fontFamily="@font/nexa_light"
+                android:text="@string/step2_heading1"
+                android:layout_marginBottom="10dp"
+                android:textAlignment="center"/>
+
+            <TextView
+                android:id="@+id/step2_body1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:fontFamily="@font/nexa_light"
+                android:text="@string/step2_body1"/>
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:layout_margin="10dp">
+
+            <TextView
+                android:id="@+id/step2_heading2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:fontFamily="@font/nexa_light"
+                android:text="@string/step2_heading2"
+                android:layout_marginBottom="10dp"
+                android:textAlignment="center"/>
+
+            <TextView
+                android:id="@+id/step2_body2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:fontFamily="@font/nexa_light"
+                android:text="@string/step2_body2"/>
+
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:layout_margin="10dp">
+
+            <TextView
+                android:id="@+id/step2_heading3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:fontFamily="@font/nexa_light"
+                android:text="@string/step2_heading3"
+                android:layout_marginBottom="10dp"
+                android:textAlignment="center"/>
+
+            <TextView
+                android:id="@+id/step2_body3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:fontFamily="@font/nexa_light"
+                android:text="@string/step2_body3"/>
+
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:layout_margin="10dp">
+
+            <TextView
+                android:id="@+id/step2_heading4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:fontFamily="@font/nexa_light"
+                android:text="@string/step2_heading4"
+                android:layout_marginBottom="10dp"
+                android:textAlignment="center"/>
+
+            <TextView
+                android:id="@+id/step2_body4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:fontFamily="@font/nexa_light"
+                android:text="@string/step2_body4"/>
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:layout_margin="10dp">
+
+            <TextView
+                android:id="@+id/step2_heading5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:fontFamily="@font/nexa_light"
+                android:text="@string/step2_heading5"
+                android:layout_marginBottom="10dp"
+                android:textAlignment="center"/>
+
+            <TextView
+                android:id="@+id/step2_body5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:fontFamily="@font/nexa_light"
+                android:text="@string/step2_body5"/>
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:layout_margin="10dp">
+
+            <TextView
+                android:id="@+id/step2_heading6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:fontFamily="@font/nexa_light"
+                android:text="@string/step2_heading6"
+                android:layout_marginBottom="10dp"
+                android:textAlignment="center"/>
+
+            <TextView
+                android:id="@+id/step2_body6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:fontFamily="@font/nexa_light"
+                android:text="@string/step2_body6"/>
+
+
+
+        </LinearLayout>
+
+
+
+        <Button
+            android:id="@+id/button_step2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:layout_margin="10dp"
+            android:fontFamily="@font/nexa_bold" />
+
+
+    </LinearLayout>
+
+
+</ScrollView>

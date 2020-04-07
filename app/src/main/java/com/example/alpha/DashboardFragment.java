@@ -218,18 +218,27 @@ public class DashboardFragment extends Fragment {
 
                 if (position == 0)
                 {
-                    Log.d("Dashboard Fragment","(position = 0) starting Step1Activity...");
+                    Log.d(this.toString(),"starting Step1Activity...");
 
                     Intent intent = new Intent(getContext(),Step1Activity.class);
                     startActivity(intent);
                 }
                 else if (position == 1)
                 {
-                    Log.d("Dashboard Fragment","(position = 0) starting Step2Activity...");
+                    Log.d(this.toString(),"starting Step2Activity...");
 
                     Intent intent = new Intent(getContext(),Step2Activity.class);
                     startActivity(intent);
                 }
+
+                else if (position == 2)
+                {
+                    Log.d(this.toString(),"starting Step3Activity...");
+
+                    Intent intent = new Intent(getContext(),Step3Activity.class);
+                    startActivity(intent);
+                }
+
             }
         });
 

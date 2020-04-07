@@ -176,4 +176,19 @@
     <string name="step2_heading6">Research thoroughly</string>
     <string name="step2_body6">A thorough research is going to help you decide properly. You need to be absolutely serious as well as curious. You have got the internet, search through it. Visit trusted websites. Look for deeper content. Connect with seniors and professionals who are familiar with the area of study to gather advice. Talk on phone, chat using messengers, get connected on platforms like LinkedIn. Do all of it, because this is what will give you the information you need.</string>
 
+    <!--strings for Step3 Activity-->
+    <string name="step3_intro">Now that most of the aspects are getting more concrete, with a solid decision on which area of study to go ahead with, you need to look for universities and programs. This is the time when you collect the names of programs and universities you would want to enroll in.</string>
+
+    <string name="step3_heading1">Countries and Regions</string>
+    <string name="step3_body1">Now is the time to decide and plan which country you want to go to. Is there anything precise? Does you area of study have good universities and industry in certain regions? These are some of the questions that need to be answered now. You might also want to consider the cost of living there.</string>
+
+    <string name="step3_heading2">Universities</string>
+    <string name="step3_body2">You need to now dig deeper and gather information about universities. Take into account factors like location, culture, industry relations and reputation of each of the universities during this process. It is important to note that a university might be well known in general, but may not be good for your area of study or vice versa.</string>
+
+    <string name="step3_heading3">Programs</string>
+    <string name="step3_body3">Well, what really matters is the program that you are looking for. Whether it is a masters or a doctorate or a specialisation? What are the ingredients of the program and what are you looking for? Various universities might have distinct curriculum under similar programs. There might be even multiple programs under the same university relating to your area of study. Choose carefully, considering factors like learning outcomes and career aspects. You might want to look at the fee structure and other expenses as well, along with scholarships.</string>
+
+    <string name="step3_heading4">Organise the list</string>
+    <string name="step3_body4">At the end of this step, you should have a concise list of universities and their respective programs in which you are interested to apply. Try to get your list reduced to somewhere around 6 to 9 entries. Again, take help from all possible sources. It can be seniors, professionals or anyone who has been in your shoes. Furthermore, the web is always there by your side.</string>
+
 </resources>

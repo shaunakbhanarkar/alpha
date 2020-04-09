@@ -191,4 +191,19 @@
     <string name="step3_heading4">Organise the list</string>
     <string name="step3_body4">At the end of this step, you should have a concise list of universities and their respective programs in which you are interested to apply. Try to get your list reduced to somewhere around 6 to 9 entries. Again, take help from all possible sources. It can be seniors, professionals or anyone who has been in your shoes. Furthermore, the web is always there by your side.</string>
 
+    <!--strings for Step4 Activity-->
+    <string name="step4_intro">After boiling down it all to a list of universities and programs, it is time for you to appear for tests. Yes, exam time! This process, again, has to be done properly.</string>
+
+    <string name="step4_heading1">Know your tests</string>
+    <string name="step4_body1">In the planning stage where you ended up with a list of universities and programs, you researched and browsed their details. One of them was the requirements for application to each program. If you have not done that yet, this is the time to visit the websites of your shortlisted programs and make a note of their corresponding application requirements. For this step, you must know the exams or tests required by each program. Further, you must know what each test is all about. Grab some details in terms of the syllabus, exam pattern, mode of exam and preparation time required.</string>
+
+    <string name="step4_heading2">Register</string>
+    <string name="step4_body2">Once you have got hold of every information about the tests that you must take, it is always recommended that you register yourself for these tests. You must draft a proper timeline with respect to what you are currently doing and your schedule in order to estimate the time you will need to prepare for these tests. Once you have the test dates with you, you have some pressure to seriously study and prepare in time. This is the prominent reason why you are advised to register for the tests before beginning with the preparation. However, do remember to keep a enough time gap for preparation while selecting your test dates.</string>
+
+    <string name="step4_heading3">Prepare</string>
+    <string name="step4_body3">If you have been following the above mentioned steps, that means that you have your test dates with you. Do not waste your time now. Start preparing for your tests. Practice a lot. Take coaching, only if you feel so. Each test requires a distinct kind of preparation, ranging from the syllabus to the time needed for preparation.</string>
+
+    <string name="step4_heading4">Score well</string>
+    <string name="step4_body4">As the test date approaches, you might get anxious. It is absolutely okay. Do not get stressed too much. Give your best while you appear for the tests and try to score well. In case you feel that you have not scored in line with your expectations, most tests provide you with the option to retake the test after a certain number of days.</string>
+
 </resources>

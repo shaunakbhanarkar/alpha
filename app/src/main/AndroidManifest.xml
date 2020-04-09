@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Step3Activity"></activity>
+        <activity android:name=".Step4Activity"></activity>
+        <activity android:name=".Step3Activity" />
         <activity android:name=".ExtraCurricularsActivity" />
         <activity android:name=".PublicationsActivity" />
         <activity android:name=".GREGeneralQuantActivity" />

@@ -239,6 +239,14 @@ public class DashboardFragment extends Fragment {
                     startActivity(intent);
                 }
 
+                else if (position == 3)
+                {
+                    Log.d(this.toString(),"starting Step4Activity...");
+
+                    Intent intent = new Intent(getContext(),Step4Activity.class);
+                    startActivity(intent);
+                }
+
             }
         });
 

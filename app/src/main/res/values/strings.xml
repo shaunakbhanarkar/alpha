@@ -206,4 +206,14 @@
     <string name="step4_heading4">Score well</string>
     <string name="step4_body4">As the test date approaches, you might get anxious. It is absolutely okay. Do not get stressed too much. Give your best while you appear for the tests and try to score well. In case you feel that you have not scored in line with your expectations, most tests provide you with the option to retake the test after a certain number of days.</string>
 
+    <!--strings for Step5 Activity-->
+    <string name="step5_intro">Cumulative Grade Point Average, commonly known as CGPA is one of the quantitative factors that indicates your academic performance and is a part of the application demanded by most programs.</string>
+
+    <string name="step5_heading1">Maintain it high</string>
+    <string name="step5_body1">If you are yet to graduate or complete your education and have even a slight chance of improving your CGPA, do not lose it. It is extremely important to maintain a really good CGPA to make your application stand out. CGPA is one of the ways to indicate your academic capability. It often is a criteria to select a few top applications out of the many received, though there is no formal validation for this. In conclusion, it is always good to have a high CGPA. Try your best, if you have a chance.</string>
+
+    <string name="step5_heading2">Why does it matter?</string>
+    <string name="step5_body2">CGPA speaks for your academic competency. It is an indication of your ability to cope up with academics, among several other things that happen around you. CGPA shows whether you are hardworking and diligent in terms of your learning path. So, even if you plan to pursue further education in a completely new area of study, it is essentially crucial to maintain a good CGPA.</string>
+
+
 </resources>

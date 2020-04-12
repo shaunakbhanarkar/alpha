@@ -255,6 +255,14 @@ public class DashboardFragment extends Fragment {
                     startActivity(intent);
                 }
 
+                else if (position == 5)
+                {
+                    Log.d(this.toString(),"starting Step6Activity...");
+
+                    Intent intent = new Intent(getContext(),Step6Activity.class);
+                    startActivity(intent);
+                }
+
             }
         });
 

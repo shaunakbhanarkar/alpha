@@ -230,4 +230,16 @@
     <string name="step6_heading4">The process</string>
     <string name="step6_body4">From the time you decide that you want to pursue higher education, you need to pull your socks up. The entire process of building your application includes ensuring your LORs. As you take up courses, or do projects, or work as intern or full time employee, you need to be at your best. You need to sort your recommenders. Try to get as many as you can. Also, the process of submitting LORs during the application process is slightly unusual. Most universities require you to list the details of your recommenders while applying. A form is then sent to your recommenders by mail. Your recommenders are then required to answer the form and upload LOR remotely. Hence, it is important for you to remain in touch with your recommenders and notify them of the process and the deadlines.</string>
 
+    <!--strings for Step7 Activity-->
+    <string name="step7_intro">A good set of projects is one of the many factors considered as a part of your application. It takes time to build this part of your application, and thus, you must be patient.</string>
+
+    <string name="step7_heading1">Why do projects matter?</string>
+    <string name="step7_body1">Projects related to your intended area of study put additional weight on your application. You do projects in a particular area of study because you like it, and you want to explore and do things. Projects in a way express your familiarity and expertise in the corresponding area of study. They convey that you have a certain degree of practical knowledge.</string>
+
+    <string name="step7_heading2">Number of projects</string>
+    <string name="step7_body2">There is no limit on the number of projects that you can do. It is always good to have as many projects as possible. However, it is important to note that quality exceeds quantity. Your projects should really have that core content and some real work behind it. Having many light projects might not help you. Instead, you should have a decent number of projects that actually have solid content and speak for themselves. Hence, ensure that each project is worth the endeavour and time that you put in.</string>
+
+    <string name="step7_heading3">Showcase</string>
+    <string name="step7_body3">It is equally important to display your projects in a proper manner. Every area of study has its own way of showcasing work. For example, coding and development projects are usually uploaded on GitHub whereas design projects are usually showcased in the form of portfolios and websites. So, build your professional account accordingly. Additionally, it is a good habit to update your project accomplishments on professional social media platforms such as LinkedIn, Behance, etc.</string>
+
 </resources>

@@ -242,4 +242,14 @@
     <string name="step7_heading3">Showcase</string>
     <string name="step7_body3">It is equally important to display your projects in a proper manner. Every area of study has its own way of showcasing work. For example, coding and development projects are usually uploaded on GitHub whereas design projects are usually showcased in the form of portfolios and websites. So, build your professional account accordingly. Additionally, it is a good habit to update your project accomplishments on professional social media platforms such as LinkedIn, Behance, etc.</string>
 
+    <!--strings for Step8 Activity-->
+    <string name="step8_intro">This might seem to be one little part in the entire application, but do not forget that each and every part of the application holds certain value and importance. You resume is worth the long journey, so prepare it well.</string>
+
+    <string name="step8_heading1">Why does the resume matter?</string>
+    <string name="step8_body1">Your resume sums up your academic as well as professional details. Of course, not everyone has a perfect resume. Rather, there is no perfect resume. A resume is simply intended to outline your background. It gives the viewer an idea about what you have studied, what all things you have done and what your expertise is.</string>
+
+    <string name="step8_heading2">Prepare it well</string>
+    <string name="step8_body2">Though there is no clear distinction between a good and a bad resume, you surely do not want to get rejected here. It is vital to prepare your resume well. Consider carefully on what should go in there and what should not. Your resume should not be just a page full of information. Your resume should have the relevant information. A good categorisation adds to the overall appeal of your resume. Formatting is another aspect that should be given attention. Nobody wants to go through a cluttered resume. All of this might take multiple iterations and it is absolutely okay. The aim is to get one good resume.</string>
+
+
 </resources>

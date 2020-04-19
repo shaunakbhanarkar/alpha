@@ -251,5 +251,13 @@
     <string name="step8_heading2">Prepare it well</string>
     <string name="step8_body2">Though there is no clear distinction between a good and a bad resume, you surely do not want to get rejected here. It is vital to prepare your resume well. Consider carefully on what should go in there and what should not. Your resume should not be just a page full of information. Your resume should have the relevant information. A good categorisation adds to the overall appeal of your resume. Formatting is another aspect that should be given attention. Nobody wants to go through a cluttered resume. All of this might take multiple iterations and it is absolutely okay. The aim is to get one good resume.</string>
 
+    <!--strings for Step9 Activity-->
+    <string name="step9_intro">One of the most important part of the application, Statement of Purpose (SOP in short) is considered by many to be a game changer. It is a very unique requirement that is demanded by almost all universities for admission to their programs. You probably would want to spend a major focus on getting your SOP done right.</string>
+
+    <string name="step9_heading1">Why does the SOP matter?</string>
+    <string name="step9_body1">SOP is sort of an essay, that outlines your story. It contains every detail that you want to convey to the admission board, as to why you want to pursue a particular program in that particular university and the reason why you should be selected. Your SOP gives a clear picture about your background, your interests and your ambitions. And due to these reasons, you need to pay enough attention to build a really nice SOP.</string>
+
+    <string name="step9_heading2">Tell your story</string>
+    <string name="step9_body2">As discussed above, SOP is that tool that can do wonders for you. It should include your background. You can talk about your academics as well as your professional involvement, and slightly about your co-curricular activities as well. Your SOP should contain your interests and how you arrived at the particular area of study. This is a good opportunity for you to reason and support your decision to shift to a particular area of study. If you think you fall short on certain aspects such as CGPA, this is where you can cover it by a proper rationale. Ultimately, your SOP should state your aims and ambitions. The entire SOP should be coherent and meaningful. Just using hyperbolic language would not help you. The process of building the SOP is a long one, and takes multiple revisions. You might want to write separate SOPs for various programs that you apply for. Also, take help. SOP can be best prepared by taking advice, so it is normal to take in some inputs from others.</string>
 
 </resources>

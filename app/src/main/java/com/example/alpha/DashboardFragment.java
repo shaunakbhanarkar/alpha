@@ -208,6 +208,9 @@ public class DashboardFragment extends Fragment {
         dashboardItemArrayList.add(new DashboardItem(8,"qpeirtygnbdl"));
         Log.d("Dashboard Fragment","item added to dashboardItemArrayList - step 8");
 
+        dashboardItemArrayList.add(new DashboardItem(9,"omnjf"));
+        Log.d("Dashboard Fragment","item added to dashboardItemArrayList - step 9");
+
 
         DashboardAdapter dashboardAdapter = new DashboardAdapter(dashboardItemArrayList, getContext());
         Log.d("Dashboard Fragment","dashboardAdapter created");
@@ -279,6 +282,14 @@ public class DashboardFragment extends Fragment {
                     Log.d(this.toString(),"starting Step8Activity...");
 
                     Intent intent = new Intent(getContext(),Step8Activity.class);
+                    startActivity(intent);
+                }
+
+                else if (position == 8)
+                {
+                    Log.d(this.toString(),"starting Step9Activity...");
+
+                    Intent intent = new Intent(getContext(),Step9Activity.class);
                     startActivity(intent);
                 }
 

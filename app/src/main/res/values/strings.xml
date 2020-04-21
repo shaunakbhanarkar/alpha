@@ -260,4 +260,16 @@
     <string name="step9_heading2">Tell your story</string>
     <string name="step9_body2">As discussed above, SOP is that tool that can do wonders for you. It should include your background. You can talk about your academics as well as your professional involvement, and slightly about your co-curricular activities as well. Your SOP should contain your interests and how you arrived at the particular area of study. This is a good opportunity for you to reason and support your decision to shift to a particular area of study. If you think you fall short on certain aspects such as CGPA, this is where you can cover it by a proper rationale. Ultimately, your SOP should state your aims and ambitions. The entire SOP should be coherent and meaningful. Just using hyperbolic language would not help you. The process of building the SOP is a long one, and takes multiple revisions. You might want to write separate SOPs for various programs that you apply for. Also, take help. SOP can be best prepared by taking advice, so it is normal to take in some inputs from others.</string>
 
+    <!--strings for Step10 Activity-->
+    <string name="step10_intro">It has been a really long process. From deciding about your future to building a strong application for further studies, you surely have put in your best. Now is the time for that one last step. Make all of your hard work count. Apply to the programs that you have been dreaming about!</string>
+
+    <string name="step10_heading1">Application Requirements</string>
+    <string name="step10_body1">Your list might contain varied programs and universities and each of them might have distinct application requirements. Remember to keep track of them and arrange everything before hand. If certain program mandates you to provide CGPA on a certain scale, you should be wary about it. If some program has test score requirements, make sure you are eligible. If there are any LOR restrictions, make sure that you have accommodated them in your application. The idea is to be prepared with everything that is needed.</string>
+
+    <string name="step10_heading2">Deadlines</string>
+    <string name="step10_body2">With multiple prospective programs that you desire to apply for, there comes a task of keeping track of multiple deadlines. You do not want to miss the deadlines in any case. Make it a habit to be updated about application deadlines of all your desired programs. Though applying early or late may not come with advantages, it is always better to apply early and not wait till the end. Much needed care is required with respective to LORs, since your recommender might forget about your multiple applications. Ensure that you remind them, and that everything falls in place at the right time.</string>
+
+    <string name="step10_heading3">You are done!</string>
+    <string name="step10_body3">Once you have applied to all the desired programs, you are done. You have done everything that you could. You have put in a lot. Now it is time to wait for the results. Do not worry much, because in the end, it will all be worth it.</string>
+
 </resources>

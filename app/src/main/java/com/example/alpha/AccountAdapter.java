@@ -72,30 +72,30 @@ public class AccountAdapter extends ArrayAdapter<AccountItem> {
         SharedPreferences sharedPref = Objects.requireNonNull(getContext().getSharedPreferences("Shared Preferences", MODE_PRIVATE));
         int theme = sharedPref.getInt("Theme", AppCompatDelegate.MODE_NIGHT_NO);
 
-        if (position == 0 || position == 9){
-            Typeface nexa_bold = getContext().getResources().getFont(R.font.nexa_bold);
-            viewHolder.name.setTypeface(nexa_bold);
-            viewHolder.name.setTextSize(15);
-
-            if (theme == AppCompatDelegate.MODE_NIGHT_NO)
-                viewHolder.name.setTextColor(getContext().getResources().getColor(R.color.colorPrimary));
-            else if (theme == AppCompatDelegate.MODE_NIGHT_YES)
-                viewHolder.name.setTextColor(getContext().getResources().getColor(R.color.darkHighlight));
-            else {
-                PowerManager powerManager = (PowerManager) getContext().getSystemService(Context.POWER_SERVICE);
-                if (powerManager.isPowerSaveMode()){
-                    viewHolder.name.setTextColor(getContext().getResources().getColor(R.color.darkHighlight));
-                }
-                else
-                {
-                    viewHolder.name.setTextColor(getContext().getResources().getColor(R.color.colorPrimary));
-                }
-            }
-
-            viewHolder.name.setPadding(50,50,50,30);
-            viewHolder.name.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-        }
-        else {
+//        if (position == 0 || position == 10){
+//            Typeface nexa_bold = getContext().getResources().getFont(R.font.nexa_bold);
+//            viewHolder.name.setTypeface(nexa_bold);
+//            viewHolder.name.setTextSize(15);
+//
+//            if (theme == AppCompatDelegate.MODE_NIGHT_NO)
+//                viewHolder.name.setTextColor(getContext().getResources().getColor(R.color.colorPrimary));
+//            else if (theme == AppCompatDelegate.MODE_NIGHT_YES)
+//                viewHolder.name.setTextColor(getContext().getResources().getColor(R.color.darkHighlight));
+//            else {
+//                PowerManager powerManager = (PowerManager) getContext().getSystemService(Context.POWER_SERVICE);
+//                if (powerManager.isPowerSaveMode()){
+//                    viewHolder.name.setTextColor(getContext().getResources().getColor(R.color.darkHighlight));
+//                }
+//                else
+//                {
+//                    viewHolder.name.setTextColor(getContext().getResources().getColor(R.color.colorPrimary));
+//                }
+//            }
+//
+//            viewHolder.name.setPadding(50,50,50,30);
+//            viewHolder.name.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+//        }
+//        else {
             Typeface nexa_light = getContext().getResources().getFont(R.font.nexa_light);
             viewHolder.name.setTypeface(nexa_light);
             viewHolder.name.setPadding(50,30,20,30);
@@ -114,15 +114,15 @@ public class AccountAdapter extends ArrayAdapter<AccountItem> {
                     viewHolder.name.setTextColor(getContext().getResources().getColor(R.color.black));
                 }
             }
-        }
+//        }
         return convertView;
 
     }
 
-    @Override
-    public boolean isEnabled(int position){
-        if (position == 0 || position == 9)
-            return false;
-        return true;
-    }
+//    @Override
+//    public boolean isEnabled(int position){
+//        if (position == 0 || position == 10)
+//            return false;
+//        return true;
+//    }
 }

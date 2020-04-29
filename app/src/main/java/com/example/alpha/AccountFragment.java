@@ -121,8 +121,8 @@ public class AccountFragment extends Fragment {
         ArrayList<AccountItem> accountItemArrayList = new ArrayList<>();
         Log.d("Account Fragment","accountItemArrayList created");
 
-        accountItemArrayList.add(new AccountItem("PROFILE"));
-        Log.d("Account Fragment","item added to accountItemArrayList - PROFILE");
+//        accountItemArrayList.add(new AccountItem("PROFILE"));
+//        Log.d("Account Fragment","item added to accountItemArrayList - PROFILE");
 
         accountItemArrayList.add(new AccountItem("Basic Info"));
         Log.d("Account Fragment","item added to accountItemArrayList - Basic Info");
@@ -133,14 +133,17 @@ public class AccountFragment extends Fragment {
         accountItemArrayList.add(new AccountItem("Educational Details"));
         Log.d("Account Fragment","item added to accountItemArrayList - Educational Details");
 
+        accountItemArrayList.add(new AccountItem("Test Scores"));
+        Log.d("Account Fragment","item added to accountItemArrayList - Test Scores");
+
         accountItemArrayList.add(new AccountItem("Letters of Recommendation"));
         Log.d("Account Fragment","item added to accountItemArrayList - Letters of Recommendation");
 
+        accountItemArrayList.add(new AccountItem("Projects"));
+        Log.d("Account Fragment","item added to accountItemArrayList - Projects");
+
         accountItemArrayList.add(new AccountItem("Work Experience"));
         Log.d("Account Fragment","item added to accountItemArrayList - Work Experience");
-
-        accountItemArrayList.add(new AccountItem("Test Scores"));
-        Log.d("Account Fragment","item added to accountItemArrayList - Test Scores");
 
         accountItemArrayList.add(new AccountItem("Publications"));
         Log.d("Account Fragment","item added to accountItemArrayList - Publications");
@@ -148,8 +151,9 @@ public class AccountFragment extends Fragment {
         accountItemArrayList.add(new AccountItem("Extra Curricular"));
         Log.d("Account Fragment","item added to accountItemArrayList - Extra Curricular");
 
-        accountItemArrayList.add(new AccountItem("SETTINGS"));
-        Log.d("Account Fragment","item added to accountItemArrayList - SETTINGS");
+//        accountItemArrayList.add(new AccountItem("SETTINGS"));
+//        Log.d("Account Fragment","item added to accountItemArrayList - SETTINGS");
+
 
         accountItemArrayList.add(new AccountItem("Theme"));
         Log.d("Account Fragment","item added to accountItemArrayList - Theme");
@@ -175,63 +179,64 @@ public class AccountFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                if (position == 0)  //profile
-                {
-                    Log.d("Account Fragment","(position = 0) non-clickable PROFILE heading clicked");
 
-                }
-
-                if (position == 1)  //basic info
+                if (position == 0)  //basic info
                 {
-                    Log.d("Account Fragment","(position = 1) starting BasicInfoActivity...");
+                    Log.d("Account Fragment","starting BasicInfoActivity...");
 
                     Intent intent = new Intent(getContext(),BasicInfoActivity.class);
                     startActivity(intent);
                 }
 
-                if (position == 2) //aspirations
+                if (position == 1) //aspirations
                 {
-                    Log.d("Account Fragment","(position = 2) starting AspirationsActivity...");
+                    Log.d("Account Fragment","starting AspirationsActivity...");
 
                     Intent intent = new Intent(getContext(),AspirationsActivity.class);
                     startActivity(intent);
                 }
 
-                if (position == 3) //educational details
+                if (position == 2) //educational details
                 {
-                    Log.d("Account Fragment","(position = 3) starting EducationalDetailsActivity...");
+                    Log.d("Account Fragment","starting EducationalDetailsActivity...");
 
                     Intent intent = new Intent(getContext(),EducationalDetailsActivity.class);
                     startActivity(intent);
                 }
 
-                if (position == 4)  //letters of recommendation
+                if (position == 3)  //test scores
                 {
-                    Log.d("Account Fragment","(position = 4) starting LettersOfRecommendationActivity...");
-
-                    Intent intent = new Intent(getContext(),LettersOfRecommendationActivity.class);
-                    startActivity(intent);
-                }
-
-                if (position == 5)  //work experience
-                {
-                    Log.d("Account Fragment","(position = 5) starting WorkExperienceActivity...");
-
-                    Intent intent = new Intent(getContext(),WorkExperienceActivity.class);
-                    startActivity(intent);
-                }
-
-                if (position == 6)  //test scores
-                {
-                    Log.d("Account Fragment","(position = 6) starting TestScoresActivity...");
+                    Log.d("Account Fragment","starting TestScoresActivity...");
 
                     Intent intent = new Intent(getContext(),TestScoresActivity.class);
                     startActivity(intent);
                 }
 
+                if (position == 4)  //letters of recommendation
+                {
+                    Log.d("Account Fragment","starting LettersOfRecommendationActivity...");
+
+                    Intent intent = new Intent(getContext(),LettersOfRecommendationActivity.class);
+                    startActivity(intent);
+                }
+
+                if (position == 5)  //projects
+                {
+                    Log.d("Account Fragment","starting ProjectsActivity...");
+
+                }
+
+                if (position == 6)  //work experience
+                {
+                    Log.d("Account Fragment","starting WorkExperienceActivity...");
+
+                    Intent intent = new Intent(getContext(),WorkExperienceActivity.class);
+                    startActivity(intent);
+                }
+
                 if (position == 7)  //publications
                 {
-                    Log.d("Account Fragment","(position = 7) starting PublicationsActivity...");
+                    Log.d("Account Fragment","starting PublicationsActivity...");
 
                     Intent intent = new Intent(getContext(),PublicationsActivity.class);
                     startActivity(intent);
@@ -239,23 +244,18 @@ public class AccountFragment extends Fragment {
 
                 if (position == 8)  //extra curricular
                 {
-                    Log.d("Account Fragment","(position = 8) starting ExtraCurricularsActivity...");
+                    Log.d("Account Fragment","starting ExtraCurricularsActivity...");
 
                     Intent intent = new Intent(getContext(),ExtraCurricularsActivity.class);
                     startActivity(intent);
 
                 }
 
-                if (position == 9)  //settings
-                {
-                    Log.d("Account Fragment","(position = 9) non-clickable SETTINGS heading clicked");
 
-                }
-
-                if (position == 10) //theme
+                if (position == 9) //theme
                 {
 
-                    Log.d("Account Fragment","(position = 10) theme clicked");
+                    Log.d("Account Fragment","theme clicked");
 
                     int checked_item = 0;
 
@@ -522,18 +522,18 @@ public class AccountFragment extends Fragment {
 
                 }
 
-                if (position == 11) //about
+                if (position == 10) //about
                 {
-                    Log.d("Account Fragment","(position = 11) starting AboutActivity...");
+                    Log.d("Account Fragment","starting AboutActivity...");
 
                     Intent intent = new Intent(getContext(),AboutActivity.class);
                     startActivity(intent);
                 }
 
 
-                if (position == 12) //logout
+                if (position == 11) //logout
                 {
-                    Log.d("Account Fragment","(position = 12) log out clicked, initiating log out...");
+                    Log.d("Account Fragment","log out clicked, initiating log out...");
 
                     Log.d("Account Fragment","getting last signed in account...");
                     GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getContext());

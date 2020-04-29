@@ -184,34 +184,34 @@ public class DashboardFragment extends Fragment {
         ArrayList<DashboardItem> dashboardItemArrayList = new ArrayList<>();
         Log.d("Dashboard Fragment","dashboardItemArrayList created");
 
-        dashboardItemArrayList.add(new DashboardItem(1,"abc"));
+        dashboardItemArrayList.add(new DashboardItem(1,getResources().getString(R.string.step1_title)));
         Log.d("Dashboard Fragment","item added to dashboardItemArrayList - step 1");
 
-        dashboardItemArrayList.add(new DashboardItem(2,"loiabc"));
+        dashboardItemArrayList.add(new DashboardItem(2,getResources().getString(R.string.step2_title)));
         Log.d("Dashboard Fragment","item added to dashboardItemArrayList - step 2");
 
-        dashboardItemArrayList.add(new DashboardItem(3,"zasdabc"));
+        dashboardItemArrayList.add(new DashboardItem(3,getResources().getString(R.string.step3_title)));
         Log.d("Dashboard Fragment","item added to dashboardItemArrayList - step 3");
 
-        dashboardItemArrayList.add(new DashboardItem(4,"abnkjhjbc"));
+        dashboardItemArrayList.add(new DashboardItem(4,getResources().getString(R.string.step4_title)));
         Log.d("Dashboard Fragment","item added to dashboardItemArrayList - step 4");
 
-        dashboardItemArrayList.add(new DashboardItem(5,"abckh"));
+        dashboardItemArrayList.add(new DashboardItem(5,getResources().getString(R.string.step5_title)));
         Log.d("Dashboard Fragment","item added to dashboardItemArrayList - step 5");
 
-        dashboardItemArrayList.add(new DashboardItem(6,"abcasf"));
+        dashboardItemArrayList.add(new DashboardItem(6,getResources().getString(R.string.step6_title)));
         Log.d("Dashboard Fragment","item added to dashboardItemArrayList - step 6");
 
-        dashboardItemArrayList.add(new DashboardItem(7,"abcfd"));
+        dashboardItemArrayList.add(new DashboardItem(7,getResources().getString(R.string.step7_title)));
         Log.d("Dashboard Fragment","item added to dashboardItemArrayList - step 7");
 
-        dashboardItemArrayList.add(new DashboardItem(8,"qpeirtygnbdl"));
+        dashboardItemArrayList.add(new DashboardItem(8,getResources().getString(R.string.step8_title)));
         Log.d("Dashboard Fragment","item added to dashboardItemArrayList - step 8");
 
-        dashboardItemArrayList.add(new DashboardItem(9,"omnjf"));
+        dashboardItemArrayList.add(new DashboardItem(9,getResources().getString(R.string.step9_title)));
         Log.d("Dashboard Fragment","item added to dashboardItemArrayList - step 9");
 
-        dashboardItemArrayList.add(new DashboardItem(10,"grand"));
+        dashboardItemArrayList.add(new DashboardItem(10,getResources().getString(R.string.step10_title)));
         Log.d("Dashboard Fragment","item added to dashboardItemArrayList - step 10");
 
 

@@ -5,6 +5,18 @@
     <string name="bottom_nav_explore">Explore</string>
     <string name="bottom_nav_account">Account</string>
 
+    <!--strings for Dashboard Fragment-->
+    <string name="step1_title">Decide</string>
+    <string name="step2_title">Research</string>
+    <string name="step3_title">Plan</string>
+    <string name="step4_title">Tests</string>
+    <string name="step5_title">CGPA</string>
+    <string name="step6_title">LORs</string>
+    <string name="step7_title">Projects</string>
+    <string name="step8_title">Resume</string>
+    <string name="step9_title">Statement of Purpose</string>
+    <string name="step10_title">Apply</string>
+
     <!--strings for GRE Activity-->
     <string name="gre_overview">The Graduate Record Examinations, often known as GRE, are conducted by Educational Testing Services (ETS). Broadly categorised, there are two types of GRE - GRE General Test and GRE Subject Tests. The GRE tests are one of the most widely accepted tests across the world.</string>
     <string name="gre_general_learn_more"><u>Learn more about the GRE General Test</u></string>

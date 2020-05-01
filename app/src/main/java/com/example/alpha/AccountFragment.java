@@ -224,6 +224,8 @@ public class AccountFragment extends Fragment {
                 {
                     Log.d("Account Fragment","starting ProjectsActivity...");
 
+                    Intent intent = new Intent(getContext(),ProjectsActivity.class);
+                    startActivity(intent);
                 }
 
                 if (position == 6)  //work experience

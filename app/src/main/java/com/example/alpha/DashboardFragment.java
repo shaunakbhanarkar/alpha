@@ -214,6 +214,12 @@ public class DashboardFragment extends Fragment {
         dashboardItemArrayList.add(new DashboardItem(10,getResources().getString(R.string.step10_title)));
         Log.d("Dashboard Fragment","item added to dashboardItemArrayList - step 10");
 
+        dashboardItemArrayList.add(new DashboardItem(11,getResources().getString(R.string.step11_title)));
+        Log.d("Dashboard Fragment","item added to dashboardItemArrayList - step 11");
+
+        dashboardItemArrayList.add(new DashboardItem(12,getResources().getString(R.string.step12_title)));
+        Log.d("Dashboard Fragment","item added to dashboardItemArrayList - step 12");
+
 
         DashboardAdapter dashboardAdapter = new DashboardAdapter(dashboardItemArrayList, getContext());
         Log.d("Dashboard Fragment","dashboardAdapter created");
@@ -282,13 +288,26 @@ public class DashboardFragment extends Fragment {
 
                 else if (position == 7)
                 {
+                    Log.d(this.toString(),"starting Step11Activity...");
+
+                    Intent intent = new Intent(getContext(),Step11Activity.class);
+                    startActivity(intent);
+                }
+
+                else if (position == 8)
+                {
+
+                }
+
+                else if (position == 9)
+                {
                     Log.d(this.toString(),"starting Step8Activity...");
 
                     Intent intent = new Intent(getContext(),Step8Activity.class);
                     startActivity(intent);
                 }
 
-                else if (position == 8)
+                else if (position == 10)
                 {
                     Log.d(this.toString(),"starting Step9Activity...");
 
@@ -296,7 +315,7 @@ public class DashboardFragment extends Fragment {
                     startActivity(intent);
                 }
 
-                else if (position == 9)
+                else if (position == 11)
                 {
                     Log.d(this.toString(),"starting Step10Activity...");
 

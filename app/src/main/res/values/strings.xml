@@ -13,9 +13,11 @@
     <string name="step5_title">CGPA</string>
     <string name="step6_title">LORs</string>
     <string name="step7_title">Projects</string>
-    <string name="step8_title">Resume</string>
-    <string name="step9_title">Statement of Purpose</string>
-    <string name="step10_title">Apply</string>
+    <string name="step8_title">Work Experience</string>
+    <string name="step9_title">Publications</string>
+    <string name="step10_title">Resume</string>
+    <string name="step11_title">Statement of Purpose</string>
+    <string name="step12_title">Apply</string>
 
     <!--strings for GRE Activity-->
     <string name="gre_overview">The Graduate Record Examinations, often known as GRE, are conducted by Educational Testing Services (ETS). Broadly categorised, there are two types of GRE - GRE General Test and GRE Subject Tests. The GRE tests are one of the most widely accepted tests across the world.</string>
@@ -283,5 +285,18 @@
 
     <string name="step10_heading3">You are done!</string>
     <string name="step10_body3">Once you have applied to all the desired programs, you are done. You have done everything that you could. You have put in a lot. Now it is time to wait for the results. Do not worry much, because in the end, it will all be worth it.</string>
+
+
+    <!--strings for Step11 Activity-->
+    <string name="step11_intro">Some programs require you to have prior work experience related to the particular area of study. You would surely not want to ignore this.</string>
+
+    <string name="step11_heading1">Why does experience matter?</string>
+    <string name="step11_body1">Certain areas may be more work oriented and require you to gain actual expertise through the means of real world experience. Though everything taught as a part of the theoretical knowledge is important, practical knowledge is much more crucial in some cases. Programs in such domains mandate the applicants to have a certain degree of prior work experience in the particular domain, which essentially helps to claim that an applicant has gone through the various ups and downs related to the domain and has enough practical knowledge to proceed with the advanced courses. Additionally, work experience is also a way to assert your interest in the area of study.</string>
+
+    <string name="step11_heading2">Is it required?</string>
+    <string name="step11_body2">While some programs proactively make it mandatory for applicants to have prior work experience, others do not explicitly mention the same. In some cases, it might actually be a better idea to have some amount of work experience, even though the requirements of a particular program may not demand so. Therefore, you need to check properly as to what is well suited for you.</string>
+
+    <string name="step11_heading3">Relevant and non-relevant</string>
+    <string name="step11_body3">Well, there is a little further detail that you need to look at. A program might require work experience strictly in the particular domain. On the other hand, work experience in any domain might be acceptable for some other program. Ensure that you know which programs need strictly relevant experience and which ones can accept non-relevant experience as well. It helps you plan your things accordingly. The aim is to ultimately gain the appropriate level of work experience.</string>
 
 </resources>

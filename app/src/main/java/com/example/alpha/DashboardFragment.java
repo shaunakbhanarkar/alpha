@@ -296,7 +296,10 @@ public class DashboardFragment extends Fragment {
 
                 else if (position == 8)
                 {
+                    Log.d(this.toString(),"starting Step12Activity...");
 
+                    Intent intent = new Intent(getContext(),Step12Activity.class);
+                    startActivity(intent);
                 }
 
                 else if (position == 9)

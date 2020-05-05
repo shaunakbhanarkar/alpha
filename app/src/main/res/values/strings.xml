@@ -286,7 +286,6 @@
     <string name="step10_heading3">You are done!</string>
     <string name="step10_body3">Once you have applied to all the desired programs, you are done. You have done everything that you could. You have put in a lot. Now it is time to wait for the results. Do not worry much, because in the end, it will all be worth it.</string>
 
-
     <!--strings for Step11 Activity-->
     <string name="step11_intro">Some programs require you to have prior work experience related to the particular area of study. You would surely not want to ignore this.</string>
 
@@ -298,5 +297,14 @@
 
     <string name="step11_heading3">Relevant and non-relevant</string>
     <string name="step11_body3">Well, there is a little further detail that you need to look at. A program might require work experience strictly in the particular domain. On the other hand, work experience in any domain might be acceptable for some other program. Ensure that you know which programs need strictly relevant experience and which ones can accept non-relevant experience as well. It helps you plan your things accordingly. The aim is to ultimately gain the appropriate level of work experience.</string>
+
+    <!--strings for Step12 Activity-->
+    <string name="step12_intro">Publishing research papers might seem way too far for a beginner, but it surely has got some advantages. If that sounds good, then dig right in. If that sounds a tough job to you, do not get scared. Read through before you make your mind.</string>
+
+    <string name="step12_heading1">Why do publications matter?</string>
+    <string name="step12_body1">It is quite interesting to see how publications add quite a value to your application. Any research paper you publish directly indicates your extreme interest and dedication in the particular domain. Publishing a research paper is not an easy accomplishment. And when you do, it speaks for itself. It shows your deep desire to do so, in addition to promoting your qualities like perseverance, patience, commitment and enthusiasm. In a nutshell, if you have any publication under your name, your application naturally has good weight.</string>
+
+    <string name="step12_heading2">Work for it</string>
+    <string name="step12_body2">Though it is evident that publishing a research paper is a big task, there is nothing that one should be afraid of. It is a fairly decent challenge or a goal that one can aim for. Of course, you need to be well acquainted with the subject and have a great idea. You might need to work with a colleague and even a mentor. Taking guidance is absolutely okay. A lot of research as well as practical work goes behind a publication, and it takes several months. You need to work for it, because the results are really great.</string>
 
 </resources>
